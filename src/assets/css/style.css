@@ -39,11 +39,11 @@ body{
 }
 
 .backgroundPrimary {
-    color: #6379F4;
+    background-color: #6379F4;
 }
 
 .colorWhite {
-    color: #FFFFFF;
+    color: #FFFFFF !important;
 }
 
 .colorSecondary {

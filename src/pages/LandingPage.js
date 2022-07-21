@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 // image etc
 import PhoneHero from '../assets/images/png-phone.svg'
@@ -19,19 +20,30 @@ function LandingPage() {
                 <span className="logoZwallet">BooWallet</span>
             </div>
             <div className="navBtn">
-                <button onclick="document.location='./Dashboard/login.html'" className="buttonLogin">Login</button>
-                <button onclick="document.location='./Dashboard/signUp.html'" className="buttonSignUp">Sign Up</button>
+                <Link to={"/login"}>
+                <button className="buttonLogin">Login</button>
+                </Link>
+                <Link to={"/signup"}>
+                <button className="buttonSignUp">Sign Up</button>
+                </Link>
             </div>
             <div className="btnDesk">
-                <button onclick="document.location='./Dashboard/login.html'" className="buttonLogin">Login</button>
-                <button onclick="document.location='./Dashboard/signUp.html'" className="buttonSignUp">Sign Up</button>
+                <Link to={"/login"}>
+                <button className="buttonLogin">Login</button>
+                </Link>
+                <Link to={"/signup"}>
+                <button className="buttonSignUp">Sign Up</button>
+                </Link>
+                
             </div>
         </nav>
         <section className="newHero">
             <div className="newHeroContent">
                 <p className="titleHero colorSecondary">Awesome App For Saving <span className='colorPrimary'>Time.</span></p>
                 <p className="paragHero colorSecondary">We bring you a mobile app for banking problems that <br/> oftenly wasting much of your times.</p>
-                <button className="buttonTry" onclick="document.location='./Dashboard/signUp.html'">Try It Free</button>
+                <Link to={"/signup"}>
+                <button className="buttonTry">Try It Free</button>
+                </Link>
             </div>
             <div className='phoneHeroImageWrap'>
                 <img className='responsiveImg' src={PhoneHero} alt="img Phone"/>
