@@ -9,16 +9,16 @@ import {FiBell, FiArrowDown, FiArrowUp} from 'react-icons/fi'
 export default function ComHeader() {
     return (
         <>
-            <Row className='d-flex flex-column flex-md-row align-items-md-center mw-100 m-0 shadow-sm round-bott'>
+            <Row className='d-flex flex-column flex-md-row align-items-md-center mw-100 m-0 shadow-sm round-bott bg-white'>
                 <Col md={6} className='d-md-flex'>
                     <div className="d-flex justify-content-start">
-                        <span className="fw-bold textLogo fs-3 colorPrimary">BooWallet</span>
+                        <span className="fw-bold fs-3 colorPrimary">BooWallet</span>
                     </div>
                 </Col>
                 <Col md={6}>
                     <div className='d-flex p-3 p-md-0 justify-content-md-end align-items-center justify-content-between'>
                         <div className="d-flex flex-row">
-                            <img src={ProfilePic} alt="profile pic"/>
+                            <img className='img-fluid' src={ProfilePic} alt="profile pic"/>
                             <div className="d-flex flex-column px-2">
                                 <span className="fw-bold textProfileName">Robert Chandler</span>
                                 <span className="fw-normal textProfileNumber">+62 8139 3877 7946</span>
@@ -26,9 +26,6 @@ export default function ComHeader() {
                         </div>
 
                     <Dropdown>
-                        {/* <button className="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <FiBell size={24} />
-                        </button> */}
                         <Dropdown.Toggle>
                             <FiBell size={24} className='colorSecondary' />
                         </Dropdown.Toggle>

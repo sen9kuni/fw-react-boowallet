@@ -7,8 +7,8 @@ import {FiGrid, FiPlus, FiArrowUp, FiUser, FiLogOut} from 'react-icons/fi'
 
 export default function ComMenu() {
     return (
-        <Col md={3} class="d-md-flex flex-md-column col-md-3 rounded boxshdw navWrap shadow-sm">
-            <div class="d-flex flex-column gap-4 gap-md-5 h-100 p-4">
+        <Col md={3} class="d-md-flex flex-md-column col-md-3">
+            <div class="d-flex flex-column gap-4 gap-md-5 h-100 p-4 shadow-sm rounded background-dash-white">
                 <div class="navButton">
                     <a href="/Dashboard/home.html" class="d-flex flex-row gap-3 align-items-center text-decoration-none">
                         <FiGrid size={28} />
