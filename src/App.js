@@ -8,6 +8,7 @@ import CreatePin from './pages/CreatePin'
 import PinSuccess from './pages/PinSuccess'
 import ResetPassword from './pages/ResetPassword'
 import CreateNewPassword from './pages/CreateNewPassword'
+import Home from './pages/Home'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path='/pinsuccess' element={<PinSuccess />} />
       <Route path='/resetpassword' element={<ResetPassword />} />
       <Route path='/createnewpassword' element={<CreateNewPassword />} />
+      <Route path='/home' element={<Home />} />
     </Routes>
   )
 }

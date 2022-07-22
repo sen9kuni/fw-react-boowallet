@@ -17,7 +17,7 @@ function CreateNewPassword() {
 
         <Col md={5} className='p-5 gap-4 px-md-5 p-5 d-flex flex-column gap-md-5'>
             <h3 className="text-start fs-3 fw-bold colorTextPrimary">Did You Forgot Your Password? Don't Worry, You Can Reset Your Password In a Minutes.</h3>
-            <p className="text-start fw-normal text-muted">Now you can create a new password for your Zwallet account. Type your password twice so we can confirm your new passsword.</p>
+            <p className="text-start fw-normal text-muted">Now you can create a new password for your BooWallet account. Type your password twice so we can confirm your new passsword.</p>
 
             <div className="input-group flex-nowrap">
                 <span className="input-group-text iconLogin">
