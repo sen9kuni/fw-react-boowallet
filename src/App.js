@@ -9,6 +9,10 @@ import PinSuccess from './pages/PinSuccess'
 import ResetPassword from './pages/ResetPassword'
 import CreateNewPassword from './pages/CreateNewPassword'
 import Home from './pages/Home'
+import History from './pages/History'
+import SearchReciver from './pages/SearchReciver'
+import InputAmount from './pages/InputAmount'
+import ConfirmationTransfer from './pages/ConfirmationTransfer'
 
 function App() {
   return (
@@ -21,6 +25,10 @@ function App() {
       <Route path='/resetpassword' element={<ResetPassword />} />
       <Route path='/createnewpassword' element={<CreateNewPassword />} />
       <Route path='/home' element={<Home />} />
+      <Route path='/history' element={<History />} />
+      <Route path='/searchreciver' element={<SearchReciver />} />
+      <Route path='/inputamount' element={<InputAmount />} />
+      <Route path='/confirmation' element={<ConfirmationTransfer />} />
     </Routes>
   )
 }

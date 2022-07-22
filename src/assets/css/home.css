@@ -3,6 +3,7 @@ body .body-dashboard{
     padding: 0;
     max-width: 100%;
     font-family: 'Nunito Sans', sans-serif;
+    background-color: #FAFCFF;
 }
 
 .fontSize-18 {
@@ -36,6 +37,7 @@ body .body-dashboard{
     margin-top: 30px !important;
 }
 
+/* color/bg */
 .colorIn {
     color: #1EC15F;
 }
@@ -43,6 +45,48 @@ body .body-dashboard{
 .colorOut {
     color: #FF5B37;
 }
+
+.color-Thrid {
+    color: #DFDCDC;
+}
+
+.color-thrid-sub {
+    color: #7A7886;
+}
+
+.color-3a {
+    color: #3A3D42;
+}
+
+.color-7a {
+    color: #7A7886;
+}
+
+.color-51 {
+    color: #514F5B;
+}
+
+.color-a9{
+    color: #A9A9A9;
+}
+
+.background-dash-white {
+    background-color: white !important;
+}
+
+.background-dash-3a3 {
+    background-color: #3A3D421A !important;
+}
+
+.color-4d {
+    color: #4D4B57;
+}
+
+.background-primary {
+    background-color: #6379F4 !important;
+}
+/* color/bg */
+
 
 footer .footer-dashboard {
     background-color: #6379F4;
@@ -66,6 +110,47 @@ footer .footer-dashboard {
     min-height: 190px !important; 
     background-color: #6379F4;
 }
+
+.searchListWrap {
+    padding: 20px !important; 
+    min-height: 110px !important;
+}
+
+.iconSearch {
+    background: unset !important;
+    border: unset !important;
+    border-radius: unset !important;
+}
+
+.inputSearch {
+    border: unset !important;
+    border-radius: unset !important;
+    background: unset !important;
+}
+
+.inputSearch:focus {
+    border-color: gray !important;
+    box-shadow: unset !important;
+}
+
+.search-reciver-input input::placeholder {
+    color: #3A3D4266;
+}
+
+.amoutWarp {
+    padding: 15px;
+    border: unset;
+    background: unset;
+}
+
+/* dunno */
+input[type=number] {
+    -moz-appearance: textfield;
+    text-align: center;
+    font-size: 42px;
+}
+/* dunno */
+
 
 @media only screen and (min-width: 768px) {
     .dropdown-menu {

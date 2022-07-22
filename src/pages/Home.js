@@ -1,12 +1,15 @@
 import React from 'react'
 import ComHeader from '../components/ComHeader'
 import ComFooter from '../components/ComFooter'
-import {Container, Col, Row} from 'react-bootstrap'
+import {Container, Col} from 'react-bootstrap'
 import ComMenu from '../components/ComMenu'
+import ListHistoryIncome from '../components/ListHistoryIncome'
+import ListHistoryExpense from '../components/ListHistoryExpense'
 
 // image
-import {FiPlus, FiArrowUp} from 'react-icons/fi'
+import {FiPlus, FiArrowUp, FiArrowDown} from 'react-icons/fi'
 import GraphicPic from '../assets/images/graphic.svg'
+import ProfileSam from '../assets/images/sam.png'
 // image
 
 function Home() {
@@ -16,12 +19,12 @@ function Home() {
                 <ComHeader />
                 <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>
                     <ComMenu />
-                    <Col md={9} className='d-flex flex-column gap-3 colorWhite'>
+                    <Col md={9} className='d-flex flex-column gap-3 colorWhite bg-white'>
                         <div className='d-flex flex-row justify-content-between align-items-center balance-wrap p-4 rounded'>
                             <div className="d-flex flex-column gap-1">
-                                <span className="fw-normal balanceTitle">Balance</span>
+                                <span className="fw-normal fontSize-18 color-Thrid">Balance</span>
                                 <span className="fs-1 fw-bold fontWhite">Rp120.000</span>
-                                <span className="fontMid balancePhone">+62 813-9387-7946</span>
+                                <span className="fontMid fontSize-14 color-Thrid">+62 813-9387-7946</span>
                             </div>
                             <div className="d-flex flex-column gap-2">
                                 <button onclick="document.location='/Dashboard/searchReceiver.html'" className="btn btn-lg btn-outline-light bg-f3 d-flex align-items-center">
@@ -34,26 +37,38 @@ function Home() {
                                 </button>
                             </div>
                         </div>
-                        <Row className='colorSecondary'>
-                            <Col md={7} className='rounded shadow-sm p-3'>
+
+                        <div className='colorSecondary d-flex flex-column flex-md-row'>
+                            <Col md={7} className='rounded shadow-sm p-4'>
                                 <div className="d-flex flex-row justify-content-between">
                                     <div className="d-flex flex-column gap-2">
-                                        <i className="colorIn" data-feather="arrow-down"></i>
-                                        <span className="fw-normal incomeTitle">Income</span>
-                                        <span className="fw-bold incomeVal">Rp2.120.000</span>
+                                        <FiArrowDown size={28} className='colorIn' />
+                                        <span className="fw-normal fontSize-14">Income</span>
+                                        <span className="fw-bold fontSize-18">Rp2.120.000</span>
                                     </div>
                                     <div className="d-flex flex-column gap-2">
-                                        <i className="colorOut" data-feather="arrow-up"></i>
-                                        <span className="fw-normal incomeTitle">Expense</span>
-                                        <span className="fw-bold incomeVal">Rp1.560.000</span>
+                                        <FiArrowUp size={28} className='colorOut' />
+                                        <span className="fw-normal fontSize-14">Expense</span>
+                                        <span className="fw-bold fontSize-18">Rp1.560.000</span>
                                     </div>
                                 </div>
-                                <div className="d-flex justify-content-center">
+                                <div className="d-flex justify-content-center mt-5">
                                     <img className='img-fluid' src={GraphicPic} alt="graphic"/>
                                 </div>
                             </Col>
-                            <Col md={5} className='rounded shadow-sm p-3'>a</Col>
-                        </Row>
+
+                            <Col md={5} className='rounded shadow-sm p-3'>
+                                <div class="d-flex flex-row justify-content-between p-3 trsansHistoryHomeWarp">
+                                    <span class="fw-bold fontSize-18">Transaction History</span>
+                                    <a class="text-decoration-none" href="/Dashboard/history.html">See all</a>
+                                </div>
+
+                                <ListHistoryIncome image={ProfileSam} alt='Profile Pic' nameUser='budi' typeTransfer='transfer' amount='50.000'  />
+                                <ListHistoryExpense image={ProfileSam} alt='Profile Pic' nameUser='budi' typeTransfer='transfer' amount='50.000'  />
+                                <ListHistoryIncome image={ProfileSam} alt='Profile Pic' nameUser='budi' typeTransfer='transfer' amount='50.000'  />
+                                <ListHistoryExpense image={ProfileSam} alt='Profile Pic' nameUser='budi' typeTransfer='transfer' amount='50.000'  />
+                            </Col>
+                        </div>
                     </Col>
                 </Container>
                 <ComFooter />
