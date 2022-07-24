@@ -8,6 +8,7 @@ import ListInfo from '../components/ListInfo'
 
 // image
 import ProfileSam from '../assets/images/sam.png'
+import ModalTransfer from '../components/ModalTransfer'
 // image
 
 function ConfirmationTransfer() {
@@ -26,14 +27,15 @@ function ConfirmationTransfer() {
                     <span className='fw-bold font-Size-18 color-3a'>Details</span>
                 </div>
                 <div className='d-flex flex-column gap-3'>
-                <ListInfo titleInfo='Amount' info='Rp100.000' />
-                <ListInfo titleInfo='Balance Left' info='Rp20.000' />
-                <ListInfo titleInfo='Date & Time' info='May 11, 2020 - 12.20' />
-                <ListInfo titleInfo='Notes' info='For buying some socks' />
+                    <ListInfo titleInfo='Amount' info='Rp100.000' />
+                    <ListInfo titleInfo='Balance Left' info='Rp20.000' />
+                    <ListInfo titleInfo='Date & Time' info='May 11, 2020 - 12.20' />
+                    <ListInfo titleInfo='Notes' info='For buying some socks' />
                 </div>
 
                 <div class="d-flex justify-content-end">
                     <button onclick="document.location='/Dashboard/confirmationTransfer.html'" class="btn btn-lg fw-bold background-primary colorWhite">Continue</button>
+                <ModalTransfer />
                 </div>
             </Col>
         </Container>

@@ -1,0 +1,32 @@
+import React from 'react'
+import ComHeader from '../components/ComHeader'
+import ComFooter from '../components/ComFooter'
+import {Container, Col} from 'react-bootstrap'
+import ComMenu from '../components/ComMenu'
+import ListInfoWLink from '../components/ListInfoWLink'
+import {   FiTrash } from 'react-icons/fi'
+
+function ManagePhone() {
+    return (
+        <>
+        <body className='body-dashboard'>
+        <ComHeader />
+        <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>
+            <ComMenu />
+            <Col md={9} className='d-flex flex-column gap-4 rounded shadow-sm p-4 bg-white'>
+                <div className='d-flex flex-column gap-3'>
+                    <span className='fw-bold fontSize-22 color-3a'>Manage Phone Number</span>
+                    <p className='text-start fontSize-16 color-7a'>You can only delete the phone number and then<br/> you must add another phone number.</p>
+                </div>
+                <div className='d-flex flex-column gap-4'>
+                    <ListInfoWLink titleInfo='Phone Number' info='+62 813-9387-7946' target='/home' targetName={<FiTrash size={28} className='color-7a' />} />
+                </div>
+            </Col>
+        </Container>
+        <ComFooter />
+        </body>
+        </>
+    )
+}
+
+export default ManagePhone

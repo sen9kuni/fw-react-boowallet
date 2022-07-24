@@ -35,9 +35,9 @@ function Login() {
                     <Link to={"/resetpassword"} className="link-secondary text-decoration-none fontMid">Forgot password?</Link>
                 </div>
 
-                <div className="d-grid">
-                    <button onclick="document.location='/Dashboard/home.html'" className="btn DashbuttonLogin fw-bold colorWhite">Login</button>
-                </div>
+                <Link to={'/home'} className="d-grid text-decoration-none">
+                    <button className="btn DashbuttonLogin fw-bold colorWhite">Login</button>
+                </Link>
 
                 <div className="text-center">
                     Don't have an account? Let's <Link className="fw-bold colorPrimary text-decoration-none" to={"/signup"}>Sign Up</Link>

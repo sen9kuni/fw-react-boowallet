@@ -4,6 +4,7 @@ import { Row, Col, Dropdown } from 'react-bootstrap'
 // image
 import ProfilePic from '../assets/images/picProfile.png'
 import {FiBell, FiArrowDown, FiArrowUp} from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 // image
 
 export default function ComHeader() {
@@ -12,13 +13,17 @@ export default function ComHeader() {
             <Row className='d-flex flex-column flex-md-row align-items-md-center mw-100 m-0 shadow-sm round-bott bg-white'>
                 <Col md={6} className='d-md-flex'>
                     <div className="d-flex justify-content-start">
-                        <span className="fw-bold fs-3 colorPrimary">BooWallet</span>
+                        <Link to={"/home"} className="text-decoration-none">
+                            <span className="fw-bold fs-3 colorPrimary">BooWallet</span>
+                        </Link>
                     </div>
                 </Col>
                 <Col md={6}>
                     <div className='d-flex p-3 p-md-0 justify-content-md-end align-items-center justify-content-between'>
                         <div className="d-flex flex-row">
+                            <Link to={"/profileuser"} className="text-decoration-none">
                             <img className='img-fluid' src={ProfilePic} alt="profile pic"/>
+                            </Link>
                             <div className="d-flex flex-column px-2">
                                 <span className="fw-bold textProfileName">Robert Chandler</span>
                                 <span className="fw-normal textProfileNumber">+62 8139 3877 7946</span>

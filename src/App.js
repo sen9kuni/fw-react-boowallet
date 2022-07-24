@@ -13,6 +13,16 @@ import History from './pages/History'
 import SearchReciver from './pages/SearchReciver'
 import InputAmount from './pages/InputAmount'
 import ConfirmationTransfer from './pages/ConfirmationTransfer'
+import TransferSuccess from './pages/TransferSuccess'
+import TransferFailed from './pages/TransferFailed'
+import TopUp from './pages/TopUp'
+import PersonalInformation from './pages/PersonalInformation'
+import ProfileUser from './pages/ProfileUser'
+import ChangePassword from './pages/ChangePassword'
+import OldPin from './pages/OldPin'
+import NewPin from './pages/NewPin'
+import AddPhone from './pages/AddPhone'
+import ManagePhone from './pages/ManagePhone'
 
 function App() {
   return (
@@ -29,6 +39,16 @@ function App() {
       <Route path='/searchreciver' element={<SearchReciver />} />
       <Route path='/inputamount' element={<InputAmount />} />
       <Route path='/confirmation' element={<ConfirmationTransfer />} />
+      <Route path='/transfersuccess' element={<TransferSuccess />} />
+      <Route path='/transferfailed' element={<TransferFailed />} />
+      <Route path='/topup' element={<TopUp />} />
+      <Route path='/personalinformation' element={<PersonalInformation />} />
+      <Route path='/profileuser' element={<ProfileUser />} />
+      <Route path='/changepassword' element={<ChangePassword />} />
+      <Route path='/changepinold' element={<OldPin />} />
+      <Route path='/changepinnew' element={<NewPin />} />
+      <Route path='/addphonenumber' element={<AddPhone />} />
+      <Route path='/managephone' element={<ManagePhone />} />
     </Routes>
   )
 }

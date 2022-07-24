@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default function ListProfile({image, alt, nameUser, phone}) {
     return (
-        <Link to={"/home"} className="text-decoration-none">
+        <Link to={"/inputamount"} className="text-decoration-none">
             <Col>
                 <div className="d-flex flex-row justify-content-between align-items-center rounded searchListWrap background-dash-white shadow-sm p-3">
                     <div className="d-flex flex-row gap-3">

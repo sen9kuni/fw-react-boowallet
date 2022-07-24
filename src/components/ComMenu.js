@@ -3,41 +3,42 @@ import {Col} from 'react-bootstrap'
 
 // image
 import {FiGrid, FiPlus, FiArrowUp, FiUser, FiLogOut} from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 // image
 
 export default function ComMenu() {
     return (
-        <Col md={3} class="d-md-flex flex-md-column col-md-3">
-            <div class="d-flex flex-column gap-4 gap-md-5 h-100 p-4 shadow-sm rounded background-dash-white">
-                <div class="navButton">
-                    <a href="/Dashboard/home.html" class="d-flex flex-row gap-3 align-items-center text-decoration-none">
+        <Col md={3} className="d-md-flex flex-md-column col-md-3">
+            <div className="d-flex flex-column gap-4 gap-md-5 h-100 p-4 shadow-sm rounded background-dash-white">
+                <div className="navButton">
+                    <Link to={'/home'} className="d-flex flex-row gap-3 align-items-center text-decoration-none">
                         <FiGrid size={28} />
-                        <span class="fw-bold">Dashboard</span>
-                    </a>
+                        <span className="fw-bold">Dashboard</span>
+                    </Link>
                 </div>
-                <div class="navButton">
-                    <a href="/Dashboard/searchReceiver.html" class="d-flex flex-row gap-3 align-items-center text-decoration-none">
+                <div className="navButton">
+                    <Link to={'/searchreciver'} className="d-flex flex-row gap-3 align-items-center text-decoration-none">
                         <FiArrowUp size={28} />
-                        <span class="fw-bold">Transfer</span>
-                    </a>
+                        <span className="fw-bold">Transfer</span>
+                    </Link>
                 </div>
-                <div class="navButton">
-                    <a href="/Dashboard/topup.html" class="d-flex flex-row gap-3 align-items-center text-decoration-none">
+                <div className="navButton">
+                    <Link to={'/topup'} className="d-flex flex-row gap-3 align-items-center text-decoration-none">
                         <FiPlus size={28} />
-                        <span class="fw-bold">Top Up</span>
-                    </a>
+                        <span className="fw-bold">Top Up</span>
+                    </Link>
                 </div>
-                <div class="navButton">
-                    <a href="/Dashboard/profilev1.html" class="d-flex flex-row gap-3 align-items-center text-decoration-none">
+                <div className="navButton">
+                    <Link to={'/profileuser'} className="d-flex flex-row gap-3 align-items-center text-decoration-none">
                         <FiUser size={28} />
-                        <span class="fw-bold">Profile</span>
-                    </a>
+                        <span className="fw-bold">Profile</span>
+                    </Link>
                 </div>
-                <div class="navButton mt-auto">
-                    <a href="../index.html" class="d-flex flex-row gap-3 align-items-center text-decoration-none">
+                <div className="navButton mt-auto">
+                    <Link to={'/'} className="d-flex flex-row gap-3 align-items-center text-decoration-none">
                         <FiLogOut size={28} />
-                        <span class="fw-bold">Logout</span>
-                    </a>
+                        <span className="fw-bold">Logout</span>
+                    </Link>
                 </div>
             </div>
         </Col>

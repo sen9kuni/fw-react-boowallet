@@ -2,12 +2,20 @@ body .body-dashboard{
     margin: 0;
     padding: 0;
     max-width: 100%;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Nunito Sans', sans-serif !important;
     background-color: #FAFCFF;
 }
 
 .fontSize-18 {
     font-size: 18px;
+}
+
+.fontSize-22 {
+    font-size: 22px;
+}
+
+.fontSize-24 {
+    font-size: 24px;
 }
 
 .bg-f3 {
@@ -20,6 +28,10 @@ body .body-dashboard{
 
 .fontSize-14 {
     font-size: 14px;
+}
+
+.font-med {
+    font-weight: 600;
 }
 
 .dropdown-toggle::after {
@@ -37,13 +49,38 @@ body .body-dashboard{
     margin-top: 30px !important;
 }
 
+.cricle-dot {
+    width: 70px;
+    height: 70px;
+}
+
+.border-unset {
+    border: unset !important;
+    box-shadow: unset !important;
+}
+
 /* color/bg */
 .colorIn {
     color: #1EC15F;
 }
+.background-in {
+    background-color: #1EC15F;
+}
+
+.background-dash-primary-trans {
+    background-color: #6379F426 !important;
+}
 
 .colorOut {
     color: #FF5B37;
+}
+
+.background-out {
+    background-color: #FF5B37;
+}
+
+.background-e5 {
+    background-color: #E5E8ED !important;
 }
 
 .color-Thrid {
@@ -60,6 +97,10 @@ body .body-dashboard{
 
 .color-7a {
     color: #7A7886;
+}
+
+.color-7e {
+    color: #7E7D84;
 }
 
 .color-51 {
@@ -94,7 +135,7 @@ footer .footer-dashboard {
 }
 
 .container-wrap {
-    min-height: 200px !important;
+    min-height: 678px !important;
 }
 
 .navButton a{

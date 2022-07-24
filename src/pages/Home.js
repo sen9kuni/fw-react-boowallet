@@ -10,6 +10,7 @@ import ListHistoryExpense from '../components/ListHistoryExpense'
 import {FiPlus, FiArrowUp, FiArrowDown} from 'react-icons/fi'
 import GraphicPic from '../assets/images/graphic.svg'
 import ProfileSam from '../assets/images/sam.png'
+import { Link } from 'react-router-dom'
 // image
 
 function Home() {
@@ -27,14 +28,18 @@ function Home() {
                                 <span className="fontMid fontSize-14 color-Thrid">+62 813-9387-7946</span>
                             </div>
                             <div className="d-flex flex-column gap-2">
-                                <button onclick="document.location='/Dashboard/searchReceiver.html'" className="btn btn-lg btn-outline-light bg-f3 d-flex align-items-center">
+                                <Link to={'/searchreciver'} className='d-grid text-decoration-none'>
+                                <button className="btn btn-lg btn-outline-light bg-f3 d-flex align-items-center">
                                     <FiArrowUp size={25} />
                                     <span className="fw-bold fontSize-18 ">Transfer</span>
                                 </button>
-                                <button onclick="document.location='/Dashboard/topup.html'" className="btn btn-lg btn-outline-light bg-f3 d-flex align-items-center">
+                                </Link>
+                                <Link to={'/'} className='d-grid text-decoration-none'>
+                                <button className="btn btn-lg btn-outline-light bg-f3 d-flex align-items-center">
                                     <FiPlus size={25} />
                                     <span className="fw-bold fontSize-18 ">Top Up</span>
                                 </button>
+                                </Link>
                             </div>
                         </div>
 
@@ -58,9 +63,9 @@ function Home() {
                             </Col>
 
                             <Col md={5} className='rounded shadow-sm p-3'>
-                                <div class="d-flex flex-row justify-content-between p-3 trsansHistoryHomeWarp">
-                                    <span class="fw-bold fontSize-18">Transaction History</span>
-                                    <a class="text-decoration-none" href="/Dashboard/history.html">See all</a>
+                                <div className="d-flex flex-row justify-content-between p-3 trsansHistoryHomeWarp">
+                                    <span className="fw-bold fontSize-18">Transaction History</span>
+                                    <a className="text-decoration-none" href="/Dashboard/history.html">See all</a>
                                 </div>
 
                                 <ListHistoryIncome image={ProfileSam} alt='Profile Pic' nameUser='budi' typeTransfer='transfer' amount='50.000'  />
