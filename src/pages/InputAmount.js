@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom'
 function InputAmount() {
     return (
         <>
-        <body className='body-dashboard'>
+        <div className='body-dashboard'>
         <ComHeader />
         <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>
             <ComMenu />
@@ -49,7 +49,7 @@ function InputAmount() {
             </Col>
         </Container>
         <ComFooter />
-        </body>
+        </div>
         </>
     )
 }

@@ -9,7 +9,7 @@ import { FiPhone } from 'react-icons/fi'
 function AddPhone() {
     return (
         <>
-        <body className='body-dashboard'>
+        <div className='body-dashboard'>
         <ComHeader />
         <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>
             <ComMenu />
@@ -22,7 +22,7 @@ function AddPhone() {
                 <div className="input-group flex-nowrap">
                         <span className="input-group-text iconLogin d-flex flex-row gap-3">
                             <FiPhone size={24} className='colorA9Trans'/>
-                            <span class="font-med color-3a fontSize-16">+62</span>
+                            <span className="font-med color-3a fontSize-16">+62</span>
                         </span>
                         <input type="teext" className="form-control inputLogin" placeholder="Add Phone Number"/>
                     </div>
@@ -35,7 +35,7 @@ function AddPhone() {
             </Col>
         </Container>
         <ComFooter />
-        </body>
+        </div>
         </>
     )
 }

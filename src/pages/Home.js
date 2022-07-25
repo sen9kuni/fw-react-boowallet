@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom'
 function Home() {
     return (
         <>
-            <body className='body-dashboard'>
+            <div className='body-dashboard'>
                 <ComHeader />
                 <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>
                     <ComMenu />
@@ -34,7 +34,7 @@ function Home() {
                                     <span className="fw-bold fontSize-18 ">Transfer</span>
                                 </button>
                                 </Link>
-                                <Link to={'/'} className='d-grid text-decoration-none'>
+                                <Link to={'/topup'} className='d-grid text-decoration-none'>
                                 <button className="btn btn-lg btn-outline-light bg-f3 d-flex align-items-center">
                                     <FiPlus size={25} />
                                     <span className="fw-bold fontSize-18 ">Top Up</span>
@@ -65,7 +65,9 @@ function Home() {
                             <Col md={5} className='rounded shadow-sm p-3'>
                                 <div className="d-flex flex-row justify-content-between p-3 trsansHistoryHomeWarp">
                                     <span className="fw-bold fontSize-18">Transaction History</span>
-                                    <a className="text-decoration-none" href="/Dashboard/history.html">See all</a>
+                                    <Link to={'/history'} className="d-grid text-decoration-none">
+                                        <span className='font-med fontSize-14 colorPrimary'>See all</span>
+                                    </Link> 
                                 </div>
 
                                 <ListHistoryIncome image={ProfileSam} alt='Profile Pic' nameUser='budi' typeTransfer='transfer' amount='50.000'  />
@@ -77,7 +79,7 @@ function Home() {
                     </Col>
                 </Container>
                 <ComFooter />
-            </body>
+            </div>
         </>
     )
 }

@@ -9,12 +9,13 @@ import ListInfo from '../components/ListInfo'
 // image
 import ProfileSam from '../assets/images/sam.png'
 import { FiCheck, FiDownload, FiShare2 } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 // image
 
 function TransferSuccess() {
     return (
         <>
-        <body className='body-dashboard'>
+        <div className='body-dashboard'>
         <ComHeader />
         <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>
             <ComMenu />
@@ -35,15 +36,17 @@ function TransferSuccess() {
                     <span className='fw-bold font-Size-18 color-3a'>Transfer To</span>
                     <ListProfile image={ProfileSam} alt='aaaaa' nameUser='Sam' phone='89458752147' />
                 </div>
-                <div class="d-flex flex-row justify-content-center justify-content-md-end gap-3">
+                <div className="d-flex flex-row justify-content-center justify-content-md-end gap-3">
                     <button className="btn background-dash-primary-trans color-3a"><FiShare2 size={24} /></button>
                     <button className="btn btn-lg background-dash-primary-trans d-flex align-items-center flex-row gap-3 fw-bold colorPrimary"><FiDownload size={22} />Download PDF</button>
-                    <button onclick="document.location='/Dashboard/confirmationTransfer.html" className="btn btn-lg fw-bold background-primary colorWhite px-4">Continue</button>
+                    <Link to={'/history'} className="d-grid text-decoration-none">
+                        <button className="btn btn-lg fw-bold background-primary colorWhite px-4">Continue</button>
+                    </Link>
                 </div>
             </Col>
         </Container>
         <ComFooter />
-        </body>
+        </div>
         </>
     )
 }

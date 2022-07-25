@@ -9,12 +9,13 @@ import ListInfo from '../components/ListInfo'
 // image
 import ProfileSam from '../assets/images/sam.png'
 import { FiX } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 // image
 
 function TransferFailed() {
     return (
         <>
-        <body className='body-dashboard'>
+        <div className='body-dashboard'>
         <ComHeader />
         <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>
             <ComMenu />
@@ -36,13 +37,15 @@ function TransferFailed() {
                     <span className='fw-bold font-Size-18 color-3a'>Transfer To</span>
                     <ListProfile image={ProfileSam} alt='aaaaa' nameUser='Sam' phone='89458752147' />
                 </div>
-                <div class="d-flex flex-row justify-content-end gap-3">
-                    <button onclick="document.location='/Dashboard/confirmationTransfer.html" className="btn btn-lg fw-bold background-primary colorWhite px-4">Continue</button>
+                <div className="d-flex flex-row justify-content-end gap-3">
+                    <Link to={'/history'} className="d-grid text-decoration-none">
+                        <button className="btn btn-lg fw-bold background-primary colorWhite px-4">Continue</button>
+                    </Link>
                 </div>
             </Col>
         </Container>
         <ComFooter />
-        </body>
+        </div>
         </>
     )
 }

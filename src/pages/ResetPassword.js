@@ -11,7 +11,7 @@ import {FiMail} from 'react-icons/fi'
 function ResetPassword() {
     return (
         <>
-            <LogoDashboard />
+        <LogoDashboard />
         <Row className='min-vh-100 mw-100'>
             <DasboardRight />
             <Col md={5} className='p-5 gap-4 px-md-5 p-5 d-flex flex-column gap-md-5'>

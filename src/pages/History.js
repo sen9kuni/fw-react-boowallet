@@ -13,7 +13,7 @@ import ProfileSam from '../assets/images/sam.png'
 function History() {
     return (
         <>
-        <body className='body-dashboard'>
+        <div className='body-dashboard'>
         <ComHeader />
         <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>
             <ComMenu />
@@ -32,7 +32,7 @@ function History() {
             </Col>
         </Container>
         <ComFooter />
-        </body>
+        </div>
         </>
     )
 }

@@ -1,27 +1,27 @@
 import React from 'react'
-import {Row, Col} from 'react-bootstrap'
+import {Form} from 'react-bootstrap'
 
 export default function PinInput() {
     return (
-        <Row className='d-flex justify-content-center gap-md-3 gap-1 pinInput-wrap'>
-            <Col className='d-flex justify-content-center align-items-center inputPinWrap'>
-                <input type="number" maxlength="1" min="0" max="9" className="pinInput"/>
-            </Col>
-            <Col className='d-flex justify-content-center align-items-center inputPinWrap'>
-                <input type="number" maxlength="1" min="0" max="9" className="pinInput"/>
-            </Col>
-            <Col className='d-flex justify-content-center align-items-center inputPinWrap'>
-                <input type="number" maxlength="1" min="0" max="9" className="pinInput"/>
-            </Col>
-            <Col className='d-flex justify-content-center align-items-center inputPinWrap'>
-                <input type="number" maxlength="1" min="0" max="9" className="pinInput"/>
-            </Col>
-            <Col className='d-flex justify-content-center align-items-center inputPinWrap'>
-                <input type="number" maxlength="1" min="0" max="9" className="pinInput"/>
-            </Col>
-            <Col className='d-flex justify-content-center align-items-center inputPinWrap'>
-                <input type="number" maxlength="1" min="0" max="9" className="pinInput"/>
-            </Col>
-        </Row>
+        <Form className='d-flex flex-row justify-content-center gap-1 mw-100 h-auto'>
+            <div className='d-flex align-items-center max-min-pin-wrap rounded p-2'>
+                <Form.Control type='text' className='w-100 h-auto border-0 input-pin-com text-center' />
+            </div>
+            <div className='d-flex align-items-center max-min-pin-wrap rounded p-2'>
+                <Form.Control type='text' className='w-100 h-auto border-0 input-pin-com text-center' />
+            </div>
+            <div className='d-flex align-items-center max-min-pin-wrap rounded p-2'>
+                <Form.Control type='text' className='w-100 h-auto border-0 input-pin-com text-center' />
+            </div>
+            <div className='d-flex align-items-center max-min-pin-wrap rounded p-2'>
+                <Form.Control type='text' className='w-100 h-auto border-0 input-pin-com text-center' />
+            </div>
+            <div className='d-flex align-items-center max-min-pin-wrap rounded p-2'>
+                <Form.Control type='text' className='w-100 h-auto border-0 input-pin-com text-center' />
+            </div>
+            <div className='d-flex align-items-center max-min-pin-wrap rounded p-2'>
+                <Form.Control type='text' className='w-100 h-auto border-0 input-pin-com text-center' />
+            </div>
+        </Form>
     )
 }

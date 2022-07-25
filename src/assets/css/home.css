@@ -59,6 +59,13 @@ body .body-dashboard{
     box-shadow: unset !important;
 }
 
+.inputChngPin {
+    border-radius: 10px; 
+    border: 1px solid #A9A9A999; 
+    padding: 10px 10px;
+}
+
+
 /* color/bg */
 .colorIn {
     color: #1EC15F;

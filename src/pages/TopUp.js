@@ -9,7 +9,7 @@ import ListTopup from '../components/ListTopup'
 function TopUp() {
     return (
         <>
-        <body className='body-dashboard'>
+        <div className='body-dashboard'>
         <ComHeader />
         <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>
             <ComMenu />
@@ -28,7 +28,7 @@ function TopUp() {
             </Col>
         </Container>
         <ComFooter />
-        </body>
+        </div>
         </>
     )
 }

@@ -14,7 +14,7 @@ import ModalTransfer from '../components/ModalTransfer'
 function ConfirmationTransfer() {
     return (
         <>
-        <body className='body-dashboard'>
+        <div className='body-dashboard'>
         <ComHeader />
         <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>
             <ComMenu />
@@ -33,14 +33,14 @@ function ConfirmationTransfer() {
                     <ListInfo titleInfo='Notes' info='For buying some socks' />
                 </div>
 
-                <div class="d-flex justify-content-end">
-                    <button onclick="document.location='/Dashboard/confirmationTransfer.html'" class="btn btn-lg fw-bold background-primary colorWhite">Continue</button>
+                <div className="d-flex justify-content-end">
+                    {/* <button className="btn btn-lg fw-bold background-primary colorWhite">Continue</button> */}
                 <ModalTransfer />
                 </div>
             </Col>
         </Container>
         <ComFooter />
-        </body>
+        </div>
         </>
     )
 }
