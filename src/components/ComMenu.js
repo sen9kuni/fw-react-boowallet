@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 export default function ComMenu() {
     return (
-        <Col md={3} className="d-md-flex flex-md-column col-md-3">
+        <Col md={3} className="d-none d-md-flex flex-md-column col-md-3">
             <div className="d-flex flex-column gap-4 gap-md-5 h-100 p-4 shadow-sm rounded background-dash-white">
                 <div className="navButton">
                     <Link to={'/home'} className="d-flex flex-row gap-3 align-items-center text-decoration-none">

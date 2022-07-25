@@ -9,6 +9,7 @@ import ListProfile from '../components/ListProfile'
 import ProfileSam from '../assets/images/sam.png'
 import { FiEdit2 } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
+import ComMenuMobile from '../components/ComMenuMobile'
 // image
 
 function InputAmount() {
@@ -17,6 +18,7 @@ function InputAmount() {
         <div className='body-dashboard'>
         <ComHeader />
         <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>
+            <ComMenuMobile />
             <ComMenu />
             <Col md={9} className='d-flex flex-column gap-5 rounded shadow-sm p-3 bg-white'>
                 <div>

@@ -9,6 +9,7 @@ import ListInfo from '../components/ListInfo'
 // image
 import ProfileSam from '../assets/images/sam.png'
 import ModalTransfer from '../components/ModalTransfer'
+import ComMenuMobile from '../components/ComMenuMobile'
 // image
 
 function ConfirmationTransfer() {
@@ -17,6 +18,7 @@ function ConfirmationTransfer() {
         <div className='body-dashboard'>
         <ComHeader />
         <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>
+            <ComMenuMobile />
             <ComMenu />
             <Col md={9} className='d-flex flex-column gap-5 rounded shadow-sm p-3 bg-white'>
                 <div>

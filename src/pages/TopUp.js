@@ -4,6 +4,7 @@ import ComFooter from '../components/ComFooter'
 import {Container, Col} from 'react-bootstrap'
 import ComMenu from '../components/ComMenu'
 import ListTopup from '../components/ListTopup'
+import ComMenuMobile from '../components/ComMenuMobile'
 
 
 function TopUp() {
@@ -12,6 +13,7 @@ function TopUp() {
         <div className='body-dashboard'>
         <ComHeader />
         <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>
+            <ComMenuMobile />
             <ComMenu />
             <Col md={9} className='d-flex flex-column gap-4 rounded shadow-sm p-4 bg-white'>
                 <span className='fw-bold fontSize-22 color-3a'>How To Top Up</span>

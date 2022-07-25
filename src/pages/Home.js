@@ -11,6 +11,7 @@ import {FiPlus, FiArrowUp, FiArrowDown} from 'react-icons/fi'
 import GraphicPic from '../assets/images/graphic.svg'
 import ProfileSam from '../assets/images/sam.png'
 import { Link } from 'react-router-dom'
+import ComMenuMobile from '../components/ComMenuMobile'
 // image
 
 function Home() {
@@ -19,6 +20,7 @@ function Home() {
             <div className='body-dashboard'>
                 <ComHeader />
                 <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>
+                    <ComMenuMobile />
                     <ComMenu />
                     <Col md={9} className='d-flex flex-column gap-3 colorWhite bg-white'>
                         <div className='d-flex flex-row justify-content-between align-items-center balance-wrap p-4 rounded'>

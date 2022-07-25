@@ -5,6 +5,7 @@ import {Container, Col, Button} from 'react-bootstrap'
 import ComMenu from '../components/ComMenu'
 import { Link } from 'react-router-dom'
 import { FiPhone } from 'react-icons/fi'
+import ComMenuMobile from '../components/ComMenuMobile'
 
 function AddPhone() {
     return (
@@ -12,6 +13,7 @@ function AddPhone() {
         <div className='body-dashboard'>
         <ComHeader />
         <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>
+            <ComMenuMobile />
             <ComMenu />
             <Col md={9} className='d-flex flex-column gap-5 rounded shadow-sm p-4 bg-white'>
                 <div className='d-flex flex-column gap-3'>

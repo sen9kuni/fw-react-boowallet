@@ -6,6 +6,16 @@ body .body-dashboard{
     background-color: #FAFCFF;
 }
 
+.circle-menu {
+    height: 50px !important;
+    width: 50px !important;
+}
+
+.circle-menu-big {
+    height: 60px !important;
+    width: 60px !important;
+}
+
 .fontSize-18 {
     font-size: 18px;
 }
@@ -131,6 +141,10 @@ body .body-dashboard{
 }
 
 .background-primary {
+    background-color: #6379F4 !important;
+}
+
+.background-primary-transparant {
     background-color: #6379F4 !important;
 }
 /* color/bg */
