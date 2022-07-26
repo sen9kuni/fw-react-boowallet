@@ -9,35 +9,35 @@ import ComMenuMobile from '../components/ComMenuMobile'
 import {Helmet} from 'react-helmet'
 
 function OldPin() {
-    return (
-        <>
-        <Helmet>
-            <title>Change Pin</title>
-        </Helmet>
-        <div className='body-dashboard'>
+  return (
+    <>
+      <Helmet>
+        <title>Change Pin</title>
+      </Helmet>
+      <div className='body-dashboard'>
         <ComHeader />
         <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>
-            <ComMenuMobile />
-            <ComMenu />
-            <Col md={9} className='d-flex flex-column gap-5 rounded shadow-sm p-4 bg-white'>
-                <div className='d-flex flex-column gap-3'>
-                    <span className='fw-bold fontSize-22 color-3a'>Change PIN</span>
-                    <p className='text-start fontSize-16 color-7a'>Enter your current 6 digits Zwallet PIN below to<br/> continue to the next steps.</p>
-                </div>
-                <div className='d-flex flex-column gap-5 mx-auto'>
-                    <PinInput />
-                    <Link to={'/changepinnew'} className='d-grid text-decoration-none mb-5'>
-                        <Button className='d-flex background-primary p-3 justify-content-center border-unset fw-bold fontSize-16 colorWhite'>
+          <ComMenuMobile />
+          <ComMenu />
+          <Col md={9} className='d-flex flex-column gap-5 rounded shadow-sm p-4 bg-white'>
+            <div className='d-flex flex-column gap-3'>
+              <span className='fw-bold fontSize-22 color-3a'>Change PIN</span>
+              <p className='text-start fontSize-16 color-7a'>Enter your current 6 digits Zwallet PIN below to<br/> continue to the next steps.</p>
+            </div>
+            <div className='d-flex flex-column gap-5 mx-auto'>
+              <PinInput />
+              <Link to={'/changepinnew'} className='d-grid text-decoration-none mb-5'>
+                <Button className='d-flex background-primary p-3 justify-content-center border-unset fw-bold fontSize-16 colorWhite'>
                             Continue
-                        </Button>
-                    </Link>
-                </div>
-            </Col>
+                </Button>
+              </Link>
+            </div>
+          </Col>
         </Container>
         <ComFooter />
-        </div>
-        </>
-    )
+      </div>
+    </>
+  )
 }
 
 export default OldPin

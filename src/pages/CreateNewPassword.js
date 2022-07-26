@@ -12,52 +12,52 @@ import {FiLock} from 'react-icons/fi'
 // image etc
 
 const newPasswordSechema  = Yup.object().shape({
-    password: Yup.string().min(8).required()
+  password: Yup.string().min(8).required()
 })
 
 const NewPaswordForm = ({errors, handleSubmit, handleChange})=> {
-    return(
+  return(
     <Form noValidate onSubmit={handleSubmit} className='gap-4 px-md-5 d-flex flex-column gap-md-5'>
-    <Form.Group className="mb-3 input-group">
-    <span className="input-group-text iconLogin">
-    <FiLock size={24} className='colorA9Trans'/>
-    </span>
+      <Form.Group className="mb-3 input-group">
+        <span className="input-group-text iconLogin">
+          <FiLock size={24} className='colorA9Trans'/>
+        </span>
         <Form.Control name='password' className='inputLogin' onChange={handleChange} type="password" placeholder="Create new password" isInvalid={!!errors.password} />
         <Form.Control.Feedback type='invalid'>{errors.password}</Form.Control.Feedback>
-    </Form.Group>
+      </Form.Group>
 
-    <Form.Group className="mb-3 input-group">
-    <span className="input-group-text iconLogin">
-    <FiLock size={24} className='colorA9Trans'/>
-    </span>
+      <Form.Group className="mb-3 input-group">
+        <span className="input-group-text iconLogin">
+          <FiLock size={24} className='colorA9Trans'/>
+        </span>
         <Form.Control name='password' className='inputLogin' onChange={handleChange} type="password" placeholder="Create new password" isInvalid={!!errors.password} />
         <Form.Control.Feedback type='invalid'>{errors.password}</Form.Control.Feedback>
-    </Form.Group>
+      </Form.Group>
 
-    <Link to={"/login"} className="d-grid text-decoration-none">
+      <Link to={'/login'} className="d-grid text-decoration-none">
         <Button variant="primary" type="submit" className="btn DashbuttonLogin fw-bold colorWhite">
         Reset Password
         </Button>
-    </Link>
+      </Link>
     </Form>
-    )
+  )
 }
 
 function CreateNewPassword() {
-    return (
-        <>
-        <Helmet>
-            <title>Reset Password - input new Password</title>
-        </Helmet>
-        <LogoDashboard />
-        <Row className='min-vh-100 mw-100'>
+  return (
+    <>
+      <Helmet>
+        <title>Reset Password - input new Password</title>
+      </Helmet>
+      <LogoDashboard />
+      <Row className='min-vh-100 mw-100'>
         <DasboardRight />
 
         <Col md={5} className='p-5 gap-4 px-md-5 p-5 d-flex flex-column gap-md-5'>
-            <h3 className="text-start fs-3 fw-bold colorTextPrimary">Did You Forgot Your Password? Don't Worry, You Can Reset Your Password In a Minutes.</h3>
-            <p className="text-start fw-normal text-muted">Now you can create a new password for your BooWallet account. Type your password twice so we can confirm your new passsword.</p>
+          <h3 className="text-start fs-3 fw-bold colorTextPrimary">Did You Forgot Your Password? Don't Worry, You Can Reset Your Password In a Minutes.</h3>
+          <p className="text-start fw-normal text-muted">Now you can create a new password for your BooWallet account. Type your password twice so we can confirm your new passsword.</p>
 
-            {/* <div className="input-group flex-nowrap">
+          {/* <div className="input-group flex-nowrap">
                 <span className="input-group-text iconLogin">
                 <FiLock size={24} className='colorA9Trans'/>
                 </span>
@@ -76,13 +76,13 @@ function CreateNewPassword() {
                 </div>
             </Link> */}
 
-            <Formik initialValues={{email: ''}} validationSchema={newPasswordSechema}>
-                {(props)=><NewPaswordForm {...props}/>}
-            </Formik>
+          <Formik initialValues={{email: ''}} validationSchema={newPasswordSechema}>
+            {(props)=><NewPaswordForm {...props}/>}
+          </Formik>
         </Col>
-        </Row>
-        </>
-    )
+      </Row>
+    </>
+  )
 }
 
 export default CreateNewPassword

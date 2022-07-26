@@ -9,33 +9,33 @@ import ComMenuMobile from '../components/ComMenuMobile'
 import {Helmet} from 'react-helmet'
 
 function PersonalInformation() {
-    return (
-        <>
-        <Helmet>
-            <title>Profile Information</title>
-        </Helmet>
-        <div className='body-dashboard'>
+  return (
+    <>
+      <Helmet>
+        <title>Profile Information</title>
+      </Helmet>
+      <div className='body-dashboard'>
         <ComHeader />
         <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>
-            <ComMenuMobile />
-            <ComMenu />
-            <Col md={9} className='d-flex flex-column gap-4 rounded shadow-sm p-4 bg-white'>
-                <div className='d-flex flex-column gap-3'>
-                    <span className='fw-bold fontSize-22 color-3a'>Personal Information</span>
-                    <p className='text-start fontSize-16 color-7a'>We got your personal information from the sign<br/> up proccess. If you want to make changes on<br/> your information, contact our support.</p>
-                </div>
-                <div className='d-flex flex-column gap-4'>
-                    <ListInfo titleInfo='First Name' info='Robert' />
-                    <ListInfo titleInfo='Last Name' info='Chandler' />
-                    <ListInfo titleInfo='Verified E-mail' info='pewdiepie1@gmail.com' />
-                    <ListInfoWLink titleInfo='Phone Number' info='+62 813-9387-7946' target='/managephone' targetName='Manage' />
-                </div>
-            </Col>
+          <ComMenuMobile />
+          <ComMenu />
+          <Col md={9} className='d-flex flex-column gap-4 rounded shadow-sm p-4 bg-white'>
+            <div className='d-flex flex-column gap-3'>
+              <span className='fw-bold fontSize-22 color-3a'>Personal Information</span>
+              <p className='text-start fontSize-16 color-7a'>We got your personal information from the sign<br/> up proccess. If you want to make changes on<br/> your information, contact our support.</p>
+            </div>
+            <div className='d-flex flex-column gap-4'>
+              <ListInfo titleInfo='First Name' info='Robert' />
+              <ListInfo titleInfo='Last Name' info='Chandler' />
+              <ListInfo titleInfo='Verified E-mail' info='pewdiepie1@gmail.com' />
+              <ListInfoWLink titleInfo='Phone Number' info='+62 813-9387-7946' target='/managephone' targetName='Manage' />
+            </div>
+          </Col>
         </Container>
         <ComFooter />
-        </div>
-        </>
-    )
+      </div>
+    </>
+  )
 }
 
 export default PersonalInformation
