@@ -4,6 +4,7 @@ import ComFooter from '../components/ComFooter'
 import {Container, Col} from 'react-bootstrap'
 import ComMenu from '../components/ComMenu'
 import ListProfile from '../components/ListProfile'
+import {Helmet} from 'react-helmet'
 
 // image
 import ProfileSam from '../assets/images/sam.png'
@@ -64,6 +65,9 @@ function SearchReciver() {
 
     return (
         <>
+        <Helmet>
+            <title>Search Receiver</title>
+        </Helmet>
         <div className='body-dashboard'>
             <ComHeader />
             <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>

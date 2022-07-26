@@ -6,10 +6,14 @@ import ComMenu from '../components/ComMenu'
 import ListInfo from '../components/ListInfo'
 import ListInfoWLink from '../components/ListInfoWLink'
 import ComMenuMobile from '../components/ComMenuMobile'
+import {Helmet} from 'react-helmet'
 
 function PersonalInformation() {
     return (
         <>
+        <Helmet>
+            <title>Profile Information</title>
+        </Helmet>
         <div className='body-dashboard'>
         <ComHeader />
         <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>

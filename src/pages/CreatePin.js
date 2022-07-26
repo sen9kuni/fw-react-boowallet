@@ -4,10 +4,14 @@ import DasboardRight from '../components/DasboardRight'
 import PinInput from '../components/PinInput'
 import {Row, Col} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import {Helmet} from 'react-helmet'
 
 function CreatePin() {
     return (
         <>
+        <Helmet>
+            <title>Create Pin</title>
+        </Helmet>
         <LogoDashboard />
         <Row className='min-vh-100 mw-100'>
         <DasboardRight />

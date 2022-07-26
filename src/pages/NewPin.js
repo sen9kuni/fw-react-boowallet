@@ -6,11 +6,15 @@ import ComMenu from '../components/ComMenu'
 import { Link } from 'react-router-dom'
 import PinInput from '../components/PinInput'
 import ComMenuMobile from '../components/ComMenuMobile'
+import {Helmet} from 'react-helmet'
 
 
 function NewPin() {
     return (
         <>
+        <Helmet>
+            <title>Change Pin</title>
+        </Helmet>
         <div className='body-dashboard'>
         <ComHeader />
         <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>

@@ -6,6 +6,7 @@ import ComMenu from '../components/ComMenu'
 import {  FiArrowRight, FiEdit2 } from 'react-icons/fi'
 // import { Link } from 'react-router-dom'
 import ButtonProfile from '../components/ButtonProfile'
+import {Helmet} from 'react-helmet'
 
 // image
 import ProfilePic from '../assets/images/picProfile.png'
@@ -15,6 +16,9 @@ import ComMenuMobile from '../components/ComMenuMobile'
 function ProfileUser() {
     return (
         <>
+        <Helmet>
+            <title>Profile</title>
+        </Helmet>
         <div className='body-dashboard'>
         <ComHeader />
         <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>

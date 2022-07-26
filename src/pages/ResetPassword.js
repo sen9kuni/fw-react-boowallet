@@ -5,6 +5,7 @@ import {Row, Col, Button, Form} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+import {Helmet} from 'react-helmet'
 
 // image etc
 import {FiMail} from 'react-icons/fi'
@@ -37,6 +38,9 @@ const ResetPaswordForm = ({errors, handleSubmit, handleChange})=> {
 function ResetPassword() {
     return (
         <>
+        <Helmet>
+            <title>Reset Password - input email</title>
+        </Helmet>
         <LogoDashboard />
         <Row className='min-vh-100 mw-100'>
             <DasboardRight />

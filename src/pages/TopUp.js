@@ -5,11 +5,15 @@ import {Container, Col} from 'react-bootstrap'
 import ComMenu from '../components/ComMenu'
 import ListTopup from '../components/ListTopup'
 import ComMenuMobile from '../components/ComMenuMobile'
+import {Helmet} from 'react-helmet'
 
 
 function TopUp() {
     return (
         <>
+        <Helmet>
+            <title>Top Up</title>
+        </Helmet>
         <div className='body-dashboard'>
         <ComHeader />
         <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>

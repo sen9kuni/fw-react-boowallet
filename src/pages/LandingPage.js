@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {Helmet} from 'react-helmet'
 
 // image etc
 import PhoneHero from '../assets/images/png-phone.svg'
@@ -14,6 +15,9 @@ import {FiLock, FiPhone, FiDownload} from 'react-icons/fi'
 function LandingPage() {
     return (
         <>
+        <Helmet>
+            <title>Boo Wallet</title>
+        </Helmet>
         <header>
         <nav>
             <div>

@@ -2,6 +2,7 @@ import React from 'react'
 import LogoDashboard from '../components/LogoDashboard'
 import DasboardRight from '../components/DasboardRight'
 import {Row, Col, Form, Button} from 'react-bootstrap'
+import {Helmet} from 'react-helmet'
 import { Link } from 'react-router-dom'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
@@ -54,6 +55,9 @@ const AuthForm = ({errors, handleSubmit, handleChange})=> {
 function Login() {
     return (
     <>
+        <Helmet>
+            <title>Login</title>
+        </Helmet>
         <LogoDashboard />
         <Row className='min-vh-100 mw-100'>
             <DasboardRight />

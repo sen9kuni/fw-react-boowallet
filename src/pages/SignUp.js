@@ -3,6 +3,7 @@ import LogoDashboard from '../components/LogoDashboard'
 import DasboardRight from '../components/DasboardRight'
 import {Row, Col} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import {Helmet} from 'react-helmet'
 
 // image etc
 import {FiMail, FiLock, FiUser} from 'react-icons/fi'
@@ -11,6 +12,9 @@ import {FiMail, FiLock, FiUser} from 'react-icons/fi'
 function SignUp() {
     return (
         <>
+        <Helmet>
+            <title>Sign Up</title>
+        </Helmet>
         <LogoDashboard />
         <Row className='min-vh-100 mw-100'>
         <DasboardRight />
