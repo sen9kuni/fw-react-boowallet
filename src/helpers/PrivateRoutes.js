@@ -6,7 +6,7 @@ const PrivateRoute = ({ children }) =>{
   return auth ?  (
     children
   ) : (
-    <Navigate to='/login' replace={true} state={{errorMsg: 'babi kau'}} />
+    <Navigate to='/login' replace={true} state={{errorMsg: 'Not Login Yet'}} />
   )
 }
 
