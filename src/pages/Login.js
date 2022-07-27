@@ -1,9 +1,9 @@
 import React from 'react'
 import LogoDashboard from '../components/LogoDashboard'
 import DasboardRight from '../components/DasboardRight'
-import {Row, Col, Form, Button} from 'react-bootstrap'
+import {Row, Col, Form, Button,Alert} from 'react-bootstrap'
 import {Helmet} from 'react-helmet'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 
@@ -39,11 +39,11 @@ const AuthForm = ({errors, handleSubmit, handleChange})=> {
         <Link to={'/resetpassword'} className="link-secondary text-decoration-none fontMid">Forgot password?</Link>
       </div>
 
-      <Link to={'/home'} className="d-grid text-decoration-none">
-        <Button variant="primary" type="submit" className="btn DashbuttonLogin fw-bold colorWhite">
-        Login
-        </Button>
-      </Link>
+      {/* <Link to={'/home'} className="d-grid text-decoration-none"> */}
+      <Button variant="primary" type="submit" className="btn DashbuttonLogin fw-bold colorWhite">
+      Login
+      </Button>
+      {/* </Link> */}
 
       <div className="text-center">
         Don't have an account? Let's <Link className="fw-bold colorPrimary text-decoration-none" to={'/signup'}>Sign Up</Link>
@@ -53,11 +53,25 @@ const AuthForm = ({errors, handleSubmit, handleChange})=> {
 }
 
 function Login() {
+  const location = useLocation()
+  const navigate = useNavigate()
+  const loginReqFill = (param)=>{
+    if (param.email === '' && param.password === '') {
+      window.alert('brah brah brah')
+    }else {
+      localStorage.setItem('auth', 'randomToken')
+      navigate('/home')
+    }
+  }
+
   return (
     <>
       <Helmet>
         <title>Login</title>
       </Helmet>
+      {location.state?.errorMsg && (
+        <Alert className='m-0 text-center sticky-top' variant="danger">{location.state.errorMsg}</Alert>
+      )}
       <LogoDashboard />
       <Row className='min-vh-100 mw-100'>
         <DasboardRight />
@@ -77,8 +91,8 @@ function Login() {
                     </span>
                     <input type="password" className="form-control inputLogin" placeholder="Enter your password"/>
                 </div> */}
-
-          <Formik initialValues={{email: ''}} validationSchema={loginSechema}>
+          
+          <Formik initialValues={{email: '', password: ''}} validationSchema={loginSechema} onSubmit={loginReqFill}>
             {(props)=><AuthForm {...props}/>}
           </Formik>
 

@@ -23,11 +23,11 @@ function Home() {
       </Helmet>
       <div className='body-dashboard'>
         <ComHeader />
-        <Container className='d-flex flex-column flex-md-row gap-3 container-wrap py-5'>
+        <Container className='d-flex flex-column flex-md-row py-5 gap-3 g-0'>
           <ComMenuMobile />
           <ComMenu />
-          <Col md={9} className='d-flex flex-column gap-3 colorWhite bg-white'>
-            <div className='d-flex flex-row justify-content-between align-items-center balance-wrap p-4 rounded'>
+          <Col md={9} className='d-flex flex-column colorWhite gap-3'>
+            <Col className='d-flex flex-row justify-content-between align-items-center balance-wrap p-4 rounded background-primary'>
               <div className="d-flex flex-column gap-1">
                 <span className="fw-normal fontSize-18 color-Thrid">Balance</span>
                 <span className="fs-1 fw-bold fontWhite">Rp120.000</span>
@@ -47,10 +47,10 @@ function Home() {
                   </button>
                 </Link>
               </div>
-            </div>
+            </Col>
 
-            <div className='colorSecondary d-flex flex-column flex-md-row'>
-              <Col md={7} className='rounded shadow-sm p-4'>
+            <Col className='colorSecondary d-flex flex-column flex-md-row gap-3'>
+              <Col md={7} className='rounded shadow-sm p-4 bg-white'>
                 <div className="d-flex flex-row justify-content-between">
                   <div className="d-flex flex-column gap-2">
                     <FiArrowDown size={28} className='colorIn' />
@@ -68,20 +68,19 @@ function Home() {
                 </div>
               </Col>
 
-              <Col md={5} className='rounded shadow-sm p-3'>
-                <div className="d-flex flex-row justify-content-between p-3 trsansHistoryHomeWarp">
+              <Col md={5} className='rounded shadow-sm p-3 bg-white'>
+                <div className="d-flex flex-row justify-content-between p-3">
                   <span className="fw-bold fontSize-18">Transaction History</span>
                   <Link to={'/history'} className="d-grid text-decoration-none">
                     <span className='font-med fontSize-14 colorPrimary'>See all</span>
                   </Link> 
                 </div>
-
                 <ListHistoryIncome image={ProfileSam} alt='Profile Pic' nameUser='budi' typeTransfer='transfer' amount='50.000'  />
                 <ListHistoryExpense image={ProfileSam} alt='Profile Pic' nameUser='budi' typeTransfer='transfer' amount='50.000'  />
                 <ListHistoryIncome image={ProfileSam} alt='Profile Pic' nameUser='budi' typeTransfer='transfer' amount='50.000'  />
                 <ListHistoryExpense image={ProfileSam} alt='Profile Pic' nameUser='budi' typeTransfer='transfer' amount='50.000'  />
               </Col>
-            </div>
+            </Col>
           </Col>
         </Container>
         <ComFooter />

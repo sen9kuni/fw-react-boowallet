@@ -1,9 +1,9 @@
 body .body-dashboard{
     margin: 0;
     padding: 0;
-    max-width: 100%;
+    max-width: 100% !important;
     font-family: 'Nunito Sans', sans-serif !important;
-    background-color: #FAFCFF;
+    background-color: #F0F4F3;
 }
 
 .circle-menu {
@@ -141,7 +141,7 @@ body .body-dashboard{
 }
 
 .background-primary {
-    background-color: #6379F4 !important;
+    background-color: #5CC6BA !important;
 }
 
 .background-primary-transparant {
@@ -164,7 +164,7 @@ footer .footer-dashboard {
 }
 
 .navButton a:hover{
-    color: #6379F4;
+    color: #5CC6BA;
 }
 
 .balance-wrap {
@@ -237,5 +237,7 @@ input[type=number] {
     /* .container-wrap {
         padding: 40px 150px !important;
     } */
-    
+    .col-md-5 {
+        flex: unset !important;
+    }
 }

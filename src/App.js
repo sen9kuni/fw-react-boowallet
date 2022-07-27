@@ -23,6 +23,7 @@ import OldPin from './pages/OldPin'
 import NewPin from './pages/NewPin'
 import AddPhone from './pages/AddPhone'
 import ManagePhone from './pages/ManagePhone'
+import PrivateRoute from './helpers/PrivateRoutes'
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
       <Route path='/pinsuccess' element={<PinSuccess />} />
       <Route path='/resetpassword' element={<ResetPassword />} />
       <Route path='/createnewpassword' element={<CreateNewPassword />} />
-      <Route path='/home' element={<Home />} />
+      <Route path='/home' element={<PrivateRoute><Home /></PrivateRoute>} />
       <Route path='/history' element={<History />} />
       <Route path='/searchreciver' element={<SearchReciver />} />
       <Route path='/inputamount' element={<InputAmount />} />

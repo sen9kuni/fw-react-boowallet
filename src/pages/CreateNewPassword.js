@@ -2,7 +2,7 @@ import React from 'react'
 import LogoDashboard from '../components/LogoDashboard'
 import DasboardRight from '../components/DasboardRight'
 import {Row, Col, Form, Button} from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import {Helmet} from 'react-helmet'
@@ -11,18 +11,19 @@ import {Helmet} from 'react-helmet'
 import {FiLock} from 'react-icons/fi'
 // image etc
 
-const newPasswordSechema  = Yup.object().shape({
-  password: Yup.string().min(8).required()
+const inputNewPassSechema  = Yup.object().shape({
+  password: Yup.string().min(8).required(),
+  Repeatpassword: Yup.string().min(8).required()
 })
 
-const NewPaswordForm = ({errors, handleSubmit, handleChange})=> {
+const AuthForm = ({errors, handleSubmit, handleChange})=> {
   return(
     <Form noValidate onSubmit={handleSubmit} className='gap-4 px-md-5 d-flex flex-column gap-md-5'>
       <Form.Group className="mb-3 input-group">
         <span className="input-group-text iconLogin">
           <FiLock size={24} className='colorA9Trans'/>
         </span>
-        <Form.Control name='password' className='inputLogin' onChange={handleChange} type="password" placeholder="Create new password" isInvalid={!!errors.password} />
+        <Form.Control name='password' className='inputLogin' onChange={handleChange} type="password" placeholder="Enter your new password" isInvalid={!!errors.password} />
         <Form.Control.Feedback type='invalid'>{errors.password}</Form.Control.Feedback>
       </Form.Group>
 
@@ -30,20 +31,31 @@ const NewPaswordForm = ({errors, handleSubmit, handleChange})=> {
         <span className="input-group-text iconLogin">
           <FiLock size={24} className='colorA9Trans'/>
         </span>
-        <Form.Control name='password' className='inputLogin' onChange={handleChange} type="password" placeholder="Create new password" isInvalid={!!errors.password} />
-        <Form.Control.Feedback type='invalid'>{errors.password}</Form.Control.Feedback>
+        <Form.Control name='Repeatpassword' className='inputLogin' onChange={handleChange} type="password" placeholder="Repeat your password" isInvalid={!!errors.Repeatpassword} />
+        <Form.Control.Feedback type='invalid'>{errors.Repeatpassword}</Form.Control.Feedback>
       </Form.Group>
 
-      <Link to={'/login'} className="d-grid text-decoration-none">
-        <Button variant="primary" type="submit" className="btn DashbuttonLogin fw-bold colorWhite">
-        Reset Password
-        </Button>
-      </Link>
+
+      {/* <Link to={'/home'} className="d-grid text-decoration-none"> */}
+      <Button type="submit" className="btn DashbuttonLogin fw-bold colorWhite">
+      Reset Password
+      </Button>
+      {/* </Link> */}
     </Form>
   )
 }
 
 function CreateNewPassword() {
+  const navigate = useNavigate()
+  const resetReqFill = (param)=>{
+    if (param.password === '' && param.Repeatpassword === '') {
+      window.alert('brah brah brah')
+    } else if (param.Repeatpassword !== param.password){
+      window.alert('Repeat Password tidak sama')
+    } else {
+      navigate('/login')
+    }
+  }
   return (
     <>
       <Helmet>
@@ -76,8 +88,8 @@ function CreateNewPassword() {
                 </div>
             </Link> */}
 
-          <Formik initialValues={{email: ''}} validationSchema={newPasswordSechema}>
-            {(props)=><NewPaswordForm {...props}/>}
+          <Formik initialValues={{password: '', Repeatpassword: '' }} validationSchema={inputNewPassSechema} onSubmit={resetReqFill}>
+            {(props)=><AuthForm {...props}/>}
           </Formik>
         </Col>
       </Row>

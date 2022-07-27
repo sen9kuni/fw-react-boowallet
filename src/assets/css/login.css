@@ -6,7 +6,7 @@
 }
 
 .auth-background {
-    background-image: url("../images/background.svg");
+    background-image: url("../images/bgweve2.svg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -38,13 +38,13 @@
 }
 
 .DashbuttonLogin {
-    background-color: #6379F4 !important;
+    background-color: #5CC6BA !important;
     border: unset !important;
     min-height: 57px !important;
 }
 
 .DashbuttonLogin:hover {
-    background: #7e8cdf !important;
+    background: #B8E2DE !important;
 }
 
 .colorA9Trans {

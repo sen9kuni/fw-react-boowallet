@@ -85,7 +85,7 @@ function LandingPage() {
                   <FiDownload size={29} className='colorPrimary'/>
                 </div>
                 <p className="pblock1 colorSecondary">Easy Download</p>
-                <p className="pblock2 colorSecondaryTrans">Zwallet is 100% totally free to use it's now available on Google Play Store and App Store.</p>
+                <p className="pblock2 colorSecondaryTrans">BooWallet is 100% totally free to use it's now available on Google Play Store and App Store.</p>
               </div>
             </div>
           </div>
@@ -106,10 +106,10 @@ function LandingPage() {
         <div className="content">
           <img className='responsiveImg' src={PhoneFeature} alt="phone for feature"/>
           <div className="greatFeatureList">
-            <p className='colorSecondary'>All The <span className='colorPrimary'>Great</span> Zwallet Features.</p>
+            <p className='colorSecondary'>All The <span className='colorPrimary'>Great</span> BooWallet Features.</p>
             <div className="list">
               <p className="p1 colorSecondary"><span className='colorPrimary'>1.</span> Small Fee</p>
-              <p className="p2 colorSecondaryTrans">We only charge 5% of every success transaction done in Zwallet app.</p>
+              <p className="p2 colorSecondaryTrans">We only charge 5% of every success transaction done in BooWallet app.</p>
             </div>
             <div className="list">
               <p className="p1 colorSecondary"><span className='colorPrimary'>2.</span> Data Secured</p>
@@ -117,7 +117,7 @@ function LandingPage() {
             </div>
             <div className="list">
               <p className="p1 colorSecondary"><span className='colorPrimary'>3.</span> User Friendly</p>
-              <p className="p2 colorSecondaryTrans">Zwallet come up with modern and sleek design and not complicated.</p>
+              <p className="p2 colorSecondaryTrans">BooWallet come up with modern and sleek design and not complicated.</p>
             </div>
           </div>
         </div>
@@ -139,14 +139,14 @@ function LandingPage() {
               <div className="content">
                 <img className='responsiveImg' src={Profile2} alt="profile pic" width="60" height="60" />
                 <p className="pblock1 colorSecondary">Jessica Mera</p>
-                <p className="pblock2 colorSecondaryTrans">“I use Zwallet to manage all financial needs. It's super easy to use and it's 100% free app”</p>
+                <p className="pblock2 colorSecondaryTrans">“I use BooWallet to manage all financial needs. It's super easy to use and it's 100% free app”</p>
               </div>
             </div>
             <div className="block1">
               <div className="content">
                 <img className='responsiveImg' src={Profile3} alt="profile pic" width="60" height="60" />
                 <p className="pblock1 colorSecondary">Robert Chandler</p>
-                <p className="pblock2 colorSecondaryTrans">“Since I'm using this app, I'm not going to move to another similar app. Thank you Zwallet!”</p>
+                <p className="pblock2 colorSecondaryTrans">“Since I'm using this app, I'm not going to move to another similar app. Thank you BooWallet!”</p>
               </div>
             </div>
           </div>
@@ -155,14 +155,14 @@ function LandingPage() {
 
       <footer className='colorWhite'>
         <div className="content">
-          <p className="pFooter1">Zwallet</p>
+          <p className="pFooter1">BooWallet</p>
           <p className="pFooter2">Simplify financial needs and saving much time in banking needs with one single app.</p>
           <hr className="garis"/>
           <div className="contact">
-            <p>2020 Zwallet. All right reserved.</p>
+            <p>2020 BooWallet. All right reserved.</p>
             <div className="contact2">
               <p>+62 5637 8882 9901</p>
-              <p>contact@zwallet.com</p>
+              <p>contact@BooWallet.com</p>
             </div>
           </div>
         </div>

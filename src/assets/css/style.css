@@ -13,7 +13,7 @@ body{
 .buttonTry {
     padding: 14px 45px; 
     border-radius: 10px; 
-    background-color: #6379F4; 
+    background-color: #5CC6BA; 
     font-weight: 700; color: #ffff; 
     max-width: 173px; 
     border: unset;
@@ -22,7 +22,7 @@ body{
 .logoZwallet {
     font-weight: 700; 
     font-size: 29px; 
-    color: #6379F4;
+    color: #5CC6BA;
 }
 
 .titleHero {
@@ -35,11 +35,11 @@ body{
 }
 
 .colorPrimary {
-    color: #6379F4 !important;
+    color: #5CC6BA !important;
 }
 
 .backgroundPrimary {
-    background-color: #6379F4;
+    background-color: #5CC6BA;
 }
 
 .colorWhite {
@@ -65,7 +65,7 @@ body{
     margin: auto;
     height: 60px;
     width: 60px;
-    background-color: #473AD11A;
+    background-color: #F0F4F3;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
@@ -135,8 +135,8 @@ body{
         font-family: 'Nunito Sans', sans-serif;
         font-weight: 700;
         font-size: 18px;
-        border: 1px solid #6379F4;
-        background-color: #6379F4;
+        border: 1px solid #5CC6BA;
+        background-color: #5CC6BA;
         color: #FFFFFF;
         border-radius: 10px;
         min-height: 30px;
@@ -148,8 +148,8 @@ body{
         font-family: 'Nunito Sans', sans-serif;
         font-weight: 700;
         font-size: 18px;
-        border: 1px solid #6379F4;
-        color: #6379F4;
+        border: 1px solid #5CC6BA;
+        color: #5CC6BA;
         background-color: #FFFFFF;
         border-radius: 10px;
         min-height: 30px;
@@ -222,7 +222,7 @@ body{
     }
     
     .about {
-        background-color: #473AD10F;
+        background-color: #F0F4F3;
         padding: 20px;
     }
     .blockfeature {
@@ -286,7 +286,7 @@ body{
     }
     
     .greatFeature {
-        background-color: #473AD10F;
+        background-color: #F0F4F3;
     }
     
     .greatFeature .content {
@@ -334,7 +334,7 @@ body{
     }
     
     footer {
-        background-color: #6379F4;
+        background-color: #5CC6BA;
         color: #FFFFFF !important;
     }
     
@@ -422,7 +422,7 @@ body{
     }
     header {
         min-height: 100vh; 
-        background: url("../images/Rectangleweve.svg"); 
+        background: url("../images/bgweve.svg"); 
         background-repeat: no-repeat; 
         background-size: 40%; 
         background-position: top right; 
@@ -436,7 +436,7 @@ body{
     
     .buttonLogin {
         padding: 11px 37px 11px 37px;
-        background-color: #6379F4;
+        background-color: #5CC6BA;
         color: #FFFFFF;
         border: solid #FFFFFF;
         border-radius: 10px;
@@ -448,7 +448,7 @@ body{
     .buttonSignUp {
         padding: 11px 37px 11px 37px;
         margin-left: 30px;
-        color: #6379F4;
+        color: #5CC6BA;
         background-color: #FFFFFF;
         border: solid #FFFFFF;
         border-radius: 10px;
@@ -511,7 +511,7 @@ body{
     }
     
     .about {
-        background-color: #473AD10F;
+        background-color: #F0F4F3;
         text-align: center
     }
     
@@ -586,7 +586,7 @@ body{
     }
     
     .greatFeature {
-        background-color: #473AD10F;
+        background-color: #F0F4F3;
     }
     
     .greatFeature .content {
@@ -656,7 +656,7 @@ body{
     }
     
     footer {
-        background-color: #6379F4;
+        background-color: #5CC6BA;
         color: #FFFFFF;
     }
     

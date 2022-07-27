@@ -2,7 +2,7 @@ import React from 'react'
 import LogoDashboard from '../components/LogoDashboard'
 import DasboardRight from '../components/DasboardRight'
 import {Row, Col, Button, Form} from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import {Helmet} from 'react-helmet'
@@ -26,16 +26,24 @@ const ResetPaswordForm = ({errors, handleSubmit, handleChange})=> {
         <Form.Control.Feedback type='invalid'>{errors.email}</Form.Control.Feedback>
       </Form.Group>
 
-      <Link to={'/createnewpassword'} className="d-grid text-decoration-none">
-        <Button variant="primary" type="submit" className="btn DashbuttonLogin fw-bold colorWhite">
-        Confirm
-        </Button>
-      </Link>
+      {/* <Link to={'/createnewpassword'} className="d-grid text-decoration-none"> */}
+      <Button variant="primary" type="submit" className="btn DashbuttonLogin fw-bold colorWhite">
+      Confirm
+      </Button>
+      {/* </Link> */}
     </Form>
   )
 }
 
 function ResetPassword() {
+  const navigate = useNavigate()
+  const loginReqFill = (param)=>{
+    if (param.email === '') {
+      window.alert('brah brah brah')
+    }else {
+      navigate('/createnewpassword')
+    }
+  }
   return (
     <>
       <Helmet>
@@ -61,7 +69,7 @@ function ResetPassword() {
                 </div>
                 </Link> */}
 
-          <Formik initialValues={{email: ''}} validationSchema={resetPasswordSechema}>
+          <Formik initialValues={{email: ''}} validationSchema={resetPasswordSechema} onSubmit={loginReqFill}>
             {(props)=><ResetPaswordForm {...props}/>}
           </Formik>
         </Col>
