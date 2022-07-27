@@ -24,12 +24,13 @@ import NewPin from './pages/NewPin'
 import AddPhone from './pages/AddPhone'
 import ManagePhone from './pages/ManagePhone'
 import PrivateRoute from './helpers/PrivateRoutes'
+import AlreadyLogin from './helpers/AlreadyLogin'
 
 function App() {
   return (
     <Routes>
       <Route path='/' element={<LandingPage />} />
-      <Route path='/login' element={<Login />} />
+      <Route path='/login' element={<AlreadyLogin><Login /></AlreadyLogin>} />
       <Route path='/signup' element={<SignUp />} />
       <Route path='/pin' element={<CreatePin />} />
       <Route path='/pinsuccess' element={<PinSuccess />} />

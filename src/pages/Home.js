@@ -1,7 +1,7 @@
 import React from 'react'
 import ComHeader from '../components/ComHeader'
 import ComFooter from '../components/ComFooter'
-import {Container, Col} from 'react-bootstrap'
+import {Container, Col, Alert} from 'react-bootstrap'
 import ComMenu from '../components/ComMenu'
 import ListHistoryIncome from '../components/ListHistoryIncome'
 import ListHistoryExpense from '../components/ListHistoryExpense'
@@ -11,16 +11,20 @@ import {Helmet} from 'react-helmet'
 import {FiPlus, FiArrowUp, FiArrowDown} from 'react-icons/fi'
 import GraphicPic from '../assets/images/graphic.svg'
 import ProfileSam from '../assets/images/sam.png'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import ComMenuMobile from '../components/ComMenuMobile'
 // image
 
 function Home() {
+  const location = useLocation()
   return (
     <>
       <Helmet>
         <title>BooWallet - Home</title>
       </Helmet>
+      {location.state?.errorMsg && (
+        <Alert className='m-0 text-center sticky-top' variant="danger">{location.state.errorMsg}</Alert>
+      )}
       <div className='body-dashboard'>
         <ComHeader />
         <Container className='d-flex flex-column flex-md-row py-5 gap-3 g-0'>
