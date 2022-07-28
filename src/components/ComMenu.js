@@ -3,14 +3,14 @@ import {Col} from 'react-bootstrap'
 
 // image
 import {FiGrid, FiPlus, FiArrowUp, FiUser, FiLogOut} from 'react-icons/fi'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 // image
 
 export default function ComMenu() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const onLogout = () => {
     localStorage.removeItem('auth');
-    navigate('/');
+    // navigate('/');
   };
   
   return (

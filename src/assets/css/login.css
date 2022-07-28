@@ -107,9 +107,9 @@
     width: 35px !important;
 }
 
-input[type=number] {
+/* input[type=number] {
     -moz-appearance: textfield;
-}
+} */
 
 .dotCheckWrap {
     display: flex;

@@ -56,11 +56,12 @@ function Login() {
   const location = useLocation()
   const navigate = useNavigate()
   const loginReqFill = (param)=>{
-    if (param.email === '' && param.password === '') {
-      window.alert('brah brah brah')
-    }else {
+    if (param.email === 'igedetianglistrik@gmail.com' && param.password === '12345678') {
+      window.alert('Login Success')
       localStorage.setItem('auth', 'randomToken')
       navigate('/home')
+    }else {
+      window.alert('Login Failed')
     }
   }
 

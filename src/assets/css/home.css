@@ -211,6 +211,14 @@ input[type=number] {
     text-align: center;
     font-size: 42px;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.form-control.is-invalid, .was-validated .form-control:invalid {
+    padding-right: unset !important;
+    background-size: 0.5em !important;
+}
 /* dunno */
 
 

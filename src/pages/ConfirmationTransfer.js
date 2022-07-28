@@ -13,7 +13,13 @@ import ModalTransfer from '../components/ModalTransfer'
 import ComMenuMobile from '../components/ComMenuMobile'
 // image
 
+// redux
+import { useSelector } from 'react-redux';
+// redux
+
 function ConfirmationTransfer() {
+  const amount = useSelector((state)=> state.costomInputTransfer.amount)
+  const notes = useSelector((state)=> state.costomInputTransfer.notes)
   return (
     <>
       <Helmet>
@@ -33,10 +39,10 @@ function ConfirmationTransfer() {
               <span className='fw-bold font-Size-18 color-3a'>Details</span>
             </div>
             <div className='d-flex flex-column gap-3'>
-              <ListInfo titleInfo='Amount' info='Rp100.000' />
+              <ListInfo titleInfo='Amount' info={amount} />
               <ListInfo titleInfo='Balance Left' info='Rp20.000' />
               <ListInfo titleInfo='Date & Time' info='May 11, 2020 - 12.20' />
-              <ListInfo titleInfo='Notes' info='For buying some socks' />
+              <ListInfo titleInfo='Notes' info={notes} />
             </div>
 
             <div className="d-flex justify-content-end">
