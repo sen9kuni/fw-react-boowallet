@@ -22,10 +22,11 @@ import { useDispatch } from 'react-redux'
 
 const loginSechema  = Yup.object().shape({
   amount: Yup.number().min(10000, 'minimal 10.000').max(5000000, 'max 5.000.000').required('must fill amount'),
-  notes: Yup.string()
+  // notes: Yup.string()
 })
 
 const AuthForm = ({errors, handleSubmit, handleChange})=>{
+  const dispatch = useDispatch();
   return (
     <Form noValidate onSubmit={handleSubmit} className='d-flex flex-column gap-5 text-center justify-content-center'>
       <p className='text-start color-7a'>Type the amount you want to transfer and then <br/> press continue to the next steps.</p>
@@ -42,7 +43,7 @@ const AuthForm = ({errors, handleSubmit, handleChange})=>{
           <span className="input-group-text iconLogin">
             <FiEdit2 size={24} className='colorA9Trans'/>
           </span>
-          <Form.Control name='notes' className='inputLogin' type="text" placeholder="Add some notes" />
+          <Form.Control name='notes' onChange={(e)=>{dispatch(costomNotes(e.target.value))}} className='inputLogin' type="text" placeholder="Add some notes" />
         </Form.Group>
       </div>
 
@@ -60,14 +61,11 @@ function InputAmount() {
   const dispatch = useDispatch();
   const navigate = useNavigate()
   const loginReqFill = (param)=>{
-    console.log(param.notes);
     if (param.amount === '') {
       window.alert('amount cant empty')
     }else {
       dispatch(costomAmount((param.amount)))
-      dispatch(costomNotes((param.notes)))
-      console.log(param.notes);
-      navigate('#')
+      navigate('/confirmation')
     }
   }
   return (
