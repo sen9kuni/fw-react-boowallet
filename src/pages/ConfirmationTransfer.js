@@ -17,9 +17,16 @@ import ComMenuMobile from '../components/ComMenuMobile'
 import { useSelector } from 'react-redux';
 // redux
 
+export const numberFormat = (value) =>
+  new Intl.NumberFormat('id-IN', {
+    style: 'currency',
+    currency: 'IDR'
+  }).format(value);
+
 function ConfirmationTransfer() {
   const amount = useSelector((state)=> state.costomInputTransfer.amount)
   const notes = useSelector((state)=> state.costomInputTransfer.notes)
+  const formatMoney = numberFormat(amount)
   return (
     <>
       <Helmet>
@@ -39,7 +46,7 @@ function ConfirmationTransfer() {
               <span className='fw-bold font-Size-18 color-3a'>Details</span>
             </div>
             <div className='d-flex flex-column gap-3'>
-              <ListInfo titleInfo='Amount' info={amount} />
+              <ListInfo titleInfo='Amount' info={formatMoney} />
               <ListInfo titleInfo='Balance Left' info='Rp20.000' />
               <ListInfo titleInfo='Date & Time' info='May 11, 2020 - 12.20' />
               <ListInfo titleInfo='Notes' info={notes} />

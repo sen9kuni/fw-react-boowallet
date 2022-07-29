@@ -1,13 +1,65 @@
 import React from 'react'
-import { Button, Modal } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import PinInput from './PinInput';
+import { Button, Form, Modal } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+// import PinInput from './PinInput';
+import { Formik } from 'formik'
+import * as Yup from 'yup'
+import PinInputOne from '../components/PinInputOne'
+
+const pinTransfer = Yup.object().shape({
+  pin: Yup.array().of(
+    Yup.string()
+      .matches(/[0-9]{1}/, 'Must number value')
+      .required('Needed Pin')
+  )
+})
+
+const PinForm = ({errors, handleSubmit, handleChange}) => {
+  return(
+    <>
+      <Modal.Body className='d-flex flex-column gap-5'>
+        <p className='color-3a fw-normal font-Size-16'>
+            Enter your 6 digits PIN for confirmation to<br/> continue transferring money. 
+        </p>
+        <Form noValidate onSubmit={handleSubmit} onChange={handleChange} className='d-flex flex-column gap-4'>
+          <div className='d-flex flex-row justify-content-center gap-1 mw-100 h-auto'>
+            <PinInputOne name={`pin[${0}]`} type='text' />
+            <PinInputOne name={`pin[${1}]`} type='text' />
+            <PinInputOne name={`pin[${2}]`} type='text' />
+            <PinInputOne name={`pin[${3}]`} type='text' />
+            <PinInputOne name={`pin[${4}]`} type='text' />
+            <PinInputOne name={`pin[${5}]`} type='text' />
+          </div>
+          <span>{errors.pin}</span>
+          <div className="d-flex justify-content-end">
+            <Button type="submit" className='btn btn-lg fw-bold background-primary colorWhite'>
+            Continue
+            </Button>
+          </div>
+        </Form>
+      </Modal.Body>
+      {/* <Modal.Footer className='border-top-0'>
+      </Modal.Footer> */}
+    </>
+  )
+}
 
 function MyVerticallyCenteredModal(props) {
+  const navigate = useNavigate()
+  const dummyPin = 123456
+  const submitPin = (param)=>{
+    const fullPin = param.pin.join('')
+    if (parseInt(fullPin) === dummyPin) {
+      console.log(fullPin);
+      navigate('/transfersuccess')
+    } else {
+      navigate('/transferfailed')
+    }
+  }
   return (
     <Modal
       {...props}
-      size="lg"
+      // size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -16,8 +68,8 @@ function MyVerticallyCenteredModal(props) {
                 Enter PIN to Transfer
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        {/* <h4>Centered Modal</h4> */}
+      {/* <Modal.Body>
+        <h4>Centered Modal</h4>
         <p className='color-3a fw-normal font-Size-16'>
                 Enter your 6 digits PIN for confirmation to<br/> continue transferring money. 
         </p>
@@ -30,7 +82,10 @@ function MyVerticallyCenteredModal(props) {
         <Link to={'/transfersuccess'} className="d-grid text-decoration-none">
           <Button className="btn btn-lg fw-bold background-primary colorWhite">Continue</Button>
         </Link>
-      </Modal.Footer>
+      </Modal.Footer> */}
+      <Formik onSubmit={submitPin} initialValues={{pin: ['']}} validationSchema={pinTransfer} >
+        {(props)=><PinForm {...props}/>}
+      </Formik>
     </Modal>
   );
 }

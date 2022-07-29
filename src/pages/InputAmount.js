@@ -23,10 +23,11 @@ import { useDispatch } from 'react-redux'
 const loginSechema  = Yup.object().shape({
   amount: Yup.number().min(10000, 'minimal 10.000').max(5000000, 'max 5.000.000').required('must fill amount'),
   // notes: Yup.string()
+  // pin: Yup.array().of(Yup.string().matches(/[0-9]{1}/, 'cuk')).required()
 })
-
+// {`amount[${1}]`}
 const AuthForm = ({errors, handleSubmit, handleChange})=>{
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   return (
     <Form noValidate onSubmit={handleSubmit} className='d-flex flex-column gap-5 text-center justify-content-center'>
       <p className='text-start color-7a'>Type the amount you want to transfer and then <br/> press continue to the next steps.</p>
@@ -39,11 +40,17 @@ const AuthForm = ({errors, handleSubmit, handleChange})=>{
       </div>
 
       <div className=' d-flex justify-content-center '>
+        {/* <Form.Group className="mb-3 input-group w-50">
+          <span className="input-group-text iconLogin">
+            <FiEdit2 size={24} className='colorA9Trans'/>
+          </span>
+          <Form.Control name='notes' onChange={(e)=>{dispatch(costomNotes(e.target.value))}}  className='inputLogin' type="text" placeholder="Add some notes" />
+        </Form.Group> */}
         <Form.Group className="mb-3 input-group w-50">
           <span className="input-group-text iconLogin">
             <FiEdit2 size={24} className='colorA9Trans'/>
           </span>
-          <Form.Control name='notes' onChange={(e)=>{dispatch(costomNotes(e.target.value))}} className='inputLogin' type="text" placeholder="Add some notes" />
+          <Form.Control name='notes' onChange={handleChange} className='inputLogin' type="text" placeholder="Add some notes" />
         </Form.Group>
       </div>
 
@@ -55,16 +62,18 @@ const AuthForm = ({errors, handleSubmit, handleChange})=>{
     </Form>
   )
 }
-
-
+// , pin: ['']
+// onChange={(e)=>{dispatch(costomNotes(e.target.value))}} 
 function InputAmount() {
   const dispatch = useDispatch();
   const navigate = useNavigate()
   const loginReqFill = (param)=>{
-    if (param.amount === '') {
-      window.alert('amount cant empty')
-    }else {
+    if (param.notes === '') {
       dispatch(costomAmount((param.amount)))
+      navigate('/confirmation')
+    } else {
+      dispatch(costomAmount((param.amount)))
+      dispatch(costomNotes((param.notes)))
       navigate('/confirmation')
     }
   }
@@ -84,7 +93,7 @@ function InputAmount() {
             </div>
             <ListProfile image={ProfileSam} alt='aaaaa' nameUser='Sam' phone='89458752147' />
 
-            <Formik initialValues={{amount: '', notes:''}} validationSchema={loginSechema} onSubmit={loginReqFill}>
+            <Formik initialValues={{amount: '', notes: ''}} validationSchema={loginSechema} onSubmit={loginReqFill}>
               {(props)=><AuthForm {...props}/>}
             </Formik>
 

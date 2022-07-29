@@ -17,17 +17,23 @@ import ComMenuMobile from '../components/ComMenuMobile'
 
 function Home() {
   const location = useLocation()
+  const [data, setdata] = React.useState(true)
+  React.useEffect(()=>{
+    window.setTimeout(()=>{
+      setdata(false)
+    }, 2000)
+  })
   return (
     <>
       <Helmet>
         <title>BooWallet - Home</title>
       </Helmet>
       {location.state?.errorMsg && (
-        <Alert className='m-0 text-center sticky-top' variant="danger">{location.state.errorMsg}</Alert>
+        <Alert show={data} className='m-0 text-center sticky-top' variant="danger">{location.state.errorMsg}</Alert>
       )}
       <div className='body-dashboard'>
         <ComHeader />
-        <Container className='d-flex flex-column flex-md-row py-5 gap-3 g-0'>
+        <Container className='d-flex flex-column flex-md-row py-5 gap-3'>
           <ComMenuMobile />
           <ComMenu />
           <Col md={9} className='d-flex flex-column colorWhite gap-3'>

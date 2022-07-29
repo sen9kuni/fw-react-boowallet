@@ -4,6 +4,9 @@ import { FiArrowUp, FiGrid, FiLogOut, FiPlus, FiUser } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 
 export default function ComMenuMobile() {
+  const onLogout = () => {
+    localStorage.removeItem('auth');
+  };
   return (
     <Nav className='d-md-none background-primary w-100 rounded'>
       <Row className='d-flex w-100 h-auto p-3 mx-auto justify-content-around gap-2 align-items-center'>
@@ -28,7 +31,7 @@ export default function ComMenuMobile() {
           </Link>
         </Col>
         <Col className='rounded-pill text-center circle-menu d-flex align-items-center justify-content-center shadow-sm background-dash-white'>
-          <Link to={'/'} className="text-decoration-none">
+          <Link to={'/'} onClick={onLogout} className="text-decoration-none">
             <FiLogOut size={20} className='colorPrimary' />
           </Link>
         </Col>

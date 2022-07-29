@@ -31,26 +31,26 @@ function App() {
     <Routes>
       <Route path='/' element={<LandingPage />} />
       <Route path='/login' element={<AlreadyLogin><Login /></AlreadyLogin>} />
-      <Route path='/signup' element={<SignUp />} />
-      <Route path='/pin' element={<CreatePin />} />
-      <Route path='/pinsuccess' element={<PinSuccess />} />
-      <Route path='/resetpassword' element={<ResetPassword />} />
-      <Route path='/createnewpassword' element={<CreateNewPassword />} />
+      <Route path='/signup' element={<AlreadyLogin><SignUp /></AlreadyLogin>} />
+      <Route path='/pin' element={<AlreadyLogin><CreatePin /></AlreadyLogin>} />
+      <Route path='/pinsuccess' element={<AlreadyLogin><PinSuccess /></AlreadyLogin>} />
+      <Route path='/resetpassword' element={<AlreadyLogin><ResetPassword /></AlreadyLogin>} />
+      <Route path='/createnewpassword' element={<AlreadyLogin><CreateNewPassword /></AlreadyLogin>} />
       <Route path='/home' element={<PrivateRoute><Home /></PrivateRoute>} />
-      <Route path='/history' element={<History />} />
-      <Route path='/searchreciver' element={<SearchReciver />} />
-      <Route path='/inputamount' element={<InputAmount />} />
-      <Route path='/confirmation' element={<ConfirmationTransfer />} />
-      <Route path='/transfersuccess' element={<TransferSuccess />} />
-      <Route path='/transferfailed' element={<TransferFailed />} />
-      <Route path='/topup' element={<TopUp />} />
-      <Route path='/personalinformation' element={<PersonalInformation />} />
-      <Route path='/profileuser' element={<ProfileUser />} />
-      <Route path='/changepassword' element={<ChangePassword />} />
-      <Route path='/changepinold' element={<OldPin />} />
-      <Route path='/changepinnew' element={<NewPin />} />
-      <Route path='/addphonenumber' element={<AddPhone />} />
-      <Route path='/managephone' element={<ManagePhone />} />
+      <Route path='/history' element={<PrivateRoute><History /></PrivateRoute>} />
+      <Route path='/searchreciver' element={<PrivateRoute><SearchReciver /></PrivateRoute>} />
+      <Route path='/inputamount' element={<PrivateRoute><InputAmount /></PrivateRoute>} />
+      <Route path='/confirmation' element={<PrivateRoute><ConfirmationTransfer /></PrivateRoute>} />
+      <Route path='/transfersuccess' element={<PrivateRoute><TransferSuccess /></PrivateRoute>} />
+      <Route path='/transferfailed' element={<PrivateRoute><TransferFailed /></PrivateRoute>} />
+      <Route path='/topup' element={<PrivateRoute><TopUp /></PrivateRoute>} />
+      <Route path='/personalinformation' element={<PrivateRoute><PersonalInformation /></PrivateRoute>} />
+      <Route path='/profileuser' element={<PrivateRoute><ProfileUser /></PrivateRoute>} />
+      <Route path='/changepassword' element={<PrivateRoute><ChangePassword /></PrivateRoute>} />
+      <Route path='/changepinold' element={<PrivateRoute><OldPin /></PrivateRoute>} />
+      <Route path='/changepinnew' element={<PrivateRoute><NewPin /></PrivateRoute>} />
+      <Route path='/addphonenumber' element={<PrivateRoute><AddPhone /></PrivateRoute>} />
+      <Route path='/managephone' element={<PrivateRoute><ManagePhone /></PrivateRoute>} />
     </Routes>
   )
 }
