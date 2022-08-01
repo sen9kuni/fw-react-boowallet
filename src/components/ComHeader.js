@@ -9,15 +9,16 @@ import { Link } from 'react-router-dom'
 
 // redux data profile user
 import { useDispatch, useSelector } from 'react-redux'
-import { getProfileUser } from '../redux/asyncActions/getProfile'
+import { getProfile } from '../redux/asyncActions/profile'
 // redux data profile user
 
 export default function ComHeader() {
   const dispatch = useDispatch()
-  const profile = useSelector((state)=> state?.profileUser?.results)
+  const token = useSelector((state) => state.auth.token)
+  const profile = useSelector((state) => state.profile.data);
 
   React.useEffect(()=>{
-    dispatch(getProfileUser())
+    dispatch(getProfile(token))
   },[])
   return (
     <>
@@ -36,8 +37,8 @@ export default function ComHeader() {
                 <img className='img-fluid' src={ProfilePic} alt="profile pic"/>
               </Link>
               <div className="d-flex flex-column px-2">
-                <span className="fw-bold textProfileName">{profile?.results?.fullname}</span>
-                <span className="fw-normal textProfileNumber">{profile?.results?.phonenumber}</span>
+                <span className="fw-bold textProfileName">{profile?.fullname}</span>
+                <span className="fw-normal textProfileNumber">{profile?.phonenumber}</span>
               </div>
             </div>
 

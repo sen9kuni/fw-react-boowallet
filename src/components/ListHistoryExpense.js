@@ -12,7 +12,7 @@ export default function ListHistoryExpense({image, alt, nameUser, typeTransfer, 
         </div>
       </div>
       <div>
-        <span className="fw-bold colorOut">-Rp{amount}</span>
+        <span className="fw-bold colorOut">-{amount}</span>
       </div>
     </Col>
   )

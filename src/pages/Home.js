@@ -15,7 +15,26 @@ import { Link } from 'react-router-dom'
 import ComMenuMobile from '../components/ComMenuMobile'
 // image
 
+// redux data profile user
+import { useDispatch, useSelector } from 'react-redux'
+import { getProfile } from '../redux/asyncActions/profile'
+// redux data profile user
+
+export const numberFormat = (value) =>
+  new Intl.NumberFormat('id-IN', {
+    style: 'currency',
+    currency: 'IDR'
+  }).format(value);
+
 function Home() {
+  const dispatch = useDispatch()
+  const token = useSelector((state) => state.auth.token)
+  const profile = useSelector((state) => state.profile.data);
+  
+
+  React.useEffect(()=>{
+    dispatch(getProfile(token))
+  },[])
   // const location = useLocation()
   // const [data, setdata] = React.useState(true)
   // React.useEffect(()=>{
@@ -23,6 +42,8 @@ function Home() {
   //     setdata(false)
   //   }, 2000)
   // })
+  console.log(profile.balance);
+  const balanceFinal = numberFormat(parseInt(profile.balance))
   return (
     <>
       <Helmet>
@@ -40,7 +61,7 @@ function Home() {
             <Col className='d-flex flex-row justify-content-between align-items-center balance-wrap p-4 rounded background-primary'>
               <div className="d-flex flex-column gap-1">
                 <span className="fw-normal fontSize-18 color-Thrid">Balance</span>
-                <span className="fs-1 fw-bold fontWhite">Rp120.000</span>
+                <span className="fs-1 fw-bold fontWhite">{balanceFinal}</span>
                 <span className="fontMid fontSize-14 color-Thrid">+62 813-9387-7946</span>
               </div>
               <div className="d-flex flex-column gap-2">

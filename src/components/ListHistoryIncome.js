@@ -12,7 +12,7 @@ export default function ListHistory({image, alt, nameUser, typeTransfer, amount}
         </div>
       </div>
       <div>
-        <span className="fw-bold colorIn">+Rp{amount}</span>
+        <span className="fw-bold colorIn">+{amount}</span>
       </div>
     </Col>
   )
