@@ -7,7 +7,18 @@ import {FiBell, FiArrowDown, FiArrowUp} from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 // image
 
+// redux data profile user
+import { useDispatch, useSelector } from 'react-redux'
+import { getProfileUser } from '../redux/asyncActions/getProfile'
+// redux data profile user
+
 export default function ComHeader() {
+  const dispatch = useDispatch()
+  const profile = useSelector((state)=> state?.profileUser?.results)
+
+  React.useEffect(()=>{
+    dispatch(getProfileUser())
+  },[])
   return (
     <>
       <Row className='d-flex flex-column flex-md-row align-items-md-center mw-100 m-0 shadow-sm round-bott bg-white'>
@@ -25,8 +36,8 @@ export default function ComHeader() {
                 <img className='img-fluid' src={ProfilePic} alt="profile pic"/>
               </Link>
               <div className="d-flex flex-column px-2">
-                <span className="fw-bold textProfileName">Robert Chandler</span>
-                <span className="fw-normal textProfileNumber">+62 8139 3877 7946</span>
+                <span className="fw-bold textProfileName">{profile?.results?.fullname}</span>
+                <span className="fw-normal textProfileNumber">{profile?.results?.phonenumber}</span>
               </div>
             </div>
 

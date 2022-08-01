@@ -6,9 +6,11 @@ import {Helmet} from 'react-helmet'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+import { login } from '../redux/asyncActions/auth'
 
 // image etc
 import {FiMail, FiLock} from 'react-icons/fi'
+import { useDispatch, useSelector } from 'react-redux'
 // image etc
 
 const loginSechema  = Yup.object().shape({
@@ -17,8 +19,12 @@ const loginSechema  = Yup.object().shape({
 })
 
 const AuthForm = ({errors, handleSubmit, handleChange})=> {
+  const successMsg = useSelector((state) => state.auth.successMsg)
+  const errorMsg = useSelector((state) => state.auth.errorMsg)
   return(
     <Form noValidate onSubmit={handleSubmit} className='gap-4 px-md-5 d-flex flex-column gap-md-5'>
+      {successMsg && <Alert variant="success">{successMsg}</Alert>}
+      {errorMsg && <Alert variant="danger">{errorMsg}</Alert>}
       <Form.Group className="mb-3 input-group">
         <span className="input-group-text iconLogin">
           <FiMail size={24} className='colorA9Trans'/>
@@ -53,26 +59,24 @@ const AuthForm = ({errors, handleSubmit, handleChange})=> {
 }
 
 function Login() {
-  const location = useLocation()
+  const dispatch = useDispatch()
+  const token = useSelector((state) => state.auth.token)
   const navigate = useNavigate()
-  const loginReqFill = (param)=>{
-    if (param.email === 'igedetianglistrik@gmail.com' && param.password === '12345678') {
-      window.alert('Login Success')
-      localStorage.setItem('auth', 'randomToken')
-      navigate('/home')
-    }else {
-      window.alert('Login Failed')
-    }
+  const onLogin = (value) => {
+    const data = {email: value.email, password: value.password}
+    dispatch(login(data))
   }
 
+  React.useEffect(()=>{
+    if (token) {
+      navigate('/home')
+    }
+  }, [navigate, token])
   return (
     <>
       <Helmet>
         <title>Login</title>
       </Helmet>
-      {location.state?.errorMsg && (
-        <Alert className='m-0 text-center sticky-top' variant="danger">{location.state.errorMsg}</Alert>
-      )}
       <LogoDashboard />
       <Row className='min-vh-100 mw-100'>
         <DasboardRight />
@@ -93,7 +97,7 @@ function Login() {
                     <input type="password" className="form-control inputLogin" placeholder="Enter your password"/>
                 </div> */}
           
-          <Formik initialValues={{email: '', password: ''}} validationSchema={loginSechema} onSubmit={loginReqFill}>
+          <Formik initialValues={{email: '', password: ''}} validationSchema={loginSechema} onSubmit={onLogin}>
             {(props)=><AuthForm {...props}/>}
           </Formik>
 

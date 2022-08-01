@@ -1,16 +1,19 @@
 import React from 'react'
 import {Col} from 'react-bootstrap'
+import { logout } from '../redux/reducers/auth'
 
 // image
 import {FiGrid, FiPlus, FiArrowUp, FiUser, FiLogOut} from 'react-icons/fi'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 // image
 
 export default function ComMenu() {
-  // const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const onLogout = () => {
-    localStorage.removeItem('auth');
-    // navigate('/');
+    dispatch(logout())
+    navigate('/login')
   };
   
   return (

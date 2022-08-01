@@ -1,11 +1,16 @@
 import React from 'react'
 import { Col, Nav, Row } from 'react-bootstrap'
 import { FiArrowUp, FiGrid, FiLogOut, FiPlus, FiUser } from 'react-icons/fi'
-import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { logout } from '../redux/reducers/auth'
 
 export default function ComMenuMobile() {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const onLogout = () => {
-    localStorage.removeItem('auth');
+    dispatch(logout())
+    navigate('/login')
   };
   return (
     <Nav className='d-md-none background-primary w-100 rounded'>

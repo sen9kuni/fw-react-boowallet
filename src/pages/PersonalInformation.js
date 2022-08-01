@@ -7,8 +7,18 @@ import ListInfo from '../components/ListInfo'
 import ListInfoWLink from '../components/ListInfoWLink'
 import ComMenuMobile from '../components/ComMenuMobile'
 import {Helmet} from 'react-helmet'
+// redux data profile user
+import { useDispatch, useSelector } from 'react-redux'
+import { getProfileUser } from '../redux/asyncActions/getProfile'
+// redux data profile user
 
 function PersonalInformation() {
+  const dispatch = useDispatch()
+  const profile = useSelector((state)=> state?.profileUser?.results)
+
+  React.useEffect(()=>{
+    dispatch(getProfileUser())
+  },[]) // kalau tidak pakai [] akan looping hingga over load
   return (
     <>
       <Helmet>
