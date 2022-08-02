@@ -1,16 +1,18 @@
 import React from 'react'
 import ComHeader from '../components/ComHeader'
 import ComFooter from '../components/ComFooter'
-import {Container, Col, Button, Form } from 'react-bootstrap'
+import {Container, Col, Button, Form, Alert } from 'react-bootstrap'
 import ComMenu from '../components/ComMenu'
 import { useNavigate } from 'react-router-dom'
 import {Helmet} from 'react-helmet'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+import { useDispatch, useSelector } from 'react-redux'
 
 // image
 import {  FiLock } from 'react-icons/fi'
 import ComMenuMobile from '../components/ComMenuMobile'
+import { changePassword } from '../redux/asyncActions/auth'
 // image
 
 const createNewPassSechema  = Yup.object().shape({
@@ -20,13 +22,22 @@ const createNewPassSechema  = Yup.object().shape({
 })
 
 const AuthForm = ({errors, handleSubmit, handleChange})=> {
+  const errorMsg = useSelector((state) => state.auth.errorMsg);
+  const navigate = useNavigate();
+  const successMsg = useSelector((state) => state.auth.successMsg)
+  React.useEffect(() => {
+    if (successMsg) {
+      navigate('/profileuser', { state: { successMsg } });
+    }
+  }, [navigate, successMsg]);
   return(
     <Form noValidate onSubmit={handleSubmit} className='gap-4 px-md-5 d-flex flex-column gap-md-5'>
+      {errorMsg && <Alert variant="danger">{errorMsg}</Alert>}
       <Form.Group className="mb-3 input-group">
         <span className="input-group-text iconLogin">
           <FiLock size={24} className='colorA9Trans'/>
         </span>
-        <Form.Control name='currentPassword' className='inputLogin' onChange={handleChange} type="password" placeholder="Enter your new password" isInvalid={!!errors.currentPassword} />
+        <Form.Control name='currentPassword' className='inputLogin' onChange={handleChange} type="password" placeholder="Current password" isInvalid={!!errors.currentPassword} />
         <Form.Control.Feedback type='invalid'>{errors.currentPassword}</Form.Control.Feedback>
       </Form.Group>
 
@@ -57,12 +68,19 @@ const AuthForm = ({errors, handleSubmit, handleChange})=> {
 }
 
 function ChangePassword() {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
+  const token = useSelector((state) => state.auth.token)
   const changePasswordFill = (param)=>{
-    if (param.currentPassword === '' && param.newPassword === '' && param.repeatNewPassword === '') {
-      window.alert('brah brah brah')
-    }else {
-      navigate('/profileuser')
+    console.log(param.newPassword);
+    console.log(param.repeatNewPassword);
+    console.log(param.currentPassword);
+    if (param.newPassword === param.repeatNewPassword) {
+      const data = {currentPassword: param.currentPassword, newPassword: param.newPassword}
+      const finalData = {token: token, password: data}
+      dispatch(changePassword(finalData))
+    } else {
+      window.alert('new password and repeat new password not match')
     }
   }
   return (
