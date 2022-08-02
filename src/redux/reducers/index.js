@@ -5,6 +5,7 @@ import ProfileUser from './GetProfileUser'
 import auth from './auth';
 import profile from './profile';
 import historyTrans from './historyTrans';
+import getJoinUserProfile from './getJoinUserProfile';
 
 
 const reducer = combineReducers({
@@ -12,7 +13,8 @@ const reducer = combineReducers({
   profileUser: ProfileUser,
   auth,
   profile,
-  history: historyTrans
+  history: historyTrans,
+  profileUserJoin: getJoinUserProfile
 })
 
 export default reducer

@@ -1,14 +1,17 @@
 import React from 'react'
 import LogoDashboard from '../components/LogoDashboard'
 import DasboardRight from '../components/DasboardRight'
-import {Row, Col, Form, Button} from 'react-bootstrap'
+import {Row, Col, Form, Button, Alert} from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import {Helmet} from 'react-helmet'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+import { login, register } from '../redux/asyncActions/auth'
 
 // image etc
 import {FiMail, FiLock, FiUser} from 'react-icons/fi'
+import { useDispatch, useSelector } from 'react-redux'
+import { setEmail } from '../redux/reducers/auth'
 // image etc
 
 const signUpSechema  = Yup.object().shape({
@@ -18,8 +21,18 @@ const signUpSechema  = Yup.object().shape({
 })
 
 const AuthForm = ({errors, handleSubmit, handleChange})=> {
+  const navigate = useNavigate();
+  const successMsg = useSelector((state) => state.auth.successMsg)
+  const errorMsg = useSelector((state) => state.auth.errorMsg);
+
+  React.useEffect(() => {
+    if (successMsg) {
+      navigate('/pin', { state: { successMsg } });
+    }
+  }, [navigate, successMsg]);
   return(
     <Form noValidate onSubmit={handleSubmit} className='gap-4 px-md-5 d-flex flex-column gap-md-5'>
+      {errorMsg && <Alert variant="danger">{errorMsg}</Alert>}
       <Form.Group className="mb-3 input-group">
         <span className="input-group-text iconLogin">
           <FiUser size={24} className='colorA9Trans'/>
@@ -54,14 +67,30 @@ const AuthForm = ({errors, handleSubmit, handleChange})=> {
 }
 
 function SignUp() {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
-  const signUpReqFill = (param)=>{
-    if (param.email === '' && param.password === '' && param.username === '') {
-      window.alert('brah brah brah')
-    }else {
-      navigate('/pin')
-    }
+  // const token = useSelector((state) => state.auth.token)
+  // const signUpReqFill = (param)=>{
+  //   if (param.email === '' && param.password === '' && param.username === '') {
+  //     window.alert('brah brah brah')
+  //   }else {
+  //     navigate('/pin')
+  //   }
+  // }
+  const onSignUp = (value) => {
+    // const data = {email: value.email, password: value.password}
+    dispatch(register(value))
+    dispatch(setEmail(value.email))
+    // dispatch(login(data))
+    navigate('/pin')
   }
+
+  React.useEffect(()=>{
+    // if (token) {
+    // console.log(token);
+    // navigate('/login')
+    // }
+  }, [])
   return (
     <>
       <Helmet>
@@ -99,7 +128,7 @@ function SignUp() {
               <button className="btn DashbuttonLogin fw-bold colorWhite text-decoration-none">Sign Up</button>
             </div>
           </Link> */}
-          <Formik initialValues={{username: '',email: '', password: ''}} validationSchema={signUpSechema} onSubmit={signUpReqFill}>
+          <Formik initialValues={{username: '',email: '', password: ''}} validationSchema={signUpSechema} onSubmit={onSignUp}>
             {(props)=><AuthForm {...props}/>}
           </Formik>
 

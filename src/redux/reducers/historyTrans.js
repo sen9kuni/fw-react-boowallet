@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getHistory } from '../asyncActions/historyTransactions';
+import { getHistory, getHistoryHome } from '../asyncActions/historyTransactions';
 
 const initialState ={
-  data: {}
+  data: {},
+  dataHome: {}
 }
 
 const history = createSlice({
@@ -11,10 +12,13 @@ const history = createSlice({
   reducers: {},
   extraReducers: (build) => {
     build.addCase(getHistory.fulfilled, (state, action) => {
-      state.data =  action.payload.results
+      state.data =  action.payload
+    })
+    build.addCase(getHistoryHome.fulfilled, (state, action)=>{
+      state.dataHome = action.payload
     })
   }
 })
 
-export { getHistory }
+export { getHistory, getHistoryHome }
 export default history.reducer

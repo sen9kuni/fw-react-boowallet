@@ -1,7 +1,7 @@
 import React from 'react'
 import ComHeader from '../components/ComHeader'
 import ComFooter from '../components/ComFooter'
-import {Container, Col} from 'react-bootstrap'
+import {Container, Col, Button} from 'react-bootstrap'
 import ComMenu from '../components/ComMenu'
 import ListHistoryIncome from '../components/ListHistoryIncome'
 import ListHistoryExpense from '../components/ListHistoryExpense'
@@ -9,7 +9,6 @@ import {Helmet} from 'react-helmet'
 
 // image
 import ProfileSam from '../assets/images/sam.png'
-import profilerec from '../assets/images/1.png'
 import ComMenuMobile from '../components/ComMenuMobile'
 // image
 
@@ -28,12 +27,21 @@ function History() {
   const dispatch = useDispatch()
   const token = useSelector((state) => state.auth.token)
   const history = useSelector((state) => state.history.data);
+  const param = {token: token, page: 1}
+
+  const onNextPage = ()=>{
+    const param = {token: token, page: history.pageInfo.nextPage}
+    dispatch(getHistory(param))
+  }
+
+  const onPrevPage = ()=>{
+    const param = {token: token, page: history.pageInfo.prevPage}
+    dispatch(getHistory(param))
+  }
 
   React.useEffect(()=>{
-    dispatch(getHistory(token))
+    dispatch(getHistory(param))
   },[])
-  const finalAmount = numberFormat(history[0].amount)
-  console.log(finalAmount);
   return (
     <>
       <Helmet>
@@ -57,10 +65,10 @@ function History() {
               <ListHistoryExpense image={ProfileSam} alt='Profile Pic' nameUser='budi' typeTransfer='transfer' amount='50.000'  />
             </div> */}
             <div>
-              {history.map(o => {
+              {history?.results?.map((o) => {
                 if(o.type === 'transfer' && o.sender === 'dummy') {
                   return (
-                    <ListHistoryExpense image={profilerec} alt='profile pic' nameUser={o.receiver} typeTransfer={o.type} amount={numberFormat(o.amount)} />
+                    <ListHistoryExpense image={ProfileSam} alt='profile pic' nameUser={o.receiver} typeTransfer={o.type} amount={numberFormat(o.amount)} />
                   )
                 } else if (o.type === 'transfer' && o.receiver === 'dummy') {
                   return (
@@ -70,8 +78,16 @@ function History() {
                   return (
                     <ListHistoryIncome image={ProfileSam} alt='profile pic' nameUser={o.receiver} typeTransfer={o.type} amount={numberFormat(o.amount)} />
                   )
+                } else {
+                  return (
+                    <ListHistoryIncome image={ProfileSam} alt='profile pic' nameUser={o.receiver} typeTransfer={o.type} amount={numberFormat(o.amount)} />
+                  )
                 }
               })}
+            </div>
+            <div className='d-flex flex-row justify-content-between'>
+              <Button className='col-5 background-primary border-0 shadow-none' disabled={history?.pageInfo?.prevPage === null} onClick={onPrevPage} >Prev</Button>
+              <Button className='col-5 background-primary border-0 shadow-none' disabled={history?.pageInfo?.nextPage === null} onClick={onNextPage} >Next</Button>
             </div>
           </Col>
         </Container>

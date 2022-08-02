@@ -9,8 +9,9 @@ export default function ComMenuMobile() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const onLogout = () => {
-    dispatch(logout())
-    navigate('/login')
+    dispatch(logout(()=>{
+      navigate('/login')
+    }))
   };
   return (
     <Nav className='d-md-none background-primary w-100 rounded'>

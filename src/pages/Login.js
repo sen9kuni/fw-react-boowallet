@@ -1,7 +1,7 @@
 import React from 'react'
 import LogoDashboard from '../components/LogoDashboard'
 import DasboardRight from '../components/DasboardRight'
-import {Row, Col, Form, Button,Alert} from 'react-bootstrap'
+import {Row, Col, Form, Button, Alert} from 'react-bootstrap'
 import {Helmet} from 'react-helmet'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Formik } from 'formik'

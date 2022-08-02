@@ -12,8 +12,9 @@ export default function ComMenu() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const onLogout = () => {
-    dispatch(logout())
-    navigate('/login')
+    dispatch(logout(()=>{
+      navigate('/login')
+    }))
   };
   
   return (
