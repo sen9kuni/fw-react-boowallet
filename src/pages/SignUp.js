@@ -15,7 +15,8 @@ import { setEmail } from '../redux/reducers/auth'
 // image etc
 
 const signUpSechema  = Yup.object().shape({
-  username: Yup.string().min(8).required(),
+  first_name: Yup.string().min(3).required(),
+  last_name: Yup.string().min(3).required(),
   email: Yup.string().email('Invalid email address format').required(),
   password: Yup.string().min(8).required()
 })
@@ -37,8 +38,16 @@ const AuthForm = ({errors, handleSubmit, handleChange})=> {
         <span className="input-group-text iconLogin">
           <FiUser size={24} className='colorA9Trans'/>
         </span>
-        <Form.Control name='username' className='inputLogin' onChange={handleChange} type="text" placeholder="Enter your username" isInvalid={!!errors.username} />
-        <Form.Control.Feedback type='invalid'>{errors.username}</Form.Control.Feedback>
+        <Form.Control name='first_name' className='inputLogin' onChange={handleChange} type="text" placeholder="Enter your first name" isInvalid={!!errors.first_name} />
+        <Form.Control.Feedback type='invalid'>{errors.first_name}</Form.Control.Feedback>
+      </Form.Group>
+
+      <Form.Group className="mb-3 input-group">
+        <span className="input-group-text iconLogin">
+          <FiUser size={24} className='colorA9Trans'/>
+        </span>
+        <Form.Control name='last_name' className='inputLogin' onChange={handleChange} type="text" placeholder="Enter your last name" isInvalid={!!errors.last_name} />
+        <Form.Control.Feedback type='invalid'>{errors.last_name}</Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group className="mb-3 input-group">

@@ -20,6 +20,7 @@ export default function ComHeader() {
   React.useEffect(()=>{
     dispatch(getProfile(token))
   },[])
+  console.log(profile?.picture);
   return (
     <>
       <Row className='d-flex flex-column flex-md-row align-items-md-center mw-100 m-0 shadow-sm round-bott bg-white'>
@@ -34,11 +35,11 @@ export default function ComHeader() {
           <div className='d-flex p-3 p-md-0 justify-content-md-end align-items-center justify-content-between'>
             <div className="d-flex flex-row">
               <Link to={'/profileuser'} className="text-decoration-none">
-                <img className='img-fluid' src={ProfilePic} alt="profile pic"/>
+                <img className='img-fluid' src={profile?.picture ? profile?.picture : ProfilePic} alt="profile pic"/>
               </Link>
               <div className="d-flex flex-column px-2">
-                <span className="fw-bold textProfileName">{profile?.fullname}</span>
-                <span className="fw-normal textProfileNumber">{profile?.phonenumber}</span>
+                <span className="fw-bold textProfileName">{`${profile?.first_name} ${profile?.last_name}`}</span>
+                <span className="fw-normal textProfileNumber">{profile?.phonenumber === null ? '-' : profile?.phonenumber}</span>
               </div>
             </div>
 

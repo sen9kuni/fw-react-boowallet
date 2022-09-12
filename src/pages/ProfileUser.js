@@ -11,9 +11,18 @@ import {Helmet} from 'react-helmet'
 // image
 import ProfilePic from '../assets/images/picProfile.png'
 import ComMenuMobile from '../components/ComMenuMobile'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProfile } from '../redux/asyncActions/profile'
 // image
 
 function ProfileUser() {
+  const dispatch = useDispatch()
+  const token = useSelector((state) => state.auth.token)
+  const profile = useSelector((state) => state.profile.data);
+
+  React.useEffect(()=>{
+    dispatch(getProfile(token))
+  },[])
   return (
     <>
       <Helmet>
@@ -27,15 +36,15 @@ function ProfileUser() {
           <Col md={9} className='d-flex flex-column gap-4 rounded shadow-sm p-4 bg-white'>
             <div className="col-12 d-flex flex-column text-center gap-3">
               <div className="d-flex flex-column gap-2">
-                <img className="mx-auto" src={ProfilePic} alt="rofile" width="80px" height="80px" />
+                <img className="mx-auto" src={profile?.picture ? profile?.picture : ProfilePic} alt="rofile" width="80px" height="80px" />
                 <button className="btn mx-auto d-flex flex-row gap-2 align-middle align-items-center btnEditProfile">
                   <FiEdit2 />
-                                Edit
+                    Edit
                 </button>
               </div>
               <div className="d-flex flex-column gap-2">
-                <span className="fw-bold profileName fontSize-24">Robert Chandler</span>
-                <span className="fw-normal fontSize-16">+62 813-9387-7946 </span>
+                <span className="fw-bold profileName fontSize-24">{`${profile?.first_name} ${profile?.last_name}`}</span>
+                <span className="fw-normal fontSize-16">{profile?.phonenumber === null ? '-' : profile?.phonenumber}</span>
               </div>
             </div>
             <div className='d-flex flex-column gap-4 w-50 mx-auto'>
