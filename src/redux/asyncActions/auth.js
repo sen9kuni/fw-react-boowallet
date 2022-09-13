@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import qs from 'qs'
+import Cookies from 'js-cookie';
 import http from '../../helpers/http';
 
 // login
@@ -12,6 +13,7 @@ export const login = createAsyncThunk('auth/login', async (request) => {
         'content-type': 'application/x-www-form-urlencoded'
       }
     })
+    Cookies.set('id', data.results.id)
     result.token = data.results.token
     result.successMsg = data.results.message
     return result

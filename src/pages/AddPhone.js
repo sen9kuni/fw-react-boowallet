@@ -1,7 +1,7 @@
 import React from 'react'
 import ComHeader from '../components/ComHeader'
 import ComFooter from '../components/ComFooter'
-import {Container, Col, Button, Form} from 'react-bootstrap'
+import {Container, Col, Button, Form, Alert} from 'react-bootstrap'
 import ComMenu from '../components/ComMenu'
 import { useNavigate } from 'react-router-dom'
 import { FiPhone } from 'react-icons/fi'
@@ -11,6 +11,8 @@ import { Formik } from 'formik'
 import * as Yup from 'yup'
 // require('yup-phone');
 import 'yup-phone';
+import { useDispatch, useSelector } from 'react-redux'
+import { editPhone } from '../redux/asyncActions/profile'
 
 // const addPhoneSchema = Yup.string().phone().required()
 const addPhoneSchema  = Yup.object().shape({
@@ -31,18 +33,22 @@ const AuthPhoneForm = ({errors, handleSubmit, handleChange}) => {
       </Form.Group>
       <span>{errors.phone}</span>
       <Button type="submit" className='d-flex background-primary p-3 justify-content-center border-unset fw-bold fontSize-16 colorWhite'>
-        Add Phone Number
+        Edit Phone Number
       </Button>
     </Form>
   )
 }
 
 function AddPhone() {
+  const dispatch = useDispatch()
+  const token = useSelector((state) => state.auth.token)
   const navigate = useNavigate()
+  const successMsg = useSelector((state) => state.profile.successMsg)
   const addNumberProfile = (param) => {
     // if (addPhoneSchema.isValid(param.phone) === true) {
-    console.log(param.phone);
-    navigate('/profileuser')
+    // console.log(param.phone);
+    dispatch(editPhone({token: token, phonenumber: param.phone}))
+    // navigate('/profileuser')
     // } else {
     //   window.alert('Phone is Worng')
     // }
@@ -50,7 +56,7 @@ function AddPhone() {
   return (
     <>
       <Helmet>
-        <title>Phone Management - Add Phone</title>
+        <title>Phone Management - Edit Phone</title>
       </Helmet>
       <div className='body-dashboard'>
         <ComHeader />
@@ -59,9 +65,10 @@ function AddPhone() {
           <ComMenu />
           <Col md={9} className='d-flex flex-column gap-5 rounded shadow-sm p-4 bg-white'>
             <div className='d-flex flex-column gap-3'>
-              <span className='fw-bold fontSize-22 color-3a'>Add Phone Number</span>
-              <p className='text-start fontSize-16 color-7a'>Add at least one phone number for the transfer<br/> ID so you can start transfering your money to<br/> another user.</p>
+              <span className='fw-bold fontSize-22 color-3a'>Edit Phone Number</span>
+              <p className='text-start fontSize-16 color-7a'>Edit at least one phone number for the transfer<br/> ID so you can start transfering your money to<br/> another user.</p>
             </div>
+            {successMsg === 'Edit phonenumber successfully' && <Alert className='text-center' variant="success">{successMsg}</Alert>}
             {/* <div className='d-flex flex-column gap-5 w-50 mx-auto'>
               <div className="input-group flex-nowrap">
                 <span className="input-group-text iconLogin d-flex flex-row gap-3">

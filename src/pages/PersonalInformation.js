@@ -10,14 +10,16 @@ import {Helmet} from 'react-helmet'
 // redux data profile user
 import { useDispatch, useSelector } from 'react-redux'
 import { getProfileUser } from '../redux/asyncActions/getProfile'
+import { getProfile } from '../redux/asyncActions/profile'
 // redux data profile user
 
 function PersonalInformation() {
   const dispatch = useDispatch()
-  const profile = useSelector((state)=> state?.profileUser?.results)
+  const profile = useSelector((state) => state.profile.dataprofile);
+  const token = useSelector((state) => state.auth.token)
 
   React.useEffect(()=>{
-    dispatch(getProfileUser())
+    dispatch(getProfile(token))
   },[]) // kalau tidak pakai [] akan looping hingga over load
   return (
     <>
@@ -35,10 +37,10 @@ function PersonalInformation() {
               <p className='text-start fontSize-16 color-7a'>We got your personal information from the sign<br/> up proccess. If you want to make changes on<br/> your information, contact our support.</p>
             </div>
             <div className='d-flex flex-column gap-4'>
-              <ListInfo titleInfo='First Name' info='Robert' />
-              <ListInfo titleInfo='Last Name' info='Chandler' />
-              <ListInfo titleInfo='Verified E-mail' info='pewdiepie1@gmail.com' />
-              <ListInfoWLink titleInfo='Phone Number' info='+62 813-9387-7946' target='/managephone' targetName='Manage' />
+              <ListInfo titleInfo='First Name' info={profile.first_name !== null ? profile.first_name : '-'} />
+              <ListInfo titleInfo='Last Name' info={profile.last_name !== null ? profile.last_name : '-'} />
+              <ListInfo titleInfo='Verified E-mail' info={profile.email !== null ? profile.email : '-'} />
+              <ListInfoWLink titleInfo='Phone Number' info={profile.phonenumber !== null ? profile.phonenumber : '-'} target='/managephone' targetName='Manage' />
             </div>
           </Col>
         </Container>

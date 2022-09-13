@@ -18,7 +18,7 @@ import { getProfile } from '../redux/asyncActions/profile'
 function ProfileUser() {
   const dispatch = useDispatch()
   const token = useSelector((state) => state.auth.token)
-  const profile = useSelector((state) => state.profile.data);
+  const profile = useSelector((state) => state.profile.dataprofile);
 
   React.useEffect(()=>{
     dispatch(getProfile(token))

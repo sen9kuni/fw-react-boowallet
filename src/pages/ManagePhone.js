@@ -4,11 +4,20 @@ import ComFooter from '../components/ComFooter'
 import {Container, Col} from 'react-bootstrap'
 import ComMenu from '../components/ComMenu'
 import ListInfoWLink from '../components/ListInfoWLink'
-import {   FiTrash } from 'react-icons/fi'
+import {   FiEdit2, FiTrash } from 'react-icons/fi'
 import ComMenuMobile from '../components/ComMenuMobile'
 import {Helmet} from 'react-helmet'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProfile } from '../redux/asyncActions/profile'
 
 function ManagePhone() {
+  const dispatch = useDispatch()
+  const profile = useSelector((state) => state.profile.dataprofile);
+  const token = useSelector((state) => state.auth.token)
+
+  React.useEffect(()=>{
+    dispatch(getProfile(token))
+  },[]) // kalau tidak pakai [] akan looping hingga over load
   return (
     <>
       <Helmet>
@@ -25,7 +34,7 @@ function ManagePhone() {
               <p className='text-start fontSize-16 color-7a'>You can only delete the phone number and then<br/> you must add another phone number.</p>
             </div>
             <div className='d-flex flex-column gap-4'>
-              <ListInfoWLink titleInfo='Phone Number' info='+62 813-9387-7946' target='/addphonenumber' targetName={<FiTrash size={28} className='color-7a' />} />
+              <ListInfoWLink titleInfo='Phone Number' info={profile.phonenumber !== null ? profile.phonenumber : '-'} target='/addphonenumber' targetName={<FiEdit2 size={28} className='color-7a' />} />
             </div>
           </Col>
         </Container>

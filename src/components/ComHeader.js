@@ -15,12 +15,11 @@ import { getProfile } from '../redux/asyncActions/profile'
 export default function ComHeader() {
   const dispatch = useDispatch()
   const token = useSelector((state) => state.auth.token)
-  const profile = useSelector((state) => state.profile.data);
+  const profile = useSelector((state) => state.profile.dataprofile);
 
   React.useEffect(()=>{
     dispatch(getProfile(token))
   },[])
-  console.log(profile?.picture);
   return (
     <>
       <Row className='d-flex flex-column flex-md-row align-items-md-center mw-100 m-0 shadow-sm round-bott bg-white'>
@@ -34,9 +33,11 @@ export default function ComHeader() {
         <Col md={6}>
           <div className='d-flex p-3 p-md-0 justify-content-md-end align-items-center justify-content-between'>
             <div className="d-flex flex-row">
-              <Link to={'/profileuser'} className="text-decoration-none">
-                <img className='img-fluid' src={profile?.picture ? profile?.picture : ProfilePic} alt="profile pic"/>
-              </Link>
+              <div className='image-frame-profile-header rounded-2 overflow-hidden'>
+                <Link to={'/profileuser'} className="text-decoration-none">
+                  <img className='img-fluid' src={profile?.picture ? profile?.picture : ProfilePic} alt="profile pic" width="80px" />
+                </Link>
+              </div>
               <div className="d-flex flex-column px-2">
                 <span className="fw-bold textProfileName">{`${profile?.first_name} ${profile?.last_name}`}</span>
                 <span className="fw-normal textProfileNumber">{profile?.phonenumber === null ? '-' : profile?.phonenumber}</span>

@@ -15,6 +15,10 @@ const transactionUser = createSlice({
   name: 'transactionUser',
   initialState,
   reducers: {
+    resetMsg: state => {
+      state.successMsg = null;
+      state.errorMsg = null;
+    },
     resetPage: state => {
       state.nowPage = null;
     },
@@ -55,7 +59,8 @@ const transactionUser = createSlice({
         action.payload.pageInfo !== null &&
         action.payload.pageInfo !== undefined
       ) {
-        state.dataUsers = action.payload.results;
+        // state.dataUsers = action.payload.results;
+        state.dataUsers = action.payload;
         state.nowPage = action.payload.pageInfo.currentPage;
       } else {
         state.dataUsers = [];
@@ -105,6 +110,7 @@ const transactionUser = createSlice({
     });
     build.addCase(topUp.fulfilled, (state, action) => {
       state.successMsg = action.payload.successMsg;
+      state.errorMsg = action.payload.errorMsg;
     });
 
     build.addCase(transfer.pending, state => {
@@ -124,6 +130,7 @@ export const {
   resetSearchkey,
   setDataTrans,
   setSearchkey,
+  resetMsg,
 } = transactionUser.actions;
 export {getProfileById, getAllUsers, nextUsers, topUp, transfer};
 export default transactionUser.reducer;

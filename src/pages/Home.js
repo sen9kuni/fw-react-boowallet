@@ -19,6 +19,7 @@ import ComMenuMobile from '../components/ComMenuMobile'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProfile } from '../redux/asyncActions/profile'
 import { getHistoryHome } from '../redux/asyncActions/historyTransactions'
+import Cookies from 'js-cookie'
 // redux data profile user
 
 export const numberFormat = (value) =>
@@ -30,10 +31,10 @@ export const numberFormat = (value) =>
 function Home() {
   const dispatch = useDispatch()
   const token = useSelector((state) => state.auth.token)
-  const profile = useSelector((state) => state.profile.data);
+  const profile = useSelector((state) => state.profile.dataprofile);
   const history = useSelector((state) => state.history.dataHome);
   const param = {token: token, page: 1}
-  
+  const id = Cookies.get('id')
 
   React.useEffect(()=>{
     dispatch(getProfile(token))
@@ -65,7 +66,7 @@ function Home() {
               <div className="d-flex flex-column gap-1">
                 <span className="fw-normal fontSize-18 color-Thrid">Balance</span>
                 <span className="fs-1 fw-bold fontWhite">{balanceFinal}</span>
-                <span className="fontMid fontSize-14 color-Thrid">+62 813-9387-7946</span>
+                <span className="fontMid fontSize-22 color-Thrid">{profile.phonenumber}</span>
               </div>
               <div className="d-flex flex-column gap-2">
                 <Link to={'/searchreciver'} className='d-grid text-decoration-none'>
@@ -113,7 +114,7 @@ function Home() {
                 <ListHistoryExpense image={ProfileSam} alt='Profile Pic' nameUser='budi' typeTransfer='transfer' amount='50.000'  />
                 <ListHistoryIncome image={ProfileSam} alt='Profile Pic' nameUser='budi' typeTransfer='transfer' amount='50.000'  />
                 <ListHistoryExpense image={ProfileSam} alt='Profile Pic' nameUser='budi' typeTransfer='transfer' amount='50.000'  /> */}
-                {history?.results?.map((o) => {
+                {/* {history?.results?.map((o) => {
                   if(o.type === 'transfer' && o.sender === 'dummy') {
                     return (
                       <ListHistoryExpense image={ProfileSam} alt='profile pic' nameUser={o.receiver} typeTransfer={o.type} amount={numberFormat(o.amount)} />
@@ -130,6 +131,23 @@ function Home() {
                     return (
                       <ListHistoryIncome image={ProfileSam} alt='profile pic' nameUser={o.receiver} typeTransfer={o.type} amount={numberFormat(o.amount)} />
                     )
+                  }
+                })} */}
+                {history?.results?.map((o) => {
+                  if(o.receiverid !== parseInt(id, 10)) {
+                    return (
+                      <ListHistoryExpense key={o.id + o.time} image={o.imgreceiver} alt='profile pic' nameUser={`${o.receiverfirstname} ${o.receiverlastname}`} typeTransfer={o.type} amount={numberFormat(o.amount)} />
+                    )
+                  } else {
+                    if (o.type === 'transfer') {
+                      return (
+                        <ListHistoryIncome key={o.id + o.time} image={o.imgsender} alt='profile pic' nameUser={`${o.senderfirstname} ${o.senderlastname}`} typeTransfer={o.type} amount={numberFormat(o.amount)} />
+                      )
+                    } else {
+                      return (
+                        <ListHistoryIncome key={o.id + o.time} image={o.imgreceiver} alt='profile pic' nameUser={`${o.receiverfirstname} ${o.receiverlastname}`} typeTransfer={o.type} amount={numberFormat(o.amount)} />
+                      )
+                    }
                   }
                 })}
               </Col>

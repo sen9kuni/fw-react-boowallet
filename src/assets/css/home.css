@@ -167,6 +167,11 @@ footer .footer-dashboard {
     color: #5CC6BA;
 }
 
+.topupButton {
+    width: 180px;
+    height: 50;
+}
+
 .balance-wrap {
     /* padding: 30px;  */
     min-height: 190px !important; 
@@ -218,6 +223,26 @@ input::-webkit-inner-spin-button {
 .form-control.is-invalid, .was-validated .form-control:invalid {
     padding-right: unset !important;
     background-size: 0.5em !important;
+}
+
+.image-frame-profile-header {
+    width: 52px;
+    height: 52px;
+}
+
+.image-frame-profile-history {
+    width: 56px;
+    height: 56px;
+}
+
+.image-frame-profile-search-reciver {
+    width: 70px !important;
+    height: 70px !important;
+}
+
+.hight-search-wrap {
+    height: 614px !important;
+    width: 924px;
 }
 /* dunno */
 

@@ -36,7 +36,7 @@ export const getAllUsers = createAsyncThunk('auth/getAllUsers', async param => {
           : '';
   try {
     const {data} = await https(token).get(
-      `authenticated/getAllUsersMk?search=${search}&limit=10&page=${page}`,
+      `authenticated/getAllUsersMk?search=${search}&limit=5&page=${page}`,
     );
     // console.log(data);
     return data;

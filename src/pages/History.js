@@ -6,6 +6,7 @@ import ComMenu from '../components/ComMenu'
 import ListHistoryIncome from '../components/ListHistoryIncome'
 import ListHistoryExpense from '../components/ListHistoryExpense'
 import {Helmet} from 'react-helmet'
+import Cookies from 'js-cookie'
 
 // image
 import ProfileSam from '../assets/images/sam.png'
@@ -15,6 +16,7 @@ import ComMenuMobile from '../components/ComMenuMobile'
 // redux data profile user
 import { useDispatch, useSelector } from 'react-redux'
 import { getHistory } from '../redux/asyncActions/historyTransactions'
+import { getProfile } from '../redux/asyncActions/profile'
 // redux data profile user
 
 export const numberFormat = (value) =>
@@ -28,6 +30,9 @@ function History() {
   const token = useSelector((state) => state.auth.token)
   const history = useSelector((state) => state.history.data);
   const param = {token: token, page: 1}
+  const profile = useSelector((state) => state.profile.data);
+
+  const id = Cookies.get('id')
 
   const onNextPage = ()=>{
     const param = {token: token, page: history.pageInfo.nextPage}
@@ -41,6 +46,7 @@ function History() {
 
   React.useEffect(()=>{
     dispatch(getHistory(param))
+    dispatch(getProfile(token))
   },[])
   return (
     <>
@@ -65,7 +71,7 @@ function History() {
               <ListHistoryExpense image={ProfileSam} alt='Profile Pic' nameUser='budi' typeTransfer='transfer' amount='50.000'  />
             </div> */}
             <div>
-              {history?.results?.map((o) => {
+              {/* {history?.results?.map((o) => {
                 if(o.type === 'transfer' && o.sender === 'dummy') {
                   return (
                     <ListHistoryExpense image={ProfileSam} alt='profile pic' nameUser={o.receiver} typeTransfer={o.type} amount={numberFormat(o.amount)} />
@@ -82,6 +88,24 @@ function History() {
                   return (
                     <ListHistoryIncome image={ProfileSam} alt='profile pic' nameUser={o.receiver} typeTransfer={o.type} amount={numberFormat(o.amount)} />
                   )
+                }
+              })} */}
+
+              {history?.results?.map((o) => {
+                if(o.receiverid !== parseInt(id, 10)) {
+                  return (
+                    <ListHistoryExpense key={o.id + o.time} image={o.imgreceiver} alt='profile pic' nameUser={`${o.receiverfirstname} ${o.receiverlastname}`} typeTransfer={o.type} amount={numberFormat(o.amount)} />
+                  )
+                } else {
+                  if (o.type === 'transfer') {
+                    return (
+                      <ListHistoryIncome key={o.id + o.time} image={o.imgsender} alt='profile pic' nameUser={`${o.senderfirstname} ${o.senderlastname}`} typeTransfer={o.type} amount={numberFormat(o.amount)} />
+                    )
+                  } else {
+                    return (
+                      <ListHistoryIncome key={o.id + o.time} image={o.imgreceiver} alt='profile pic' nameUser={`${o.receiverfirstname} ${o.receiverlastname}`} typeTransfer={o.type} amount={numberFormat(o.amount)} />
+                    )
+                  }
                 }
               })}
             </div>

@@ -10,6 +10,8 @@ import PinInputOne from '../components/PinInputOne'
 import {Helmet} from 'react-helmet'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+import { useDispatch } from 'react-redux'
+import { setCurrentPin } from '../redux/reducers/profile'
 
 const changePinOld = Yup.object().shape({
   pin: Yup.array().of(
@@ -39,10 +41,12 @@ const ChangePinForm = ({errors, handleSubmit, handleChange}) => {
 }
 
 function OldPin() {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const submitOldPin = (param)=>{
     const fullPin = param.pin.join('')
     console.log(fullPin);
+    dispatch(setCurrentPin(fullPin))
     navigate('/changepinnew')
   }
   return (

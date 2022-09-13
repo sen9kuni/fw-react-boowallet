@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux'
 // image
 import {  FiLock } from 'react-icons/fi'
 import ComMenuMobile from '../components/ComMenuMobile'
-import { changePassword } from '../redux/asyncActions/auth'
+import { changePassword } from '../redux/asyncActions/profile'
 // image
 
 const createNewPassSechema  = Yup.object().shape({
@@ -71,14 +71,13 @@ function ChangePassword() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const token = useSelector((state) => state.auth.token)
+  const successMsg = useSelector((state) => state.profile.successMsg)
+  const errorMsg = useSelector((state) => state.profile.errorMsg)
   const changePasswordFill = (param)=>{
-    console.log(param.newPassword);
-    console.log(param.repeatNewPassword);
-    console.log(param.currentPassword);
     if (param.newPassword === param.repeatNewPassword) {
-      const data = {currentPassword: param.currentPassword, newPassword: param.newPassword}
-      const finalData = {token: token, password: data}
-      dispatch(changePassword(finalData))
+      // const data = {currentPassword: param.currentPassword, newPassword: param.newPassword}
+      // const finalData = {token: token, password: data}
+      dispatch(changePassword({token: token, currentPassword: param.currentPassword, newPassword: param.newPassword}))
     } else {
       window.alert('new password and repeat new password not match')
     }
@@ -122,6 +121,8 @@ function ChangePassword() {
                             Change Password
                 </Button>
               </Link> */}
+              {successMsg === 'Change Password successfully' && <Alert className='text-center' variant="success">{successMsg}</Alert>}
+              {errorMsg === 'Current Password is wrong' && <Alert className='text-center' variant="danger">{errorMsg}</Alert>}
               <Formik initialValues={{currentPassword: '', newPassword: '', repeatNewPassword: ''}} validationSchema={createNewPassSechema} onSubmit={changePasswordFill}>
                 {(props)=><AuthForm {...props}/>}
               </Formik>

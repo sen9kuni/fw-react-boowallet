@@ -1,7 +1,7 @@
 import React from 'react'
 import ComHeader from '../components/ComHeader'
 import ComFooter from '../components/ComFooter'
-import {Container, Col, Button, Form} from 'react-bootstrap'
+import {Container, Col, Button, Form, Alert} from 'react-bootstrap'
 import ComMenu from '../components/ComMenu'
 import { useNavigate } from 'react-router-dom'
 // import PinInput from '../components/PinInput'
@@ -10,6 +10,8 @@ import {Helmet} from 'react-helmet'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import PinInputOne from '../components/PinInputOne'
+import { useDispatch, useSelector } from 'react-redux'
+import { changePin } from '../redux/asyncActions/profile'
 
 const changePinNew = Yup.object().shape({
   pin: Yup.array().of(
@@ -32,7 +34,7 @@ const ChangePinForm = ({errors, handleSubmit, handleChange}) => {
       </div>
       <span>{errors.pin}</span>
       <Button type="submit" className='d-flex background-primary p-3 justify-content-center border-unset fw-bold fontSize-16 colorWhite'>
-      Continue
+        Confirm
       </Button>
     </Form>
   )
@@ -40,11 +42,18 @@ const ChangePinForm = ({errors, handleSubmit, handleChange}) => {
 
 
 function NewPin() {
+  const dispatch = useDispatch()
+  const token = useSelector((state) => state.auth.token)
+  const CurrentPin = useSelector((state) => state.profile.CurrentPin)
+  const successMsg = useSelector((state) => state.profile.successMsg)
+  const errorMsg = useSelector((state) => state.profile.errorMsg)
   const navigate = useNavigate()
   const submitNewPin = (param)=>{
     const fullPin = param.pin.join('')
     console.log(fullPin);
-    navigate('/profileuser')
+    console.log(CurrentPin);
+    dispatch(changePin({token: token, currentPin: CurrentPin, newPin: fullPin}))
+    // navigate('/profileuser')
   }
   return (
     <>
@@ -68,6 +77,8 @@ function NewPin() {
                             Change PIN
                 </Button>
               </Link> */}
+              {successMsg === 'Change Pin successfully' && <Alert className='text-center' variant="success">{successMsg}</Alert>}
+              {errorMsg === 'Current Pin is wrong' && <Alert className='text-center' variant="danger">{errorMsg}</Alert>}
               <Formik onSubmit={submitNewPin} initialValues={{pin: ['']}} validationSchema={changePinNew} >
                 {(props)=><ChangePinForm {...props}/>}
               </Formik>

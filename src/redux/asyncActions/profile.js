@@ -25,7 +25,7 @@ export const editProfileName = createAsyncThunk(
       const send = qs.stringify(dataProfile);
       // console.log(send);
       const {data} = await https(token).patch(
-        'authenticated/profileName',
+        '/authenticated/profileName',
         send,
       );
       return data;
@@ -44,7 +44,7 @@ export const editPhone = createAsyncThunk('auth/editPhone', async param => {
   // console.log(request);
   try {
     const send = qs.stringify(dataPhone);
-    const {data} = await https(token).patch('authenticated/phone', send);
+    const {data} = await https(token).patch('/authenticated/phone', send);
     // result.successMsg = data.message;
     return data;
   } catch (e) {
@@ -59,7 +59,7 @@ export const deleteImage = createAsyncThunk(
     const result = {};
     try {
       const {data} = await https(param.token).patch(
-        'authenticated/deletePicture',
+        '/authenticated/deletePicture',
       );
       return data;
     } catch (e) {
@@ -80,7 +80,7 @@ export const changePassword = createAsyncThunk(
     try {
       const send = qs.stringify(dataPass);
       const {data} = await https(token).patch(
-        'authenticated/changePassword',
+        '/authenticated/changePassword',
         send,
       );
       result.successMsg = data.message;
@@ -101,7 +101,7 @@ export const changePin = createAsyncThunk('auth/change-pin', async param => {
   // console.log(dataPin);
   try {
     const send = qs.stringify(dataPin);
-    const {data} = await https(token).patch('authenticated/changePin', send);
+    const {data} = await https(token).patch('/authenticated/changePin', send);
     result.successMsg = data.message;
     return result;
   } catch (e) {
@@ -123,7 +123,7 @@ export const uploadImage = createAsyncThunk(
     // console.log(form._parts[0]);
     try {
       const {data} = await https(param.token).patch(
-        'authenticated/profile',
+        '/authenticated/profile',
         form,
         {
           headers: {
