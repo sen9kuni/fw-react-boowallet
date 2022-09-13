@@ -11,6 +11,8 @@ import {Helmet} from 'react-helmet'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProfileUser } from '../redux/asyncActions/getProfile'
 import { getProfile } from '../redux/asyncActions/profile'
+import ModalFirstName from '../components/ModalFirstName'
+import ModalLastName from '../components/ModalLastName'
 // redux data profile user
 
 function PersonalInformation() {
@@ -37,8 +39,8 @@ function PersonalInformation() {
               <p className='text-start fontSize-16 color-7a'>We got your personal information from the sign<br/> up proccess. If you want to make changes on<br/> your information, contact our support.</p>
             </div>
             <div className='d-flex flex-column gap-4'>
-              <ListInfo titleInfo='First Name' info={profile.first_name !== null ? profile.first_name : '-'} />
-              <ListInfo titleInfo='Last Name' info={profile.last_name !== null ? profile.last_name : '-'} />
+              <ListInfo titleInfo='First Name' info={profile.first_name !== null ? profile.first_name : '-'} linkTo={<ModalFirstName />} />
+              <ListInfo titleInfo='Last Name' info={profile.last_name !== null ? profile.last_name : '-'} linkTo={<ModalLastName />} />
               <ListInfo titleInfo='Verified E-mail' info={profile.email !== null ? profile.email : '-'} />
               <ListInfoWLink titleInfo='Phone Number' info={profile.phonenumber !== null ? profile.phonenumber : '-'} target='/managephone' targetName='Manage' />
             </div>

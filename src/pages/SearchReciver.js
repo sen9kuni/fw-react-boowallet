@@ -1,7 +1,7 @@
 import React from 'react'
 import ComHeader from '../components/ComHeader'
 import ComFooter from '../components/ComFooter'
-import {Container, Col, Button, Form} from 'react-bootstrap'
+import {Container, Col, Button, Form, Alert} from 'react-bootstrap'
 import ComMenu from '../components/ComMenu'
 import ListProfile from '../components/ListProfile'
 import {Helmet} from 'react-helmet'
@@ -74,6 +74,10 @@ function SearchReciver() {
     } else {
       dispatch(getAllUsers({page: 1, token: token, search: ''}));
     }
+
+    // if (errorMsg === 'resource not found') {
+    //   window.alert('user not found')
+    // }
   }, [dispatch, search, token])
 
   const onNextPage = ()=>{
@@ -92,7 +96,6 @@ function SearchReciver() {
     // console.log(search);
   };
 
-  console.log(dataUsers);
   return (
     <>
       <Helmet>
@@ -134,12 +137,16 @@ function SearchReciver() {
                   <ListProfile image={ProfileSam} alt={user.picture} nameUser={user.fullname} phone={user.phonenumber} />
                 )
               })} */}
-
-              {dataUsers?.results?.map(user => {
+              {dataUsers.results === null || dataUsers.results === undefined ? null : dataUsers?.results?.map(user => {
                 return (
                   <ListProfile key={user.id + user.phonenumber} image={user.picture} alt={user.picture + user.id} nameUser={`${user.first_name} ${user.last_name}`} phone={user.phonenumber} />
                 )
               })}
+              {/* {dataUsers?.results?.map(user => {
+                return (
+                  <ListProfile key={user.id + user.phonenumber} image={user.picture} alt={user.picture + user.id} nameUser={`${user.first_name} ${user.last_name}`} phone={user.phonenumber} />
+                )
+              })} */}
             </div>
 
             <div className='d-flex flex-row justify-content-between'>

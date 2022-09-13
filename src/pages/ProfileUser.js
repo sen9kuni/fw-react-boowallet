@@ -13,6 +13,7 @@ import ProfilePic from '../assets/images/picProfile.png'
 import ComMenuMobile from '../components/ComMenuMobile'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProfile } from '../redux/asyncActions/profile'
+import ModalEditImage from '../components/ModalEditImage'
 // image
 
 function ProfileUser() {
@@ -36,11 +37,14 @@ function ProfileUser() {
           <Col md={9} className='d-flex flex-column gap-4 rounded shadow-sm p-4 bg-white'>
             <div className="col-12 d-flex flex-column text-center gap-3">
               <div className="d-flex flex-column gap-2">
-                <img className="mx-auto" src={profile?.picture ? profile?.picture : ProfilePic} alt="rofile" width="80px" height="80px" />
-                <button className="btn mx-auto d-flex flex-row gap-2 align-middle align-items-center btnEditProfile">
+                <div className='image-frame-profile-user rounded-2 overflow-hidden mx-auto'>
+                  <img className="img-fluid" src={profile?.picture ? profile?.picture : ProfilePic} alt="rofile" width="80px" height="80px" />
+                </div>
+                {/* <button className="btn mx-auto d-flex flex-row gap-2 align-middle align-items-center btnEditProfile">
                   <FiEdit2 />
                     Edit
-                </button>
+                </button> */}
+                <ModalEditImage />
               </div>
               <div className="d-flex flex-column gap-2">
                 <span className="fw-bold profileName fontSize-24">{`${profile?.first_name} ${profile?.last_name}`}</span>

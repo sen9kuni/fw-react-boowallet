@@ -235,6 +235,11 @@ input::-webkit-inner-spin-button {
     height: 56px;
 }
 
+.image-frame-profile-user {
+    width: 80px;
+    height: 80px;
+}
+
 .image-frame-profile-search-reciver {
     width: 70px !important;
     height: 70px !important;
