@@ -119,6 +119,7 @@ const transactionUser = createSlice({
     });
     build.addCase(transfer.fulfilled, (state, action) => {
       state.successMsg = action.payload.message;
+      state.errorMsg = action.payload.errorMsg;
     });
   },
 })

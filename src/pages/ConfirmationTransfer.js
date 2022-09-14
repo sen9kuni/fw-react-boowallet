@@ -24,9 +24,17 @@ export const numberFormat = (value) =>
   }).format(value);
 
 function ConfirmationTransfer() {
-  const amount = useSelector((state)=> state.costomInputTransfer.amount)
-  const notes = useSelector((state)=> state.costomInputTransfer.notes)
-  const formatMoney = numberFormat(amount)
+  const dataTrans = useSelector((state) => state.transactionUser.dataTrans)
+  const profile = useSelector((state) => state.profile.dataprofile);
+  const dataChoseprofile = useSelector((state) => state.transactionUser.dataChoseprofile)
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+  const date = new Date(dataTrans.time).toLocaleDateString(undefined, options);
+  const formatMoney = numberFormat(dataTrans.amount)
   return (
     <>
       <Helmet>
@@ -41,15 +49,15 @@ function ConfirmationTransfer() {
             <div>
               <span className='fw-bold font-Size-18 color-3a'>Transfer To</span>
             </div>
-            <ListProfile image={ProfileSam} alt='aaaaa' nameUser='Sam' phone='89458752147' />
+            <ListProfile image={dataChoseprofile.picture !== null ? dataChoseprofile.picture : ProfileSam} alt={dataChoseprofile.first_name} nameUser={`${dataChoseprofile.first_name} ${dataChoseprofile.last_name}`} phone={dataChoseprofile.phonenumber !== null ? dataChoseprofile.phonenumber : '-'} />
             <div>
               <span className='fw-bold font-Size-18 color-3a'>Details</span>
             </div>
             <div className='d-flex flex-column gap-3'>
               <ListInfo titleInfo='Amount' info={formatMoney} />
-              <ListInfo titleInfo='Balance Left' info='Rp20.000' />
-              <ListInfo titleInfo='Date & Time' info='May 11, 2020 - 12.20' />
-              <ListInfo titleInfo='Notes' info={notes} />
+              <ListInfo titleInfo='Balance Left' info={numberFormat(profile.balance - dataTrans.amount)} />
+              <ListInfo titleInfo='Date & Time' info={date} />
+              <ListInfo titleInfo='Notes' info={dataTrans.note} />
             </div>
 
             <div className="d-flex justify-content-end">

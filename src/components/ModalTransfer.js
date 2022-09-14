@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import PinInputOne from '../components/PinInputOne'
+import { useDispatch, useSelector } from 'react-redux';
+import { transfer } from '../redux/asyncActions/transactions';
 
 const pinTransfer = Yup.object().shape({
   pin: Yup.array().of(
@@ -32,7 +34,7 @@ const PinForm = ({errors, handleSubmit, handleChange}) => {
           </div>
           <span>{errors.pin}</span>
           <div className="d-flex justify-content-end">
-            <Button type="submit" className='btn btn-lg fw-bold background-primary colorWhite'>
+            <Button type="submit" className='btn btn-lg fw-bold background-primary colorWhite border-0 shadow-none'>
             Continue
             </Button>
           </div>
@@ -45,17 +47,36 @@ const PinForm = ({errors, handleSubmit, handleChange}) => {
 }
 
 function MyVerticallyCenteredModal(props) {
+  const dispatch = useDispatch();
+  const dataTrans = useSelector((state) => state.transactionUser.dataTrans)
+  const successMsg = useSelector((state) => state.transactionUser.successMsg)
+  const errorMsg = useSelector((state) => state.transactionUser.errorMsg)
+  const token = useSelector((state) => state.auth.token)
   const navigate = useNavigate()
-  const dummyPin = 123456
   const submitPin = (param)=>{
     const fullPin = param.pin.join('')
-    if (parseInt(fullPin) === dummyPin) {
-      console.log(fullPin);
+    const data = {
+      amount: dataTrans.amount,
+      note: dataTrans.note,
+      recipient_id: dataTrans.user_id,
+      pin: fullPin,
+      time: dataTrans.time,
+      token: token,
+    };
+    dispatch(transfer(data))
+    // if (successMsg === 'Transaction is successfully') {
+    //   navigate('/transfersuccess')
+    // } else if (errorMsg === 'Wrong input Pin') {
+    //   navigate('/transferfailed')
+    // }
+  }
+  React.useEffect(()=>{
+    if (successMsg === 'Transaction is successfully') {
       navigate('/transfersuccess')
-    } else {
+    } else if (errorMsg === 'Wrong input Pin') {
       navigate('/transferfailed')
     }
-  }
+  },[errorMsg, navigate, successMsg])
   return (
     <Modal
       {...props}
@@ -94,7 +115,7 @@ export default function ModalTransfer() {
   const [modalShow, setModalShow] = React.useState(false);
   return (
     <>
-      <Button className="btn btn-lg fw-bold background-primary colorWhite border-0" onClick={() => setModalShow(true)}>
+      <Button className="btn btn-lg fw-bold background-primary colorWhite border-0 shadow-none" onClick={() => setModalShow(true)}>
             Continue
       </Button>
     

@@ -17,7 +17,7 @@ function ManagePhone() {
 
   React.useEffect(()=>{
     dispatch(getProfile(token))
-  },[]) // kalau tidak pakai [] akan looping hingga over load
+  },[dispatch, token]) // kalau tidak pakai [] akan looping hingga over load
   return (
     <>
       <Helmet>
@@ -31,7 +31,7 @@ function ManagePhone() {
           <Col md={9} className='d-flex flex-column gap-4 rounded shadow-sm p-4 bg-white'>
             <div className='d-flex flex-column gap-3'>
               <span className='fw-bold fontSize-22 color-3a'>Manage Phone Number</span>
-              <p className='text-start fontSize-16 color-7a'>You can only delete the phone number and then<br/> you must add another phone number.</p>
+              <p className='text-start fontSize-16 color-7a'>You can edit your phone number</p>
             </div>
             <div className='d-flex flex-column gap-4'>
               <ListInfoWLink titleInfo='Phone Number' info={profile.phonenumber !== null ? profile.phonenumber : '-'} target='/addphonenumber' targetName={<FiEdit2 size={28} className='color-7a' />} />

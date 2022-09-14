@@ -10,16 +10,24 @@ import { Link } from 'react-router-dom'
 // redux data profile user
 import { useDispatch, useSelector } from 'react-redux'
 import { getProfile } from '../redux/asyncActions/profile'
+import NotifIn from './NotifIn'
+import NotifOut from './NotifOut'
+import { getAllNotif } from '../redux/asyncActions/notifications'
+import Cookies from 'js-cookie'
 // redux data profile user
 
 export default function ComHeader() {
   const dispatch = useDispatch()
   const token = useSelector((state) => state.auth.token)
   const profile = useSelector((state) => state.profile.dataprofile);
+  const dataNotif = useSelector((state) => state.notificationUser.dataNotif);
+  const id = Cookies.get('id')
 
   React.useEffect(()=>{
     dispatch(getProfile(token))
-  },[])
+    dispatch(getAllNotif({token: token, sort_by: ''}))
+  },[dispatch, token])
+  console.log(dataNotif);
   return (
     <>
       <Row className='d-flex flex-column flex-md-row align-items-md-center mw-100 m-0 shadow-sm round-bott bg-white'>
@@ -50,7 +58,7 @@ export default function ComHeader() {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <div className="d-flex flex-column gap-3 p-3">
+                {/* <div className="d-flex flex-column gap-3 p-3">
                   <span>Today</span>
                   <div className="d-flex flex-row justify-content-between p-3 align-items-center listHomeWarp shadow-sm">
                     <div className="d-flex flex-row gap-3">
@@ -92,6 +100,43 @@ export default function ComHeader() {
                       </div>
                     </div>
                   </div>
+                </div> */}
+                <div className="d-flex flex-column gap-3 p-3 hight-notif-warp overflow-auto">
+                  {/* <NotifIn />
+                  <NotifIn />
+                  <NotifIn />
+                  <NotifIn />
+                  <NotifOut />
+                  <NotifOut />
+                  <NotifOut />
+                  <NotifIn />
+                  <NotifIn />
+                  <NotifIn />
+                  <NotifIn />
+                  <NotifOut />
+                  <NotifOut />
+                  <NotifOut /> */}
+                  {dataNotif.map((o) => {
+                    if (o.receiverid !== parseInt(id, 10)) {
+                      return (
+                        <NotifOut key={'notification' + o.id + o.created_at} amount={o.amount} text={`Transfer to ${o.receiverfirstname} ${o.receiverlastname}`} />
+                      )
+                    } else {
+                      if (o.type === 'transfer') {
+                        return (
+                          <NotifIn key={'notification' + o.id + o.created_at} amount={o.amount} text={`Get Transfered from ${o.senderfirstname} ${o.senderlastname}`} />
+                        )
+                      } else {
+                        return (
+                          <NotifIn key={'notification' + o.id + o.created_at} amount={o.amount} text={`Top up to ${o.receiverfirstname} ${o.receiverlastname}`} />
+                        )
+                      }
+                    }
+                  })}
+                </div>
+                <div className='d-flex flex-row justify-content-between px-3'>
+                  <span>sorting: news</span>
+                  <span>read all</span>
                 </div>
               </Dropdown.Menu>
             </Dropdown>

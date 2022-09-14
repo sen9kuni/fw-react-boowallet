@@ -101,31 +101,31 @@ body .body-dashboard{
 }
 
 .color-Thrid {
-    color: #DFDCDC;
+    color: #DFDCDC !important;
 }
 
 .color-thrid-sub {
-    color: #7A7886;
+    color: #7A7886 !important;
 }
 
 .color-3a {
-    color: #3A3D42;
+    color: #3A3D42 !important;
 }
 
 .color-7a {
-    color: #7A7886;
+    color: #7A7886 !important;
 }
 
 .color-7e {
-    color: #7E7D84;
+    color: #7E7D84 !important;
 }
 
 .color-51 {
-    color: #514F5B;
+    color: #514F5B !important;
 }
 
 .color-a9{
-    color: #A9A9A9;
+    color: #A9A9A9 !important;
 }
 
 .background-dash-white {
@@ -146,6 +146,9 @@ body .body-dashboard{
 
 .background-primary-transparant {
     background-color: #6379F4 !important;
+}
+.background-primary-transparant2 {
+    background-color: #F0F4F3 !important;
 }
 /* color/bg */
 
@@ -248,6 +251,10 @@ input::-webkit-inner-spin-button {
 .hight-search-wrap {
     height: 614px !important;
     width: 924px;
+}
+
+.hight-notif-warp {
+    height: 576px !important;
 }
 /* dunno */
 

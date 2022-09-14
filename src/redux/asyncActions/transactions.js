@@ -129,7 +129,7 @@ export const transfer = createAsyncThunk('auth/transfer', async param => {
     const {data} = await https(token).post('authenticated/transfer', send);
     return data;
   } catch (e) {
-    result.message = e.response.data.message;
+    result.errorMsg = e.response.data.message;
     return result;
   }
 });

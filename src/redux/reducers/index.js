@@ -9,9 +9,15 @@ import profile from './profile';
 import historyTrans from './historyTrans';
 import getJoinUserProfile from './getJoinUserProfile';
 import transactionUser from './transactionUser';
+import notificationUser from './notificationUser';
 
 const authConfig = {
   key: 'authUser',
+  storage,
+}
+
+const transConfig = {
+  key: 'transactionUser',
   storage,
 }
 
@@ -22,7 +28,8 @@ const reducer = combineReducers({
   profile,
   history: historyTrans,
   profileUserJoin: getJoinUserProfile,
-  transactionUser,
+  transactionUser: persistReducer(transConfig, transactionUser),
+  notificationUser,
 })
 
 export default reducer

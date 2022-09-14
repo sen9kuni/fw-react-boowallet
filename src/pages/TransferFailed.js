@@ -3,7 +3,6 @@ import ComHeader from '../components/ComHeader'
 import ComFooter from '../components/ComFooter'
 import {Container, Col} from 'react-bootstrap'
 import ComMenu from '../components/ComMenu'
-import ListProfile from '../components/ListProfile'
 import ListInfo from '../components/ListInfo'
 import {Helmet} from 'react-helmet'
 
@@ -12,9 +11,30 @@ import ProfileSam from '../assets/images/sam.png'
 import { FiX } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import ComMenuMobile from '../components/ComMenuMobile'
+import { useDispatch, useSelector } from 'react-redux'
+import { resetMsg } from '../redux/reducers/transactionUser'
+import ListProfileWoutLink from '../components/ListProfileWoutLink'
 // image
 
+export const numberFormat = (value) =>
+  new Intl.NumberFormat('id-IN', {
+    style: 'currency',
+    currency: 'IDR'
+  }).format(value);
+
 function TransferFailed() {
+  const dispatch = useDispatch();
+  const dataTrans = useSelector((state) => state.transactionUser.dataTrans)
+  const profile = useSelector((state) => state.profile.dataprofile);
+  const dataChoseprofile = useSelector((state) => state.transactionUser.dataChoseprofile)
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+  const date = new Date(dataTrans.time).toLocaleDateString(undefined, options);
+  const formatMoney = numberFormat(dataTrans.amount)
   return (
     <>
       <Helmet>
@@ -34,17 +54,17 @@ function TransferFailed() {
               <p className='fontSize-16 color-7a'>We can't transfer your money at the moment, we recommend you to check your<br/> internet connection and try again.</p>
             </div>
             <div className='d-flex flex-column gap-3'>
-              <ListInfo titleInfo='Amount' info='Rp100.000' />
-              <ListInfo titleInfo='Balance Left' info='Rp20.000' />
-              <ListInfo titleInfo='Date & Time' info='May 11, 2020 - 12.20' />
-              <ListInfo titleInfo='Notes' info='For buying some socks' />
+              <ListInfo titleInfo='Amount' info={formatMoney} />
+              <ListInfo titleInfo='Balance Left' info={numberFormat(profile.balance - dataTrans.amount)} />
+              <ListInfo titleInfo='Date & Time' info={date} />
+              <ListInfo titleInfo='Notes' info={dataTrans.note} />
             </div>
             <div className='d-flex flex-column gap-3'>
               <span className='fw-bold font-Size-18 color-3a'>Transfer To</span>
-              <ListProfile image={ProfileSam} alt='aaaaa' nameUser='Sam' phone='89458752147' />
+              <ListProfileWoutLink image={dataChoseprofile.picture !== null ? dataChoseprofile.picture : ProfileSam} alt={dataChoseprofile.first_name} nameUser={`${dataChoseprofile.first_name} ${dataChoseprofile.last_name}`} phone={dataChoseprofile.phonenumber !== null ? dataChoseprofile.phonenumber : '-'} />
             </div>
             <div className="d-flex flex-row justify-content-end gap-3">
-              <Link to={'/history'} className="d-grid text-decoration-none">
+              <Link to={'/inputamount'} onClick={() => dispatch(resetMsg())} className="d-grid text-decoration-none">
                 <button className="btn btn-lg fw-bold background-primary colorWhite px-4">Continue</button>
               </Link>
             </div>
