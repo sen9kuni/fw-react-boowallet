@@ -43,8 +43,11 @@ const notificationUser = createSlice({
       state.successMsg = null;
     });
     build.addCase(readAllNotif.fulfilled, (state, action) => {
-      state.successMsg = action.payload.successMsg;
+      state.successMsg = action.payload.message;
       state.errorMsg = action.payload.errorMsg;
+      if (action.payload.message === 'read all your notifications') {
+        state.dataNotif = []
+      }
     });
 
     build.addCase(countNotif.pending, state => {

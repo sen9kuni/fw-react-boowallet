@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Dropdown } from 'react-bootstrap'
+import { Row, Col, Dropdown, Button } from 'react-bootstrap'
 
 // image
 import ProfilePic from '../assets/images/picProfile.png'
@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getProfile } from '../redux/asyncActions/profile'
 import NotifIn from './NotifIn'
 import NotifOut from './NotifOut'
-import { getAllNotif } from '../redux/asyncActions/notifications'
+import { countNotif, getAllNotif, readAllNotif } from '../redux/asyncActions/notifications'
 import Cookies from 'js-cookie'
 // redux data profile user
 
@@ -21,13 +21,19 @@ export default function ComHeader() {
   const token = useSelector((state) => state.auth.token)
   const profile = useSelector((state) => state.profile.dataprofile);
   const dataNotif = useSelector((state) => state.notificationUser.dataNotif);
+  const countNotifVal = useSelector(state => state.notificationUser.countHomeNotif);
+  const [notif, setNotif] = React.useState(false);
   const id = Cookies.get('id')
 
   React.useEffect(()=>{
     dispatch(getProfile(token))
-    dispatch(getAllNotif({token: token, sort_by: ''}))
-  },[dispatch, token])
-  console.log(dataNotif);
+    dispatch(countNotif({token: token}));
+    if (parseInt(countNotifVal, 10) > 0) {
+      setNotif(true);
+    } else {
+      setNotif(false);
+    }
+  },[countNotifVal, dispatch, token])
   return (
     <>
       <Row className='d-flex flex-column flex-md-row align-items-md-center mw-100 m-0 shadow-sm round-bott bg-white'>
@@ -54,7 +60,14 @@ export default function ComHeader() {
 
             <Dropdown>
               <Dropdown.Toggle>
-                <FiBell size={24} className='colorSecondary' />
+                <FiBell onClick={() => dispatch(getAllNotif({token: token, sort_by: ''}))} size={24} className='colorSecondary' />
+                {notif && (
+                  <div className='d-flex justify-content-center top-0 end-0 position-absolute circle-notif bg-danger rounded-circle'>
+                    <span className='fw-bold fontSize-14 text-white text-center'>
+                      {countNotifVal > 10 ? '10+' : countNotifVal}
+                    </span>
+                  </div>
+                )}
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
@@ -101,42 +114,36 @@ export default function ComHeader() {
                     </div>
                   </div>
                 </div> */}
-                <div className="d-flex flex-column gap-3 p-3 hight-notif-warp overflow-auto">
-                  {/* <NotifIn />
-                  <NotifIn />
-                  <NotifIn />
-                  <NotifIn />
-                  <NotifOut />
-                  <NotifOut />
-                  <NotifOut />
-                  <NotifIn />
-                  <NotifIn />
-                  <NotifIn />
-                  <NotifIn />
-                  <NotifOut />
-                  <NotifOut />
-                  <NotifOut /> */}
-                  {dataNotif.map((o) => {
-                    if (o.receiverid !== parseInt(id, 10)) {
-                      return (
-                        <NotifOut key={'notification' + o.id + o.created_at} amount={o.amount} text={`Transfer to ${o.receiverfirstname} ${o.receiverlastname}`} />
-                      )
-                    } else {
-                      if (o.type === 'transfer') {
+                {dataNotif.length > 0 ? (
+                  <div className="d-flex flex-column gap-3 p-3 hight-notif-warp overflow-auto">
+                    {dataNotif.map((o) => {
+                      if (o.receiverid !== parseInt(id, 10)) {
                         return (
-                          <NotifIn key={'notification' + o.id + o.created_at} amount={o.amount} text={`Get Transfered from ${o.senderfirstname} ${o.senderlastname}`} />
+                          <NotifOut data={o} key={'notification' + o.id + o.created_at} amount={o.amount} text={`Transfer to ${o.receiverfirstname} ${o.receiverlastname}`} />
                         )
                       } else {
-                        return (
-                          <NotifIn key={'notification' + o.id + o.created_at} amount={o.amount} text={`Top up to ${o.receiverfirstname} ${o.receiverlastname}`} />
-                        )
+                        if (o.type === 'transfer') {
+                          return (
+                            <NotifIn data={o} key={'notification' + o.id + o.created_at} amount={o.amount} text={`Get Transfered from ${o.senderfirstname} ${o.senderlastname}`} />
+                          )
+                        } else {
+                          return (
+                            <NotifIn data={o} key={'notification' + o.id + o.created_at} amount={o.amount} text={`Top up to ${o.receiverfirstname} ${o.receiverlastname}`} />
+                          )
+                        }
                       }
-                    }
-                  })}
-                </div>
-                <div className='d-flex flex-row justify-content-between px-3'>
-                  <span>sorting: news</span>
-                  <span>read all</span>
+                    })}
+                  </div>
+                ) : (
+                  <div className='d-flex p-1'>
+                    <div className='d-flex w-100 justify-content-center border-1 border shadow-sm rounded-2'>
+                      <span className='fw-bold fontSize-18'>Notification empty</span>
+                    </div>
+                  </div>
+                )}
+                <div className='d-flex flex-row justify-content-end px-3'>
+                  {/* <Button variant="link" className='text-decoration-none fw-bold fontSize-16 colorPrimary p-0 shadow-none'>sorting: news</Button> */}
+                  <Button disabled={dataNotif.length === 0} onClick={() => dispatch(readAllNotif({token: token}))} variant="link" className='text-decoration-none fw-bold fontSize-16 colorPrimary p-0 shadow-none'>read all</Button>
                 </div>
               </Dropdown.Menu>
             </Dropdown>

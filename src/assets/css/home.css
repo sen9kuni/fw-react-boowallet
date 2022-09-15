@@ -256,6 +256,11 @@ input::-webkit-inner-spin-button {
 .hight-notif-warp {
     height: 576px !important;
 }
+
+.circle-notif {
+    height: 20px !important;
+    width: 20px !important;
+}
 /* dunno */
 
 

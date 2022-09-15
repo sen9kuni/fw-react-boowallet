@@ -6,6 +6,7 @@ import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
 import { topUp } from '../redux/asyncActions/transactions'
 import { resetMsg } from '../redux/reducers/transactionUser'
+import { countNotif } from '../redux/asyncActions/notifications'
 
 const topupSechema  = Yup.object().shape({
   amount: Yup.number('input must be number').min(10000, 'minimal 10.000').max(5000000, 'max 5.000.000').required('must fill amount'),
@@ -31,8 +32,9 @@ function ModalMenuTopUp(props) {
   const dispatch = useDispatch()
   const token = useSelector((state) => state.auth.token)
   const successMsg = useSelector((state) => state.transactionUser.successMsg)
-  const hendleTopup = (value) => {
-    dispatch(topUp({token: token, amount: value.amount}))
+  const hendleTopup = async (value) => {
+    await dispatch(topUp({token: token, amount: value.amount}))
+    dispatch(countNotif({token: token}));
     // window.alert(successMsg)
   }
   // const onClose = () => {
