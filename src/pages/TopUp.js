@@ -1,12 +1,11 @@
 import React from 'react'
 import ComHeader from '../components/ComHeader'
 import ComFooter from '../components/ComFooter'
-import {Container, Col, Button} from 'react-bootstrap'
+import {Container, Col} from 'react-bootstrap'
 import ComMenu from '../components/ComMenu'
 import ListTopup from '../components/ListTopup'
 import ComMenuMobile from '../components/ComMenuMobile'
 import {Helmet} from 'react-helmet'
-import {FiArrowUp} from 'react-icons/fi'
 import ModalTopup from '../components/ModalTopup'
 
 
@@ -23,10 +22,6 @@ function TopUp() {
           <ComMenu />
           <Col md={9} className='d-flex flex-column gap-4 rounded shadow-sm p-4 bg-white'>
             <span className='fw-bold fontSize-22 color-3a'>How To Top Up</span>
-            {/* <Button className='d-flex justify-content-center align-self-center align-items-center flex-row px-3 py-2 text-white background-primary topupButton border-0 shadow-none'>
-              <FiArrowUp size={25} />
-              <span className='fontSize-22 fontMid'>Top Up</span>
-            </Button> */}
             <ModalTopup />
             <div className='d-flex flex-column gap-4'>
               <ListTopup number={1} info='Go to the nearest ATM or you can use E-Banking.' />

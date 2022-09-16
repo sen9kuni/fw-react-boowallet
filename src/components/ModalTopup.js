@@ -35,16 +35,10 @@ function ModalMenuTopUp(props) {
   const hendleTopup = async (value) => {
     await dispatch(topUp({token: token, amount: value.amount}))
     dispatch(countNotif({token: token}));
-    // window.alert(successMsg)
   }
-  // const onClose = () => {
-  //   dispatch(resetMsg())
-  //   props.onHide
-  // }
   return (
     <Modal
       {...props}
-      // size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -54,7 +48,6 @@ function ModalMenuTopUp(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {/* <h4>Centered Modal</h4> */}
         <p>
         Enter the amount of money, and click<br/> submit
         </p>
@@ -62,15 +55,7 @@ function ModalMenuTopUp(props) {
         <Formik initialValues={{amount: ''}} validationSchema={topupSechema} onSubmit={hendleTopup}>
           {(props)=><TopUpForm {...props}/>}
         </Formik>
-        {/* <div className='d-flex justify-content-end'>
-          <Button className="btn btn-lg fw-bold bg-danger colorWhite border-0 shadow-none mt-2" onClick={props.onHide}>
-            Close
-          </Button>
-        </div> */}
       </Modal.Body>
-      {/* <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer> */}
     </Modal>
   );
 }

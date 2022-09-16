@@ -4,7 +4,6 @@ import ComFooter from '../components/ComFooter'
 import {Container, Col, Button, Form, Alert} from 'react-bootstrap'
 import ComMenu from '../components/ComMenu'
 import { useNavigate } from 'react-router-dom'
-// import PinInput from '../components/PinInput'
 import ComMenuMobile from '../components/ComMenuMobile'
 import {Helmet} from 'react-helmet'
 import { Formik } from 'formik'
@@ -47,7 +46,6 @@ function NewPin() {
   const CurrentPin = useSelector((state) => state.profile.CurrentPin)
   const successMsg = useSelector((state) => state.profile.successMsg)
   const errorMsg = useSelector((state) => state.profile.errorMsg)
-  const navigate = useNavigate()
   const submitNewPin = (param)=>{
     const fullPin = param.pin.join('')
     console.log(fullPin);
@@ -71,12 +69,6 @@ function NewPin() {
               <p className='text-start fontSize-16 color-7a'>Enter your current 6 digits Zwallet PIN below to<br/> continue to the next steps.</p>
             </div>
             <div className='d-flex flex-column gap-5 mx-auto'>
-              {/* <PinInput />
-              <Link to={'/profileuser'} className='d-grid text-decoration-none mb-5'>
-                <Button className='d-flex background-primary p-3 justify-content-center border-unset fw-bold fontSize-16 colorWhite'>
-                            Change PIN
-                </Button>
-              </Link> */}
               {successMsg === 'Change Pin successfully' && <Alert className='text-center' variant="success">{successMsg}</Alert>}
               {errorMsg === 'Current Pin is wrong' && <Alert className='text-center' variant="danger">{errorMsg}</Alert>}
               <Formik onSubmit={submitNewPin} initialValues={{pin: ['']}} validationSchema={changePinNew} >

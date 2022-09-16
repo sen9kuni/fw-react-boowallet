@@ -9,16 +9,12 @@ import ComMenuMobile from '../components/ComMenuMobile'
 import {Helmet} from 'react-helmet'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-// require('yup-phone');
 import 'yup-phone';
 import { useDispatch, useSelector } from 'react-redux'
 import { editPhone } from '../redux/asyncActions/profile'
 
-// const addPhoneSchema = Yup.string().phone().required()
 const addPhoneSchema  = Yup.object().shape({
   phone: Yup.string().phone('ID').required()
-  // notes: Yup.string()
-  // pin: Yup.array().of(Yup.string().matches(/[0-9]{1}/, 'cuk')).required()
 })
 
 const AuthPhoneForm = ({errors, handleSubmit, handleChange}) => {
@@ -42,16 +38,9 @@ const AuthPhoneForm = ({errors, handleSubmit, handleChange}) => {
 function AddPhone() {
   const dispatch = useDispatch()
   const token = useSelector((state) => state.auth.token)
-  const navigate = useNavigate()
   const successMsg = useSelector((state) => state.profile.successMsg)
   const addNumberProfile = (param) => {
-    // if (addPhoneSchema.isValid(param.phone) === true) {
-    // console.log(param.phone);
     dispatch(editPhone({token: token, phonenumber: param.phone}))
-    // navigate('/profileuser')
-    // } else {
-    //   window.alert('Phone is Worng')
-    // }
   }
   return (
     <>
@@ -69,20 +58,6 @@ function AddPhone() {
               <p className='text-start fontSize-16 color-7a'>Edit at least one phone number for the transfer<br/> ID so you can start transfering your money to<br/> another user.</p>
             </div>
             {successMsg === 'Edit phonenumber successfully' && <Alert className='text-center' variant="success">{successMsg}</Alert>}
-            {/* <div className='d-flex flex-column gap-5 w-50 mx-auto'>
-              <div className="input-group flex-nowrap">
-                <span className="input-group-text iconLogin d-flex flex-row gap-3">
-                  <FiPhone size={24} className='colorA9Trans'/>
-                  <span className="font-med color-3a fontSize-16">+62</span>
-                </span>
-                <input type="text" className="form-control inputLogin" placeholder="Add Phone Number"/>
-              </div>
-              <Link to={'/profileuser'} className='d-grid text-decoration-none mb-5'>
-                <Button className='d-flex background-primary p-3 justify-content-center border-unset fw-bold fontSize-16 colorWhite'>
-                            Add Phone Number
-                </Button>
-              </Link>
-            </div> */}
             <Formik initialValues={{phone: ''}} validationSchema={addPhoneSchema} onSubmit={addNumberProfile}>
               {(props)=><AuthPhoneForm {...props}/>}
             </Formik>

@@ -45,7 +45,7 @@ export default function ComMenu() {
           </Link>
         </div>
         <div className="navButton mt-auto">
-          <Link to={'/'} onClick={onLogout} className="d-flex flex-row gap-3 align-items-center text-decoration-none">
+          <Link to={'/login'} onClick={onLogout} className="d-flex flex-row gap-3 align-items-center text-decoration-none">
             <FiLogOut size={28} />
             <span className="fw-bold">Logout</span>
           </Link>

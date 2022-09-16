@@ -4,7 +4,6 @@ import ComFooter from '../components/ComFooter'
 import {Container, Col, Button, Form} from 'react-bootstrap'
 import ComMenu from '../components/ComMenu'
 import { useNavigate } from 'react-router-dom'
-// import PinInput from '../components/PinInput'
 import ComMenuMobile from '../components/ComMenuMobile'
 import PinInputOne from '../components/PinInputOne'
 import {Helmet} from 'react-helmet'
@@ -65,12 +64,6 @@ function OldPin() {
               <p className='text-start fontSize-16 color-7a'>Enter your current 6 digits Zwallet PIN below to<br/> continue to the next steps.</p>
             </div>
             <div className='d-flex flex-column gap-5 mx-auto'>
-              {/* <PinInput />
-              <Link to={'/changepinnew'} className='d-grid text-decoration-none mb-5'>
-                <Button className='d-flex background-primary p-3 justify-content-center border-unset fw-bold fontSize-16 colorWhite'>
-                            Continue
-                </Button>
-              </Link> */}
               <Formik onSubmit={submitOldPin} initialValues={{pin: ['']}} validationSchema={changePinOld} >
                 {(props)=><ChangePinForm {...props}/>}
               </Formik>

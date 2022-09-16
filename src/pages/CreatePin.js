@@ -1,25 +1,13 @@
 import React from 'react'
 import LogoDashboard from '../components/LogoDashboard'
 import DasboardRight from '../components/DasboardRight'
-import PinInput from '../components/PinInput'
 import {Row, Col, Form, Button} from 'react-bootstrap'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import {Helmet} from 'react-helmet'
 import { Formik } from 'formik'
-import * as Yup from 'yup'
 import PinInputOne from '../components/PinInputOne'
 import { useDispatch, useSelector } from 'react-redux'
-import { logout } from '../redux/reducers/auth'
 import { createPin } from '../redux/asyncActions/auth'
-import { getProfile2 } from '../redux/asyncActions/getJoinUserProfile'
-
-const CreatePinNew = Yup.object().shape({
-  pin: Yup.array().of(
-    Yup.string()
-      .matches(/[0-9]{1}/, 'Must number value')
-      .required('Needed Pin')
-  )
-})
 
 const CreatePinForm = ({errors, handleSubmit, handleChange}) => {
   return(
@@ -52,23 +40,6 @@ function CreatePin() {
     dispatch(createPin(data))
     navigate('/pinsuccess')
   }
-
-  // React.useEffect(()=>{
-  //   dispatch(getProfile2(token))
-  // },[])
-
-  // const submitNewPin = (param)=>{
-  //   const fullPin = param.pin1 + param.pin2 + param.pin3 + param.pin4 + param.pin5 + param.pin6
-  //   // const data = {email: fulldata.email, pin: fullPin}
-  //   // console.log(data);
-  //   console.log(fullPin);
-    
-  //   console.log(param.pin1);
-  //   // dispatch(createPin(data))
-  //   // dispatch(logout())
-  //   // navigate('/login')
-  // }
-  
   return (
     <>
       <Helmet>
@@ -82,13 +53,6 @@ function CreatePin() {
           <h3 className="text-start fs-3 fw-bold colorTextPrimary">Secure Your Account, Your Wallet, and Your Data With 6 Digits PIN That You Created Yourself.</h3>
           <p className="text-start fw-normal text-muted">Create 6 digits pin to secure all your money and your data in Zwallet app. Keep it secret and don't tell anyone about your Zwallet account password and the PIN.</p>
 
-          {/* <PinInput />
-
-          <Link to={'/pinsuccess'} className="text-decoration-none">
-            <div className="d-grid">
-              <button className="btn DashbuttonLogin fw-bold colorWhite">Confirm</button>
-            </div>
-          </Link> */}
           <Formik onSubmit={onSubmitPin} initialValues={{pin1:'',pin2:'',pin3:'',pin4:'',pin5:'',pin6:'',}} >
             {(props)=><CreatePinForm {...props}/>}
           </Formik>

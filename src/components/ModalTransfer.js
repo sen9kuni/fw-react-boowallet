@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-// import PinInput from './PinInput';
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import PinInputOne from '../components/PinInputOne'
@@ -40,8 +39,6 @@ const PinForm = ({errors, handleSubmit, handleChange}) => {
           </div>
         </Form>
       </Modal.Body>
-      {/* <Modal.Footer className='border-top-0'>
-      </Modal.Footer> */}
     </>
   )
 }
@@ -64,11 +61,6 @@ function MyVerticallyCenteredModal(props) {
       token: token,
     };
     dispatch(transfer(data))
-    // if (successMsg === 'Transaction is successfully') {
-    //   navigate('/transfersuccess')
-    // } else if (errorMsg === 'Wrong input Pin') {
-    //   navigate('/transferfailed')
-    // }
   }
   React.useEffect(()=>{
     if (successMsg === 'Transaction is successfully') {
@@ -89,21 +81,6 @@ function MyVerticallyCenteredModal(props) {
                 Enter PIN to Transfer
         </Modal.Title>
       </Modal.Header>
-      {/* <Modal.Body>
-        <h4>Centered Modal</h4>
-        <p className='color-3a fw-normal font-Size-16'>
-                Enter your 6 digits PIN for confirmation to<br/> continue transferring money. 
-        </p>
-        <PinInput />
-      </Modal.Body>
-      <Modal.Footer className='border-top-0'>
-        <Link to={'/transferfailed'} className="d-grid text-decoration-none">
-          <Button className="btn btn-lg fw-bold background-primary colorWhite">cancel</Button>
-        </Link>
-        <Link to={'/transfersuccess'} className="d-grid text-decoration-none">
-          <Button className="btn btn-lg fw-bold background-primary colorWhite">Continue</Button>
-        </Link>
-      </Modal.Footer> */}
       <Formik onSubmit={submitPin} initialValues={{pin: ['']}} validationSchema={pinTransfer} >
         {(props)=><PinForm {...props}/>}
       </Formik>

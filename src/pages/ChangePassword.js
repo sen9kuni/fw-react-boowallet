@@ -58,25 +58,20 @@ const AuthForm = ({errors, handleSubmit, handleChange})=> {
       </Form.Group>
 
 
-      {/* <Link to={'/home'} className="d-grid text-decoration-none"> */}
       <Button type="submit" className='d-flex background-primary p-3 justify-content-center border-unset fw-bold fontSize-16 colorWhite'>
         Change Password
       </Button>
-      {/* </Link> */}
     </Form>
   )
 }
 
 function ChangePassword() {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
   const token = useSelector((state) => state.auth.token)
   const successMsg = useSelector((state) => state.profile.successMsg)
   const errorMsg = useSelector((state) => state.profile.errorMsg)
   const changePasswordFill = (param)=>{
     if (param.newPassword === param.repeatNewPassword) {
-      // const data = {currentPassword: param.currentPassword, newPassword: param.newPassword}
-      // const finalData = {token: token, password: data}
       dispatch(changePassword({token: token, currentPassword: param.currentPassword, newPassword: param.newPassword}))
     } else {
       window.alert('new password and repeat new password not match')
@@ -98,29 +93,6 @@ function ChangePassword() {
               <p className='text-start fontSize-16 color-7a'>You must enter your current password and then<br /> type your new password twice.</p>
             </div>
             <div className='d-flex flex-column gap-5 w-50 mx-auto'>
-              {/* <div className="input-group flex-nowrap">
-                <span className="input-group-text iconLogin">
-                  <FiLock size={24} className='colorA9Trans'/>
-                </span>
-                <input type="password" className="form-control inputLogin" placeholder="Current password"/>
-              </div>
-              <div className="input-group flex-nowrap">
-                <span className="input-group-text iconLogin">
-                  <FiLock size={24} className='colorA9Trans'/>
-                </span>
-                <input type="password" className="form-control inputLogin" placeholder="New password"/>
-              </div>
-              <div className="input-group flex-nowrap">
-                <span className="input-group-text iconLogin">
-                  <FiLock size={24} className='colorA9Trans'/>
-                </span>
-                <input type="password" className="form-control inputLogin" placeholder="Repeat new password"/>
-              </div>
-              <Link to={'/profileuser'} className='d-grid text-decoration-none mb-5'>
-                <Button className='d-flex background-primary p-3 justify-content-center border-unset fw-bold fontSize-16 colorWhite'>
-                            Change Password
-                </Button>
-              </Link> */}
               {successMsg === 'Change Password successfully' && <Alert className='text-center' variant="success">{successMsg}</Alert>}
               {errorMsg === 'Current Password is wrong' && <Alert className='text-center' variant="danger">{errorMsg}</Alert>}
               <Formik initialValues={{currentPassword: '', newPassword: '', repeatNewPassword: ''}} validationSchema={createNewPassSechema} onSubmit={changePasswordFill}>

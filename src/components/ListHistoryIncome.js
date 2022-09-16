@@ -56,8 +56,6 @@ export default function ListHistory({image, alt, nameUser, typeTransfer, amount,
             <ListProfileWoutLink image={data.imgsender} alt={data.senderfirstname} nameUser={`${data.senderfirstname} ${data.senderlastname}`} phone={data.phonenumbersender} />
           </>
           }
-          {/* <span className='fw-bold fontSize-18 color-3a mb-1'>Sender</span>
-          <ListProfileWoutLink image={data.imgsender} alt={data.senderfirstname} nameUser={`${data.senderfirstname} ${data.senderlastname}`} phone={data.phonenumbersender} /> */}
           <span className='fw-bold fontSize-18 color-3a mb-1'>Receiver</span>
           <ListProfileWoutLink image={data.imgreceiver} alt={data.receiverfirstname} nameUser={`${data.receiverfirstname} ${data.receiverlastname}`} phone={data.phonenumberreceiver} />
           <div className='mb-3' />

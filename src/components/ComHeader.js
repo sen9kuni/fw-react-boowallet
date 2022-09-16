@@ -71,49 +71,6 @@ export default function ComHeader() {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                {/* <div className="d-flex flex-column gap-3 p-3">
-                  <span>Today</span>
-                  <div className="d-flex flex-row justify-content-between p-3 align-items-center listHomeWarp shadow-sm">
-                    <div className="d-flex flex-row gap-3">
-                      <FiArrowDown className="colorIn" size={24} />
-                      <div className="d-flex flex-column">
-                        <span className="colorSecondaryTrans fontSize-14">Transfered from Joshua Lee</span>
-                        <span className="fw-bold colorSecondary fontSize-18">Rp220.000</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="d-flex flex-row justify-content-between p-3 align-items-center listHomeWarp shadow-sm">
-                    <div className="d-flex flex-row gap-3">
-                      <FiArrowUp className="colorOut" size={24}/>
-                      <div className="d-flex flex-column">
-                        <span className="colorSecondaryTrans fontSize-14">Netflix subscription</span>
-                        <span className="fw-bold colorSecondary fontSize-18">Rp149.000</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="d-flex flex-column gap-3 mt-3 p-3">
-                  <span>This Week</span>
-                  <div className="d-flex flex-row justify-content-between p-3 align-items-center listHomeWarp shadow-sm">
-                    <div className="d-flex flex-row gap-3">
-                      <FiArrowUp className="colorOut" size={24}/>
-                      <div className="d-flex flex-column">
-                        <span className="colorSecondaryTrans fontSize-14">Transfer to Jessica Lee</span>
-                        <span className="fw-bold colorSecondary fontSize-18">Rp100.000</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="d-flex flex-row justify-content-between p-3 align-items-center listHomeWarp shadow-sm">
-                    <div className="d-flex flex-row gap-3">
-                      <FiArrowDown className="colorIn" size={24}/>
-                      <div className="d-flex flex-column">
-                        <span className="colorSecondaryTrans fontSize-14">Top up from BNI E-Banking</span>
-                        <span className="fw-bold colorSecondary fontSize-18">Rp300.000</span>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
                 {dataNotif.length > 0 ? (
                   <div className="d-flex flex-column gap-3 p-3 hight-notif-warp overflow-auto">
                     {dataNotif.map((o) => {
@@ -142,7 +99,6 @@ export default function ComHeader() {
                   </div>
                 )}
                 <div className='d-flex flex-row justify-content-end px-3'>
-                  {/* <Button variant="link" className='text-decoration-none fw-bold fontSize-16 colorPrimary p-0 shadow-none'>sorting: news</Button> */}
                   <Button disabled={dataNotif.length === 0} onClick={() => dispatch(readAllNotif({token: token}))} variant="link" className='text-decoration-none fw-bold fontSize-16 colorPrimary p-0 shadow-none'>read all</Button>
                 </div>
               </Dropdown.Menu>

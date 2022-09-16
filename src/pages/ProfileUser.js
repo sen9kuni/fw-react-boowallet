@@ -3,7 +3,7 @@ import ComHeader from '../components/ComHeader'
 import ComFooter from '../components/ComFooter'
 import {Container, Col} from 'react-bootstrap'
 import ComMenu from '../components/ComMenu'
-import {  FiArrowRight, FiEdit2 } from 'react-icons/fi'
+import {  FiArrowRight } from 'react-icons/fi'
 // import { Link } from 'react-router-dom'
 import ButtonProfile from '../components/ButtonProfile'
 import {Helmet} from 'react-helmet'
@@ -40,10 +40,6 @@ function ProfileUser() {
                 <div className='image-frame-profile-user rounded-2 overflow-hidden mx-auto'>
                   <img className="img-fluid" src={profile?.picture ? profile?.picture : ProfilePic} alt="rofile" width="80px" height="80px" />
                 </div>
-                {/* <button className="btn mx-auto d-flex flex-row gap-2 align-middle align-items-center btnEditProfile">
-                  <FiEdit2 />
-                    Edit
-                </button> */}
                 <ModalEditImage />
               </div>
               <div className="d-flex flex-column gap-2">

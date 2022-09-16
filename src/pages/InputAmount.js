@@ -15,7 +15,6 @@ import { useNavigate } from 'react-router-dom'
 // image
 
 // redux etc
-import { costomAmount, costomNotes } from '../redux/reducers/CostomValue'
 import { useDispatch, useSelector } from 'react-redux'
 import { resetMsg, setDataTrans } from '../redux/reducers/transactionUser'
 import ListProfileWoutLink from '../components/ListProfileWoutLink'
@@ -34,7 +33,6 @@ const AuthForm = ({errors, handleSubmit, handleChange})=>{
   const profile = useSelector((state) => state.profile.dataprofile);
   const balanceFinal = numberFormat(parseInt(profile.balance))
   const [btnSub, setBtnSub] = React.useState(false)
-  const [data, setData] = React.useState({})
   return (
     <Form noValidate onSubmit={handleSubmit} className='d-flex flex-column gap-5 text-center justify-content-center'>
       <p className='text-start color-7a'>Type the amount you want to transfer and then <br/> press continue to the next steps.</p>
@@ -53,12 +51,6 @@ const AuthForm = ({errors, handleSubmit, handleChange})=>{
       </div>
 
       <div className=' d-flex justify-content-center '>
-        {/* <Form.Group className="mb-3 input-group w-50">
-          <span className="input-group-text iconLogin">
-            <FiEdit2 size={24} className='colorA9Trans'/>
-          </span>
-          <Form.Control name='notes' onChange={(e)=>{dispatch(costomNotes(e.target.value))}}  className='inputLogin' type="text" placeholder="Add some notes" />
-        </Form.Group> */}
         <Form.Group className="mb-3 input-group w-50">
           <span className="input-group-text iconLogin">
             <FiEdit2 size={24} className='colorA9Trans'/>
@@ -75,22 +67,12 @@ const AuthForm = ({errors, handleSubmit, handleChange})=>{
     </Form>
   )
 }
-// , pin: ['']
-// onChange={(e)=>{dispatch(costomNotes(e.target.value))}} 
 function InputAmount() {
   const dispatch = useDispatch();
   const navigate = useNavigate()
   const dataChoseprofile = useSelector((state) => state.transactionUser.dataChoseprofile)
-  const dataTrans = useSelector((state) => state.transactionUser.dataTrans)
   const token = useSelector((state) => state.auth.token)
   const loginReqFill = (param)=>{
-    // if (param.note === undefined || param.note === '') {
-    //   dispatch(setDataTrans({amount: param.amount, note: '-'}))
-    //   navigate('/confirmation')
-    // } else {
-    //   dispatch(setDataTrans({amount: param.amount, note: param.note}))
-    //   navigate('/confirmation')
-    // }
     const value = {
       token: token,
       note: param.note === '' ? '-' : param.note,
@@ -121,31 +103,6 @@ function InputAmount() {
             <Formik initialValues={{amount: '', note: ''}} validationSchema={loginSechema} onSubmit={loginReqFill}>
               {(props)=><AuthForm {...props}/>}
             </Formik>
-
-            {/* <div className='d-flex flex-column gap-5 text-center justify-content-center'>
-              <p className='text-start color-7a'>Type the amount you want to transfer and then <br/> press continue to the next steps.</p>
-              <div className="input-group flex-nowrap amoutWarp text-center">
-                <input type="number" className="form-control inputSearch fw-bold mx-auto" placeholder="0.00"/>
-              </div>
-              <div>
-                <span className="fw-bold fontSize-16">Rp120.000 Available</span>
-              </div>
-              <div className="d-flex justify-content-center">
-                <div className="input-group flex-nowrap w-50">
-                  <span className="input-group-text iconLogin">
-                    <FiEdit2 size={19} className='colorA9Trans'/>
-                  </span>
-                  <input type="text" className="form-control inputLogin" placeholder="Add some notes"/>
-                </div>
-              </div>
-
-              <div className="d-flex justify-content-end">
-                <Link to={'/confirmation'} className="text-decoration-none">
-                  <button className="btn btn-lg fw-bold background-primary colorWhite">Continue</button>
-                </Link>
-              </div>
-
-            </div> */}
           </Col>
         </Container>
         <ComFooter />

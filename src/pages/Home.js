@@ -10,7 +10,6 @@ import {Helmet} from 'react-helmet'
 // image
 import {FiPlus, FiArrowUp, FiArrowDown} from 'react-icons/fi'
 import GraphicPic from '../assets/images/graphic.svg'
-import ProfileSam from '../assets/images/sam.png'
 import { Link } from 'react-router-dom'
 import ComMenuMobile from '../components/ComMenuMobile'
 // image
@@ -40,22 +39,12 @@ function Home() {
     dispatch(getProfile(token))
     dispatch(getHistoryHome(param))
   },[])
-  // const location = useLocation()
-  // const [data, setdata] = React.useState(true)
-  // React.useEffect(()=>{
-  //   window.setTimeout(()=>{
-  //     setdata(false)
-  //   }, 2000)
-  // })
   const balanceFinal = numberFormat(parseInt(profile.balance))
   return (
     <>
       <Helmet>
         <title>BooWallet - Home</title>
       </Helmet>
-      {/* {location.state?.errorMsg && (
-        <Alert show={data} className='m-0 text-center sticky-top' variant="danger">{location.state.errorMsg}</Alert>
-      )} */}
       <div className='body-dashboard'>
         <ComHeader />
         <Container className='d-flex flex-column flex-md-row py-5 gap-3'>
@@ -110,29 +99,6 @@ function Home() {
                     <span className='font-med fontSize-14 colorPrimary'>See all</span>
                   </Link> 
                 </div>
-                {/* <ListHistoryIncome image={ProfileSam} alt='Profile Pic' nameUser='budi' typeTransfer='transfer' amount='50.000'  />
-                <ListHistoryExpense image={ProfileSam} alt='Profile Pic' nameUser='budi' typeTransfer='transfer' amount='50.000'  />
-                <ListHistoryIncome image={ProfileSam} alt='Profile Pic' nameUser='budi' typeTransfer='transfer' amount='50.000'  />
-                <ListHistoryExpense image={ProfileSam} alt='Profile Pic' nameUser='budi' typeTransfer='transfer' amount='50.000'  /> */}
-                {/* {history?.results?.map((o) => {
-                  if(o.type === 'transfer' && o.sender === 'dummy') {
-                    return (
-                      <ListHistoryExpense image={ProfileSam} alt='profile pic' nameUser={o.receiver} typeTransfer={o.type} amount={numberFormat(o.amount)} />
-                    )
-                  } else if (o.type === 'transfer' && o.receiver === 'dummy') {
-                    return (
-                      <ListHistoryIncome image={ProfileSam} alt='profile pic' nameUser={o.sender} typeTransfer={o.type} amount={numberFormat(o.amount)} />
-                    )
-                  } else if (o.type === 'top up') {
-                    return (
-                      <ListHistoryIncome image={ProfileSam} alt='profile pic' nameUser={o.receiver} typeTransfer={o.type} amount={numberFormat(o.amount)} />
-                    )
-                  } else {
-                    return (
-                      <ListHistoryIncome image={ProfileSam} alt='profile pic' nameUser={o.receiver} typeTransfer={o.type} amount={numberFormat(o.amount)} />
-                    )
-                  }
-                })} */}
                 {history?.results?.map((o) => {
                   if(o.receiverid !== parseInt(id, 10)) {
                     return (

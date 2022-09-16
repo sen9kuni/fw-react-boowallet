@@ -61,7 +61,6 @@ function ConfirmationTransfer() {
             </div>
 
             <div className="d-flex justify-content-end">
-              {/* <button className="btn btn-lg fw-bold background-primary colorWhite">Continue</button> */}
               <ModalTransfer />
             </div>
           </Col>

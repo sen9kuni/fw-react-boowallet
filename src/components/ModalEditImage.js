@@ -10,9 +10,6 @@ function ModalChangeFirstName(props) {
   const successMsg = useSelector((state) => state.profile.successMsg)
   const errorMsg = useSelector((state) => state.profile.errorMsg)
   const [file, setFile] = React.useState()
-  const hendleChange = (value) => {
-    console.log(value.first_name);
-  }
   const editProfileBtn = (value) => {
     if(file) {
       dispatch(uploadImage({token: token, file:file}))

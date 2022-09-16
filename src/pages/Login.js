@@ -3,7 +3,7 @@ import LogoDashboard from '../components/LogoDashboard'
 import DasboardRight from '../components/DasboardRight'
 import {Row, Col, Form, Button, Alert} from 'react-bootstrap'
 import {Helmet} from 'react-helmet'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import { login } from '../redux/asyncActions/auth'
@@ -45,11 +45,9 @@ const AuthForm = ({errors, handleSubmit, handleChange})=> {
         <Link to={'/resetpassword'} className="link-secondary text-decoration-none fontMid">Forgot password?</Link>
       </div>
 
-      {/* <Link to={'/home'} className="d-grid text-decoration-none"> */}
       <Button variant="primary" type="submit" className="btn DashbuttonLogin fw-bold colorWhite">
       Login
       </Button>
-      {/* </Link> */}
 
       <div className="text-center">
         Don't have an account? Let's <Link className="fw-bold colorPrimary text-decoration-none" to={'/signup'}>Sign Up</Link>
@@ -84,34 +82,9 @@ function Login() {
           <h3 className="text-start fs-3 fw-bold colorSecondary">Start Accessing Banking Needs With All Devices and All Platforms With 30.000+ Users</h3>
           <p className="text-start fw-normal text-muted">Transfering money is eassier than ever, you can access <br/> Zwallet wherever you are. Desktop, laptop, mobile phone? <br/> we cover all of that for you!</p>
 
-          {/* <div className="input-group flex-nowrap">
-                    <span className="input-group-text iconLogin">
-                    <FiMail size={24} className='colorA9Trans'/>
-                    </span>
-                    <input type="email" className="form-control inputLogin" placeholder="Enter your e-mail"/>
-                </div>
-                <div className="input-group flex-nowrap">
-                    <span className="input-group-text iconLogin">
-                    <FiLock size={24} className='colorA9Trans'/>
-                    </span>
-                    <input type="password" className="form-control inputLogin" placeholder="Enter your password"/>
-                </div> */}
-          
           <Formik initialValues={{email: '', password: ''}} validationSchema={loginSechema} onSubmit={onLogin}>
             {(props)=><AuthForm {...props}/>}
           </Formik>
-
-          {/* <div className="text-end">
-                    <Link to={"/resetpassword"} className="link-secondary text-decoration-none fontMid">Forgot password?</Link>
-                </div>
-
-                <Link to={'/home'} className="d-grid text-decoration-none">
-                    <button className="btn DashbuttonLogin fw-bold colorWhite">Login</button>
-                </Link>
-
-                <div className="text-center">
-                    Don't have an account? Let's <Link className="fw-bold colorPrimary text-decoration-none" to={"/signup"}>Sign Up</Link>
-                </div> */}
         </Col>
       </Row>
     </>

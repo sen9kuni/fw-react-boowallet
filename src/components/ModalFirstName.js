@@ -39,7 +39,6 @@ function ModalChangeFirstName(props) {
   return (
     <Modal
       {...props}
-      // size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -49,7 +48,6 @@ function ModalChangeFirstName(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {/* <h4>Centered Modal</h4> */}
         <p>
         Enter first name, and click<br/> Change First Name
         </p>
