@@ -82,3 +82,22 @@ export const changePassword = createAsyncThunk('auth/changePasword', async (para
   }
 } )
 // change password
+
+// reset password
+export const resetPassword = createAsyncThunk('auth/reset-password', async (param) => {
+  const result = {}
+  try {
+    const send = qs.stringify(param)
+    const {data} = await http().post('/auth/resetPassword', send, {
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded'
+      }
+    })
+    result.successMsg = data.message;
+    return result;
+  } catch (e) {
+    result.errorMsg = e.response.data.message;
+    return result;
+  }
+})
+// reset password

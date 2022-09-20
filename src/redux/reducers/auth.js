@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { login, register, changePin, changePassword } from '../asyncActions/auth';
+import { login, register, changePin, changePassword, resetPassword } from '../asyncActions/auth';
 
 const initialState = {
   token: localStorage.getItem('token') || null,
@@ -22,6 +22,10 @@ const auth = createSlice({
     },
     deleteEmail: (state) => {
       state.email = null
+    },
+    resetMsgAuth: state => {
+      state.successMsg = null
+      state.errorMsg = null
     }
   },
   extraReducers: (build) => {
@@ -49,6 +53,15 @@ const auth = createSlice({
       state.successMsg = action.payload?.successMsg;
     })
 
+    build.addCase(resetPassword.pending, (state) => {
+      state.errorMsg = null;
+      state.successMsg = null;
+    })
+    build.addCase(resetPassword.fulfilled, (state, action) => {
+      state.errorMsg = action.payload?.errorMsg;
+      state.successMsg = action.payload?.successMsg;
+    })
+
     build.addCase(changePassword.pending, (state) => {
       state.errorMsg = null;
       state.successMsg = null;
@@ -60,6 +73,6 @@ const auth = createSlice({
   }
 })
 
-export { login, register, changePassword }
-export const { logout, setEmail, deleteEmail } = auth.actions
+export { login, register, changePassword, resetPassword }
+export const { logout, setEmail, deleteEmail, resetMsgAuth } = auth.actions
 export default auth.reducer

@@ -9,6 +9,8 @@ import {Helmet} from 'react-helmet'
 
 // image etc
 import {FiMail} from 'react-icons/fi'
+import { useDispatch } from 'react-redux'
+import { setEmail } from '../redux/reducers/auth'
 // image etc
 
 const resetPasswordSechema  = Yup.object().shape({
@@ -34,13 +36,16 @@ const ResetPaswordForm = ({errors, handleSubmit, handleChange})=> {
 }
 
 function ResetPassword() {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
-  const loginReqFill = (param)=>{
-    if (param.email === '') {
-      window.alert('brah brah brah')
-    }else {
-      navigate('/createnewpassword')
-    }
+  const loginReqFill = (value)=>{
+    // if (param.email === '') {
+    //   window.alert('brah brah brah')
+    // }else {
+    // }
+    // console.log(value);
+    dispatch(setEmail(value.email))
+    navigate('/createnewpassword')
   }
   return (
     <>

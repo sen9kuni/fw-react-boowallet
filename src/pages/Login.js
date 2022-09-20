@@ -11,6 +11,7 @@ import { login } from '../redux/asyncActions/auth'
 // image etc
 import {FiMail, FiLock} from 'react-icons/fi'
 import { useDispatch, useSelector } from 'react-redux'
+import { resetMsgAuth } from '../redux/reducers/auth'
 // image etc
 
 const loginSechema  = Yup.object().shape({
@@ -19,6 +20,7 @@ const loginSechema  = Yup.object().shape({
 })
 
 const AuthForm = ({errors, handleSubmit, handleChange})=> {
+  const dispatch = useDispatch()
   const successMsg = useSelector((state) => state.auth.successMsg)
   const errorMsg = useSelector((state) => state.auth.errorMsg)
   return(
@@ -42,7 +44,7 @@ const AuthForm = ({errors, handleSubmit, handleChange})=> {
       </Form.Group>
 
       <div className="text-end">
-        <Link to={'/resetpassword'} className="link-secondary text-decoration-none fontMid">Forgot password?</Link>
+        <Link to={'/resetpassword'} onClick={() => dispatch(resetMsgAuth())} className="link-secondary text-decoration-none fontMid">Forgot password?</Link>
       </div>
 
       <Button variant="primary" type="submit" className="btn DashbuttonLogin fw-bold colorWhite">
@@ -50,7 +52,7 @@ const AuthForm = ({errors, handleSubmit, handleChange})=> {
       </Button>
 
       <div className="text-center">
-        Don't have an account? Let's <Link className="fw-bold colorPrimary text-decoration-none" to={'/signup'}>Sign Up</Link>
+        Don't have an account? Let's <Link className="fw-bold colorPrimary text-decoration-none" to={'/signup'} onClick={() => dispatch(resetMsgAuth())} >Sign Up</Link>
       </div>
     </Form>
   )
